@@ -1,0 +1,70 @@
+---
+export interface Props {
+  tag: 'h1' | 'h2' | 'h3' | 'h4' | 'p';
+  class?: string;
+  color?: 'primary' | 'secondary' | 'white' | 'blue' | 'gray';
+  weight?: 'normal' | 'medium' | 'semibold' | 'bold';
+  align?: 'left' | 'center' | 'right';
+}
+
+const { 
+  tag, 
+  class: className = '', 
+  color = 'primary', 
+  weight = 'normal',
+  align = 'left'
+} = Astro.props;
+
+const colorClasses = {
+  primary: 'text-gray-800',
+  secondary: 'text-gray-600',
+  white: 'text-white',
+  blue: 'text-blue-900',
+  gray: 'text-gray-500'
+};
+
+const weightClasses = {
+  normal: 'font-normal',
+  medium: 'font-medium',
+  semibold: 'font-semibold',
+  bold: 'font-bold'
+};
+
+const alignClasses = {
+  left: 'text-left',
+  center: 'text-center',
+  right: 'text-right'
+};
+
+const baseClasses = `${colorClasses[color]} ${weightClasses[weight]} ${alignClasses[align]} ${className}`;
+---
+
+{tag === 'h1' && (
+  <h1 class={baseClasses}>
+    <slot />
+  </h1>
+)}
+
+{tag === 'h2' && (
+  <h2 class={baseClasses}>
+    <slot />
+  </h2>
+)}
+
+{tag === 'h3' && (
+  <h3 class={baseClasses}>
+    <slot />
+  </h3>
+)}
+
+{tag === 'h4' && (
+  <h4 class={baseClasses}>
+    <slot />
+  </h4>
+)}
+
+{tag === 'p' && (
+  <p class={baseClasses}>
+    <slot />
+  </p>
+)} 

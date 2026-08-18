@@ -1,0 +1,323 @@
+---
+import { Image } from "astro:assets";
+import Button from "../Button.astro";
+
+const { heading, text, programs } = Astro.props.Content;
+---
+
+<section
+  class="rounded-none mx-auto my-10 max-w-[1320px] max-md:my-10 max-md:rounded-3xl
+         max-[1320px]:mx-6 max-[1100px]:mx-5 max-[1000px]:mx-4 max-[900px]:mx-6 max-md:mx-5 max-sm:mx-4 max-[480px]:mx-3 max-[400px]:mx-2"
+>
+      <div
+      class="flex overflow-hidden flex-col px-20 py-14 w-full rounded-3xl max-md:px-5 max-md:py-8 max-md:max-w-full mobile-container"
+      style="background: linear-gradient(270deg, #F6F2EE 0%, #F3EFEC 100%);"
+    >
+    <!-- Background Wave SVG -->
+    <div
+      class="absolute w-full h-full top-0 left-0 overflow-hidden rounded-3xl z-[10]"
+    >
+      <svg
+        viewBox="0 0 1320 261"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        class="absolute top-[80px] w-full h-auto max-w-none max-md:top-0"
+        preserveAspectRatio="xMidYMid slice"
+      >
+        <path
+          d="M-29 159.359C4 128.359 105.5 73.3593 167 103.359C225.389 131.842 318.785 141.851 362.533 96.4732C391.024 66.9222 361.543 17.1347 320.893 22.8408C283.379 28.1068 249.542 59.3098 253.5 149.859C259.9 296.259 1031.5 218.026 1354.5 211.359"
+          stroke="white"
+          stroke-opacity="0.46"
+          stroke-width="44"></path>
+      </svg>
+    </div>
+
+    <!-- Services Badge -->
+    <header class="relative z-20">
+      <span
+        class="self-start px-10 py-3 bg-purple-900 rounded-[50px] max-md:px-5 mobile-badge"
+        style="
+          color: #FFF;
+          font-family: Inter;
+          font-size: 16px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: 24px;
+        "
+      >
+        # Services
+      </span>
+    </header>
+
+    <!-- Main Content Header -->
+    <div
+      class="mt-20 max-md:mt-10 max-md:max-w-full mobile-header z-20 relative"
+    >
+      <div class="flex gap-5 max-md:flex-col mobile-content-wrapper">
+        <div class="w-[39%] max-md:ml-0 max-md:w-full mobile-text-section">
+          <div
+            class="grow mt-16 text-neutral-800 max-md:mt-10 max-md:max-w-full mobile-text-content"
+          >
+            <h2 class="text-neutral-800">
+              {heading}
+            </h2>
+            <p class="text-neutral-800 opacity-75">
+              {text}
+            </p>
+          </div>
+        </div>
+        <div
+          class="ml-5 w-[61%] max-md:ml-0 max-md:w-full mobile-image-section program-image-container"
+        >
+          <div class="bg-white p-4 rounded-2xl shadow-sm mobile-image-bg" style="box-sizing: border-box; border-radius: 24px;">
+            {/* Ensure 16px margin from all sides */}
+            <img
+              src="/imgs/s3.jpg"
+              alt="Mental health conditions illustration"
+              class="object-cover w-full rounded-xl max-md:mt-0 max-md:max-w-full mobile-hero-image program-image"
+              style="margin: 0; display: block;"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Conditions Grid Dynamic Rendering -->
+    {
+      (() => {
+        const rows = [];
+        for (let i = 0; i < programs.length; i += 3) {
+          rows.push(programs.slice(i, i + 3));
+        }
+        return rows.map((row, rowIndex) => (
+                     <div
+             class={`flex flex-wrap gap-6 max-md:gap-3 items-center ${rowIndex === 0 ? "mt-14 max-md:mt-8" : "mt-7 max-md:mt-3"} text-2xl font-medium leading-loose whitespace-nowrap text-neutral-800 mobile-programs-row`}
+           >
+            {row.map((program) => (
+              <a
+                href={program.link || "#"}
+                class="flex-1 shrink self-stretch my-auto basis-0 min-w-60 cursor-pointer mobile-program-card relative z-30 block"
+              >
+                <div class="flex gap-10 max-md:gap-4 justify-between items-center w-full mobile-program-content">
+                  <div class="flex gap-3 items-center self-stretch my-auto mobile-program-info">
+                    {program.image && (
+                      <Image
+                        src={program.image}
+                        alt={`${program.title} icon`}
+                        class="object-contain shrink-0 self-stretch my-auto w-10 aspect-square mobile-program-icon pointer-events-none"
+                        width={40}
+                        height={40}
+                      />
+                    )}
+                    <p class="text-neutral-800 !text-xl font-medium">
+                      {program.title}
+                    </p>
+                    {!program.image && <div class="w-10 aspect-square" />}
+                  </div>
+                  <div class="cursor-pointer mobile-arrow pointer-events-none">
+                    <Image
+                      src="/imgs/expand_arrow.svg"
+                      alt="Expand arrow"
+                      class="object-contain shrink-0 self-stretch my-auto aspect-[5.13] w-[41px] mobile-arrow-icon pointer-events-none"
+                      width={41}
+                      height={8}
+                    />
+                  </div>
+                </div>
+                <hr class="mt-4 max-md:mt-2 w-full min-h-px border-black mobile-divider pointer-events-none" />
+              </a>
+            ))}
+          </div>
+        ));
+      })()
+    }
+  </div>
+
+  <!-- Buttons Section -->
+  <div class="flex gap-3 justify-center max-md:flex-col max-md:w-full max-md:mx-auto max-md:mt-4 max-md:max-w-[400px] max-sm:gap-2.5 mt-10">
+    <Button 
+      buttonLink="/insurance/"
+      buttonText="Get Started"
+      buttonType="primary"
+    />
+    <Button
+      buttonLink="/contact/"
+      phoneTextOne="Have a question?"
+      phoneTextTwo="Get in Touch"
+      buttonType="phone"
+    />
+  </div>
+</section>
+
+<style>
+  .mobile-container {
+    position: relative;
+  }
+
+  .mobile-image-bg {
+    padding: 16px !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+    border-radius: 24px !important;
+  }
+
+  /* Only apply fixed width/height at 1320px and above */
+  @media (min-width: 1320px) {
+    .program-image-container {
+      width: 641.19px !important;
+      max-width: 641.19px !important;
+    }
+    .program-image {
+      width: 641.19px !important;
+      height: 330px !important;
+      max-width: 100% !important;
+      max-height: 330px !important;
+      object-fit: cover !important;
+      /* Ensure 16px margin from all sides inside the white box */
+      margin: 0 !important;
+      display: block !important;
+    }
+    .mobile-image-bg {
+      padding: 16px !important;
+      box-sizing: border-box !important;
+      border-radius: 24px !important;
+    }
+  }
+
+  @media (max-width: 1320px) {
+    .program-image-container,
+    .program-image {
+      width: 100% !important;
+      max-width: 100% !important;
+      height: auto !important;
+      max-height: 430px !important;
+    }
+    .mobile-image-bg {
+      padding: 16px !important;
+      box-sizing: border-box !important;
+      border-radius: 24px !important;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .mobile-container {
+      padding: 2rem 1rem !important;
+    }
+
+    .mobile-badge {
+      padding: 0.75rem 2rem !important;
+      font-size: 0.875rem !important;
+    }
+
+    .mobile-header {
+      margin-top: 2rem !important;
+    }
+
+    .mobile-content-wrapper {
+      flex-direction: column !important;
+      gap: 2rem !important;
+    }
+
+    .mobile-text-section {
+      width: 100% !important;
+      margin-left: 0 !important;
+    }
+
+    .mobile-text-content {
+      margin-top: 0 !important;
+    }
+
+    .mobile-heading {
+      font-size: 2rem !important;
+      line-height: 2.5rem !important;
+    }
+
+    .mobile-description {
+      font-size: 1rem !important;
+      line-height: 1.5rem !important;
+      margin-top: 1rem !important;
+    }
+
+    .mobile-image-section {
+      width: 100% !important;
+      margin-left: 0 !important;
+    }
+
+    .mobile-image-bg {
+      padding: 1rem !important;
+      margin: 0 !important;
+      border-radius: 24px !important;
+      /* Ensures equal margin on all sides inside the section's padding */
+    }
+
+    .mobile-hero-image {
+      margin-top: 0 !important;
+      aspect-ratio: 16/9 !important;
+      /* Remove extra margin to match all sides */
+    }
+
+    figure {
+      height: 280px !important;
+    }
+
+    .mobile-programs-row {
+      flex-direction: column !important;
+      gap: 0.75rem !important;
+      margin-top: 0.75rem !important;
+      align-items: stretch !important;
+      position: relative;
+      z-index: 20;
+    }
+
+    .mobile-programs-row:first-of-type {
+      margin-top: 2rem !important;
+    }
+
+    .mobile-program-card {
+      flex: none !important;
+      min-width: auto !important;
+      width: 100% !important;
+    }
+
+    .mobile-program-content {
+      gap: 1rem !important;
+      padding: 0.5rem 0 !important;
+    }
+
+    .mobile-program_info {
+      gap: 0.75rem !important;
+    }
+
+    .mobile-program-title {
+      font-size: 1.25rem !important;
+      line-height: 1.75rem !important;
+      white-space: normal !important;
+    }
+
+    .mobile-program-icon {
+      width: 2rem !important;
+      height: 2rem !important;
+    }
+
+    .mobile-arrow-icon {
+      width: 2rem !important;
+      height: auto !important;
+    }
+
+    .mobile-divider {
+      margin-top: 0.5rem !important;
+    }
+  }
+
+  @media (max-width: 767px) {
+    figure {
+      height: 240px !important;
+    }
+  }
+
+  @media (max-width: 480px) {
+    figure {
+      height: 200px !important;
+    }
+  }
+</style>

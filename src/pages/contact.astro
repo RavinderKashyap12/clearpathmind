@@ -1,0 +1,39 @@
+---
+import { fetchGeneralData, fetchContactData , fetchHomeData } from '../utils/dataMapping.ts';
+
+import Testimonials from "../components/sections/Testimonials.astro";
+
+import MainLayout from "../layouts/MainLayout.astro";
+import ContactUs from "../components/sections/ContactUs.astro"; 
+import ContactCards from "../components/sections/ContactCards.astro";
+const GeneralData = await fetchGeneralData();
+const {data:ContactData} = await fetchContactData();
+
+const { data: HomeData } = await fetchHomeData();
+import ContactHero from '../components/sections/ContactHero.astro';
+import HeroProgram from '../components/sections/HeroProgram.astro';
+
+// Generate dynamic SEO data for contact page
+const generatePageTitle = (data) => {
+  return data.seo?.metaTitle || "Contact Us | Clear Path Mental Health";
+};
+
+const generatePageDescription = (data) => {
+  return data.seo?.metaDescription || "Contact Clear Path for personalized mental health support. Email us, call, or send a message during our business hours.";
+};
+
+const pageTitle = generatePageTitle(ContactData);
+const pageDescription = generatePageDescription(ContactData);
+---
+
+<MainLayout title={pageTitle} description={pageDescription}>
+
+    <!-- Form Section -->
+     <HeroProgram Content={ContactData.hero} GeneralData={GeneralData} />
+
+    <ContactHero contactData={ContactData.contactDetails} />
+    <!-- Contact Box  -->
+
+	<Testimonials Content={HomeData.testimonials} />
+
+</MainLayout>

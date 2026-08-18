@@ -1,0 +1,93 @@
+---
+import { Image } from 'astro:assets';
+const { heading, headingTwo_Part_1, headingTwo_Part_2, headingTwo_Part_3, disorders } = Astro.props.Content;
+---
+
+<section class="mx-auto my-[80px] max-w-[1320px] max-md:my-10 max-md:rounded-3xl relative disorder-grid">
+    <header class="flex flex-col gap-5 items-center text-center mb-10">
+      <span
+        class="px-6 py-2 text-base text-white bg-purple-900 rounded-[50px] max-sm:px-5 max-sm:py-1.5 max-sm:text-sm"
+      >
+        {heading}
+      </span>
+      <h2
+      >
+        <span>{headingTwo_Part_1}</span>
+        <span style="color: rgba(94, 129, 233, 1);">{headingTwo_Part_2}</span>
+        <span>{headingTwo_Part_3}</span>
+      </h2>
+    </header>
+
+    <div class="grid gap-6 w-full grid-cols-[repeat(2,1fr)] max-md:gap-5 max-sm:grid-cols-[1fr] md:px-6 max-sm:px-4 lg:px-0">
+      {disorders.map((disorder) => (
+        <a href={disorder.link} class="block no-underline group">
+          <article class="article-card overflow-hidden relative bg-white rounded-3xl h-[410px] shadow-[0px_9px_36.051px_rgba(0,0,0,0.05)] max-sm:h-[300px] transition-all duration-300 hover:shadow-[0px_12px_40px_rgba(0,0,0,0.1)] cursor-pointer">
+            <figure class="overflow-hidden relative m-6 rounded-2xl h-[366px] max-sm:h-64">
+              <img 
+                src={disorder.image} 
+                alt={disorder.title} 
+                class="object-cover size-full transition-transform duration-300 group-hover:scale-105" 
+              />
+            </figure>
+            <div class="absolute bg-white rounded-bl-3xl h-[74px] right-[22px] top-[22px] w-[74px]"></div>
+            <h3
+              class="absolute mb-0 pt-3.5 pr-3.5 pb-3.5 pl-0 bg-white !text-2xl leading-10 rounded-tr-3xl bottom-[20px] left-[22px] max-w-[292px] text-neutral-800 max-md:!text-lg max-sm:leading-6"
+
+            >
+              {disorder.title}
+            </h3>
+            <div class="flex absolute justify-center items-center h-[58px] right-[22px] rounded-[90.127px] top-[22px] w-[58px]" aria-label={`Read more about ${disorder.title}`}>
+              <svg width="58" height="59" viewBox="0 0 58 59" fill="none" xmlns="http://www.w3.org/2000/svg" class="arrow-icon">
+                <g clip-path="url(#clip0_35_697)">
+                  <path d="M29.0637 58.3124C13.1355 58.3124 0.2229 58.3124 0.2229 58.3124V0.630859C0.2229 0.630859 13.1355 0.630859 29.0637 0.630859C44.9919 0.630859 57.9045 0.630859 57.9045 0.630859V58.3124C57.9045 58.3124 44.9919 58.3124 29.0637 58.3124Z" fill="#5E81E9"></path>
+                  <path d="M40.1981 29.7904C40.2828 29.7057 40.3305 29.5912 40.3305 29.4714C40.3305 29.3515 40.2828 29.237 40.1981 29.1523L37.3302 26.2854C37.2166 26.1682 37.0499 26.1213 36.8922 26.1628C36.7345 26.2033 36.611 26.3268 36.5704 26.4845C36.529 26.6423 36.5758 26.809 36.693 26.9226L39.2418 29.4714L36.693 32.0202C36.5758 32.1337 36.529 32.3005 36.5704 32.4582C36.611 32.6159 36.7345 32.7394 36.8922 32.7799C37.0499 32.8214 37.2166 32.7745 37.3302 32.6574L40.1981 29.7904ZM18.2484 29.922H39.879V29.0207H18.2484V29.922Z" fill="white"></path>
+                </g>
+                <defs>
+                  <clipPath id="clip0_35_697">
+                    <rect width="57.6816" height="57.6816" fill="white" transform="translate(0.2229 0.630859)"></rect>
+                  </clipPath>
+                </defs>
+              </svg>
+            </div>
+          </article>
+        </a>
+      ))}
+    </div>
+</section>
+
+<style>
+  @media (min-width: 901px) and (max-width: 1319px) {
+    .disorder-grid {
+      margin-left: 1.25rem;
+      margin-right: 1.25rem;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .disorder-grid {
+      margin-left: 1.5rem;
+      margin-right: 1.5rem;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .disorder-grid {
+      margin-left: 1.25rem;
+      margin-right: 1.25rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .disorder-grid {
+      margin-left: 1rem;
+      margin-right: 1rem;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .disorder-grid {
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
+    }
+  }
+</style>

@@ -1,0 +1,11 @@
+---
+import { Icon } from 'astro-icon/components';
+
+const {text, icon, class: customClass} = Astro.props;
+---
+
+
+<li class={`py-11 px-7 flex flex-col gap-3 items-center ${customClass}`}>
+    <Icon name={icon} class="w-24 h-24 text-primary-500" />
+    <p class="text-2xl text-primary-500 font-medium">{text}</p>
+</li>

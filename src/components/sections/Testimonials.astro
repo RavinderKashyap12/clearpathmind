@@ -1,0 +1,238 @@
+---
+import { Image } from 'astro:assets';
+const { list } = Astro.props.Content;
+---
+<section
+  class="flex justify-center items-center px-5 py-10 my-12 w-full min-h-[630px] max-md:min-h-[500px] mx-auto max-w-[1320px] max-md:my-6 max-sm:my-4 max-md:rounded-3xl relative"
+  style="background: url('/imgs/testimonial_bg.webp') no-repeat center/cover; border-radius: 20px;"
+>
+  <article id="testimonial-slider" class="relative p-10 w-full rounded-3xl max-w-[1320px] max-md:p-8 max-sm:p-5">
+    <div class="relative h-[500px] max-md:h-[450px] max-sm:h-[400px]">
+      {list.map((testimonial, index) => (
+        <div
+          class={`testimonial-item absolute inset-0 flex flex-col gap-6 items-center justify-center mx-auto text-center max-w-[917px] transition-opacity duration-500 ${index === 0 ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+          data-index={index}
+        >
+          <span
+            class="px-6 py-2 text-base leading-6 text-white bg-purple-900 rounded-full"
+            style="
+              color: #FFF;
+              text-align: center;
+              font-family: Poppins;
+              font-size: 16px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: 24px;
+            "
+          >
+            Testimonials
+          </span>
+
+          <blockquote
+            class="mx-0 my-5 text-4xl font-medium leading-[64px] text-neutral-800 max-md:!text-xl max-md:leading-10 max-sm:text-2xl max-sm:leading-9 max-[1320px]:text-2xl max-[1320px]:leading-9"
+            style="
+              color: #222;
+              text-align: center;
+              font-family: Poppins;
+              font-size: clamp(1.25rem, 3vw, 2.5rem);
+              font-style: normal;
+              font-weight: 500;
+              line-height: clamp(2rem, 5vw, 4rem);
+            "
+          >
+            &quot;{testimonial.text}&quot;
+          </blockquote>
+          <figure class="flex gap-4 items-center max-sm:flex-col max-sm:text-center">
+            <!--
+            <div class="relative w-20 h-20">
+              <img
+                src={testimonial.image}
+                alt={`Photo of ${testimonial.name}`}
+                class="object-cover w-20 h-20 rounded-full"
+              />
+              <div class="absolute top-0 left-0 border-white border-solid border-4 rounded-full w-20 h-20"></div>
+            </div>
+            -->
+            <figcaption class="flex flex-col gap-1.5 items-center text-left max-sm:items-center max-sm:text-center">
+              <p class="!text-2xl font-medium">
+                {testimonial.name}
+              </p>
+              <p>
+                {testimonial.position}
+              </p>
+            </figcaption>
+          </figure>
+        </div>
+      ))}
+    </div>
+
+    <div class="flex absolute left-[-1.5em] right-[-1.5em] top-1/2 justify-between px-4 -translate-y-1/2 max-md:px-2 max-sm:px-1">
+      <button id="prev-btn" class="flex justify-center items-center p-0 w-14 h-14 bg-white rounded-full cursor-pointer border-none max-sm:w-10 max-sm:h-10" aria-label="Previous testimonial">
+        <svg
+          width="56"
+          height="56"
+          viewBox="0 0 56 56"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g clip-path="url(#clip0)">
+            <path
+              d="M0.430752 27.9999C0.430752 12.7738 12.7739 0.430664 28 0.430664C43.226 0.430664 55.5692 12.7738 55.5692 27.9999C55.5692 43.226 43.226 55.5691 28 55.5691C12.7739 55.5691 0.430752 43.226 0.430752 27.9999Z"
+              fill="white"
+            />
+            <path
+              d="M17.3565 28.305L20.7071 31.6565L20.098 24.9545L17.3565 28.305ZM38.3384 28.4308H17.6615V27.5693H38.3384V28.4308Z"
+              fill="#222222"
+            />
+          </g>
+          <defs>
+            <clipPath id="clip0">
+              <rect width="56" height="55.1385" transform="translate(0 0.430664)" fill="white"/>
+            </clipPath>
+          </defs>
+        </svg>
+      </button>
+      <button id="next-btn" class="flex justify-center items-center p-0 w-14 h-14 bg-white rounded-full cursor-pointer border-none max-sm:w-10 max-sm:h-10" aria-label="Next testimonial">
+        <svg
+          width="56"
+          height="56"
+          viewBox="0 0 56 56"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g clip-path="url(#clip1)">
+            <path
+              d="M55.5691 27.9999C55.5691 12.7738 43.226 0.430664 28 0.430664C12.7738 0.430664 0.430664 12.7738 0.430664 27.9999C0.430664 43.226 12.7738 55.5691 28 55.5691C43.226 55.5691 55.5691 43.226 55.5691 27.9999Z"
+              fill="white"
+            />
+            <path
+              d="M38.6435 28.305L35.2929 31.6565L35.9021 24.9545L38.6435 28.305ZM17.6616 28.4308H38.3385V27.5693H17.6616V28.4308Z"
+              fill="#222222"
+            />
+          </g>
+          <defs>
+            <clipPath id="clip1">
+              <rect width="56" height="55.1385" transform="translate(0 0.430664)" fill="white"/>
+            </clipPath>
+          </defs>
+        </svg>
+      </button>
+    </div>
+  </article>
+
+  <script is:inline>
+    const items = document.querySelectorAll('.testimonial-item');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    let currentIndex = 0;
+    let autoSlideInterval;
+    const SLIDE_INTERVAL = 5000; // 5 seconds
+
+    function showTestimonial(newIndex) {
+      // Hide current testimonial
+      items[currentIndex].classList.remove('opacity-100');
+      items[currentIndex].classList.add('opacity-0', 'pointer-events-none');
+
+      // Update current index
+      currentIndex = (newIndex + items.length) % items.length;
+
+      // Show new testimonial
+      items[currentIndex].classList.add('opacity-100');
+      items[currentIndex].classList.remove('opacity-0', 'pointer-events-none');
+
+      resetAutoSlide();
+    }
+
+    function startAutoSlide() {
+      autoSlideInterval = setInterval(() => {
+        showTestimonial(currentIndex + 1);
+      }, SLIDE_INTERVAL);
+    }
+
+    function resetAutoSlide() {
+      clearInterval(autoSlideInterval);
+      startAutoSlide();
+    }
+
+    prevBtn.addEventListener('click', () => showTestimonial(currentIndex - 1));
+    nextBtn.addEventListener('click', () => showTestimonial(currentIndex + 1));
+
+    document.addEventListener('DOMContentLoaded', startAutoSlide);
+  </script>
+</section>
+
+<style>
+@media (min-width: 1001px) and (max-width: 1319px) {
+  section {
+    margin-left: 24px;
+    margin-right: 24px;
+    width: calc(100% - 48px);
+  }
+
+}
+
+@media (min-width: 768px) and (max-width: 1000px) {
+  section {
+    margin-left: 20px;
+    margin-right: 20px;
+    width: calc(100% - 40px);
+  }
+  .testimonial-item {
+    max-width: calc(100% - 64px);
+    margin-left: 32px;
+    margin-right: 32px;
+  }
+}
+
+@media (min-width: 401px) and (max-width: 767px) {
+  section {
+    margin-left: 16px;
+    margin-right: 16px;
+    width: calc(100% - 32px);
+  }
+  
+  .testimonial-item blockquote {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .testimonial-item {
+    max-width: calc(100% - 64px);
+    margin-left: 32px;
+    margin-right: 32px;
+  }
+  
+  .testimonial-item blockquote {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+  }
+}
+
+@media (max-width: 400px) {
+  section {
+    margin-left: 8px;
+    margin-right: 8px;
+    width: calc(100% - 16px);
+    padding-left: 0;
+    padding-right: 0;
+  }
+  
+  .testimonial-item {
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+  
+  .testimonial-item blockquote {
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+  }
+  
+  #prev-btn,
+  #next-btn {
+    display: none;
+  }
+}
+</style>

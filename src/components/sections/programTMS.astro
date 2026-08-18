@@ -1,0 +1,178 @@
+---
+import { Image } from 'astro:assets';
+import Button from '../Button.astro';
+---
+
+<section class="overflow-hidden justify-center px-12 py-10 bg-white max-w-[1400px] mx-auto max-[1320px]:px-14 max-[1320px]:py-0 max-[1200px]:px-12 max-[1200px]:py-0 max-[1100px]:px-10 max-[1100px]:py-0 max-[1000px]:px-8 max-[1000px]:py-0 max-[900px]:px-6 max-[900px]:py-0 max-md:px-5 max-md:py-4 max-lg:px-10 max-xl:px-12">
+  <div class="flex gap-5 max-[1320px]:gap-4 max-[1200px]:gap-3 max-[1100px]:gap-2 max-[1000px]:flex-col max-[900px]:flex-col max-md:flex-col max-[820px]:flex-col max-[800px]:flex-col">
+    <article class="w-[46%] max-[1320px]:w-[48%] max-[1200px]:w-[50%] max-[1100px]:w-[52%] max-[1000px]:w-full max-[900px]:w-full max-md:ml-0 max-md:w-full max-[820px]:w-full max-[800px]:w-full">
+      <div class="w-full max-[1000px]:mt-0 max-[900px]:mt-0 max-md:mt-10 max-[820px]:mt-6 max-[800px]:mt-6 max-md:max-w-full">
+        <h2>
+          {Astro.props.Content.mainHeading}
+          <span class="text-[#5E81E9]">{Astro.props.Content.coloredHeading}</span>
+        </h2>
+
+        <p set:html= {Astro.props.Content.description}>
+         
+        </p>
+
+        <div class="flex flex-wrap gap-3 mt-6 w-full max-md:max-w-full max-md:mx-auto max-md:mt-4  max-[820px]:max-w-full">
+          <Button 
+            buttonLink={Astro.props.Content.buttonLink}
+            buttonText={Astro.props.Content.buttonText}
+            buttonType="primary"
+          />
+          <Button
+            buttonLink="/contact/"
+            phoneTextOne="Have a question?"
+            phoneTextTwo="Get in Touch"
+            buttonType="phone"
+          />
+      </div>
+      </div>
+    </article>
+
+    <figure class="ml-5 w-[54%] max-[1320px]:w-[52%] max-[1200px]:w-[50%] max-[1100px]:w-[48%] max-[1000px]:ml-0 max-[1000px]:w-full max-[1000px]:mt-8 max-[900px]:ml-0 max-[900px]:w-full max-[900px]:mt-6 max-md:ml-0 max-md:w-full max-[820px]:ml-0 max-[820px]:w-full max-[800px]:ml-0 max-[800px]:w-full">
+      <Image
+        src={Astro.props.Content.image}
+        alt={Astro.props.Content.imageAlt}
+        class="object-contain grow w-full rounded-3xl aspect-[1.35] max-[1200px]:rounded-2xl max-[1100px]:rounded-xl max-[1000px]:mt-0 max-[900px]:mt-0 max-md:mt-10 max-md:max-w-full"
+        width={800}
+        height={593}
+        loading="lazy"
+        format="webp"
+      />
+    </figure>
+  </div>
+</section>
+
+<div class="flex justify-center items-center px-16 py-9 mx-auto w-full max-w-[1400px] bg-white max-[1320px]:px-14 max-[1320px]:py-6 max-[1200px]:px-12 max-[1200px]:py-5 max-[1100px]:px-10 max-[1100px]:py-4 max-[1000px]:px-8 max-[1000px]:py-4 max-[900px]:px-6 max-[900px]:py-3 max-md:px-10 max-md:py-4 max-lg:px-12 max-xl:px-14 max-[820px]:px-8 max-[800px]:px-8 max-sm:px-5 max-sm:py-3 max-sm:max-w-screen-sm">
+  <section class="flex flex-col shrink-0 gap-6 items-start w-full max-w-[1320px] mx-auto max-[1200px]:gap-5 max-[1100px]:gap-4 max-[1000px]:gap-4 max-[900px]:gap-3 max-md:w-full max-[820px]:w-full max-[800px]:w-full">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-[1200px]:gap-5 max-[1100px]:gap-4 max-[1000px]:gap-4 max-[900px]:gap-3">
+      {Astro.props.Content.conditions.map((condition) => (
+        <article class="dropdown-article relative flex flex-col gap-4 items-start max-[1200px]:gap-3 max-[1100px]:gap-3 max-[1000px]:gap-3 max-[900px]:gap-2 max-md:w-full max-[820px]:w-full max-[800px]:w-full max-sm:gap-3">
+          <div class="flex justify-between items-center self-stretch max-sm:gap-2 dropdown-header cursor-pointer">
+            <div class="flex gap-3 items-center max-[1200px]:gap-2 max-[1100px]:gap-2 max-[1000px]:gap-2 max-[900px]:gap-2 max-md:w-full max-sm:gap-2">
+              <div class="shrink-0 w-10 h-10 max-[1200px]:w-9 max-[1200px]:h-9 max-[1100px]:w-8 max-[1100px]:h-8 max-[1000px]:w-8 max-[1000px]:h-8 max-[900px]:w-7 max-[900px]:h-7 max-sm:w-8 max-sm:h-8">
+                <Image 
+                  src={condition.icon} 
+                  alt={`${condition.title} Icon`} 
+                  class="icon" 
+                  style="width: 40px; height: 40px; flex-shrink: 0"
+                  width={40}
+                  height={40}
+                  loading="lazy"
+                  format="webp"
+                />
+              </div>
+              <p class="!text-2xl !font-medium max-md:!text-xl">
+                {condition.title}
+              </p>
+            </div>
+            <div class="dropdown-toggle" aria-label={`Expand ${condition.title} section`}>
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="arrow-icon max-[1200px]:w-5 max-[1200px]:h-5 max-[1100px]:w-5 max-[1100px]:h-5 max-[1000px]:w-4 max-[1000px]:h-4 max-[900px]:w-4 max-[900px]:h-4" style="width: 24px; height: 24px">
+                <path d="M2.47863 7.88312L3.89788 6.46387L12.1324 14.6984L20.3669 6.46387L21.7861 7.88312L12.1324 17.5369L2.47863 7.88312Z" fill="#222222"></path>
+              </svg>
+            </div>
+          </div>
+          <hr class="self-stretch h-px border-b border-solid border-b-neutral-800">
+          <div class="dropdown-content absolute top-full left-0 right-0 bg-white z-10 opacity-0 invisible transform translate-y-[-10px] border border-gray-200 rounded-lg shadow-lg">
+            <p class="text-base leading-7 text-neutral-700 p-4 max-[1320px]:text-[15px] max-[1320px]:leading-6 max-[1320px]:p-3 max-[1200px]:text-sm max-[1200px]:leading-6 max-[1200px]:p-3 max-[1100px]:text-[13px] max-[1100px]:leading-5 max-[1100px]:p-3 max-[1000px]:text-[13px] max-[1000px]:leading-5 max-[1000px]:p-3 max-[900px]:text-xs max-[900px]:leading-5 max-[900px]:p-2 max-md:text-xs max-md:leading-5 max-md:p-2 max-sm:text-xs max-sm:leading-4 max-sm:p-2">
+              {condition.description} 
+            </p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+</div>
+
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const dropdownHeaders = document.querySelectorAll('.dropdown-header');
+
+    dropdownHeaders.forEach(header => {
+      header.addEventListener('click', () => {
+        const article = header.closest('.dropdown-article');
+        if (article) {
+          const content = article.querySelector('.dropdown-content');
+          const arrowIcon = article.querySelector('.arrow-icon');
+          const isCurrentlyOpen = article.classList.contains('open');
+
+          // Close all other dropdowns
+          dropdownHeaders.forEach(otherHeader => {
+            const otherArticle = otherHeader.closest('.dropdown-article');
+            if (otherArticle && otherArticle !== article) {
+              const otherContent = otherArticle.querySelector('.dropdown-content');
+              const otherArrowIcon = otherArticle.querySelector('.arrow-icon');
+              
+              otherArticle.classList.remove('open');
+              if (otherContent) {
+                otherContent.classList.remove('visible');
+              }
+              if (otherArrowIcon) {
+                otherArrowIcon.style.transform = 'rotate(0deg)';
+              }
+            }
+          });
+
+          // Toggle current dropdown
+          if (content) {
+            if (isCurrentlyOpen) {
+              article.classList.remove('open');
+              content.classList.remove('visible');
+            } else {
+              article.classList.add('open');
+              content.classList.add('visible');
+            }
+
+            // Rotate the arrow icon
+            if (arrowIcon) {
+              arrowIcon.style.transform = article.classList.contains('open') ? 'rotate(180deg)' : 'rotate(0deg)';
+              arrowIcon.style.transition = 'transform 0.3s ease-in-out';
+            }
+          }
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  /* Basic styles for the dropdown content */
+  .dropdown-content {
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }
+
+  .dropdown-content.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(0);
+  }
+
+  /* Optional: Rotate arrow when open */
+  .dropdown-article.open .arrow-icon {
+    transform: rotate(180deg);
+  }
+
+  /* Ensure proper stacking context */
+  .dropdown-article {
+    position: relative;
+  }
+  
+  /* Make the header look clickable */
+  .dropdown-header {
+    transition: background-color 0.2s ease;
+  }
+  
+  .dropdown-header:hover {
+    background-color: rgba(0, 0, 0, 0.03);
+  }
+
+  /* Improved line height for 765px to 800px range */
+  @media (min-width: 765px) and (max-width: 800px) {
+    .program-heading {
+      line-height: 50px !important;
+    }
+  }
+</style>

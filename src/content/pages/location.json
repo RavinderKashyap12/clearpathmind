@@ -1,0 +1,66 @@
+{
+  "hero": {
+    "heading": "Clear Path Locations",
+    "text": "Find a Clear Path facility near you for expert mental health treatment.",
+    "buttonText": "Get Started",
+    "phoneQuestionText": "Have a question?",
+    "treatmentsLabel": "Locations",
+    "buttonLink": "/insurance/",
+    "callButtonText": "Get in Touch",
+    "callButtonLink": "/contact/"
+  },
+  "locationHero": {
+    "header": "Expanding to",
+    "subheaderHighlight": "Serve You Better",
+    "description": "Clear Path is growing to reach more communities. We plan to open additional locations to make quality mental health care more accessible. Check back for updates on new locations.",
+    "locationInfo": {
+      "title": "Orange County, California",
+      "addressLine1": "456 Park Avenue",
+      "addressLine2": "Suite 200 New York, NY 10022",
+      "email": "orange-county@clearpath.com",
+      "phone": "",
+      "hours": "Mon-Fri: 9AM-5PM",
+      "buttonText": "Schedule Appointment",
+      "buttonLink": "/insurance/"
+    }
+  },
+  "disorders": {
+    "heading": "OUR INSIGHTS",
+    "headingTwo_Part_1": "Expert guidance for your ",
+    "headingTwo_Part_2": "mental health ",
+    "headingTwo_Part_3": "journey",
+    "disorders": [
+      {
+        "link": "/blog/managing-depression/",
+        "title": "Effective Strategies for Managing Depression",
+        "image": "/imgs/Depression_Article.png"
+      },
+      {
+        "link": "/blog/managing-anxiety/",
+        "title": "Effective Strategies for Managing Anxiety",
+        "image": "/imgs/Anxiety_Article.png"
+      },
+      {
+        "link": "/blog/managing-adhd/",
+        "title": "Effective Strategies for Managing ADHD",
+        "image": "/imgs/ADHD_Article.png"
+      },
+      {
+        "link": "/blog/managing-ptsd/",
+        "title": "Effective Strategies for Coping with and Managing PTSD",
+        "image": "/imgs/PTSD_Article.png"
+      }
+    ]
+  },
+  "cta": {
+    "heading": "Ready to Start Your Journey to Better Mental Health?",
+    "text": "Take the first step towards healing. Our experienced team is here to support you with personalized, evidence-based treatment plans.",
+    "buttonText": "Get Started",
+    "buttonLink": "/insurance/",
+    "image": "/imgs/hand.png",
+    "altText": "Mental health support",
+    "phoneTextOne": "Have a question?",
+    "phoneTextTwo": "Get in Touch",
+    "phoneNumber": ""
+  }
+}

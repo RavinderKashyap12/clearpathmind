@@ -1,0 +1,89 @@
+{
+  "hero": {
+    "heading": "Admissions",
+    "text": "Get help for yourself or a loved one today!",
+    "videoLink": "/video/placeholder-video.mp4",
+    "video": {
+      "img": "/imgs/video-thumbnail.jpeg",
+      "videoSrc": "/video/placeholder-video.mp4"
+    }
+  },
+  "cta": {
+    "heading": "Start Your Journey To Recovery Today",
+    "text": "Are you or a loved one struggling with addiction? Clear Path is here to help you take the first step towards a healthier, happier life. Our compassionate team is ready to support you through every stage of your care journey. Contact us today to learn more about our programs, schedule a visit, or start the admissions process. Your path to care begins here.",
+    "buttonText": "Call Us Now!"
+  },
+  "steps": [
+    {
+      "name": " 1",
+      "title": "Pre-Screening Clinical Assessment",
+      "text": "Conduct a phone assessment to determine program fit and provide necessary information for prospective patients.",
+      "icon": "star",
+      "modalText": "Further details about the pre-screening process and requirements."
+    },
+    {
+      "name": " 2",
+      "title": "Treatment Program And Care Evaluation",
+      "text": "Evaluate pre-screening results to determine the appropriate treatment program and level of care using ASAM criteria.",
+      "icon": "star",
+      "modalText": "Additional information about treatment program evaluation."
+    },
+    {
+      "name": " 3",
+      "title": "Payment Options For Treatment",
+      "text": "Explore insurance and self-pay options to cover the cost of treatment.",
+      "icon": "star",
+      "modalText": "Details about different payment options available."
+    },
+    {
+      "name": " 4",
+      "title": "Get Ready for Your Upcoming Stay",
+      "text": "Pack appropriately and follow guidelines to ensure a comfortable and compliant stay.",
+      "icon": "star",
+      "modalText": "Details on what to bring and how to prepare."
+    }
+  ],
+  "nextSteps": {
+    "heading": "Some next steps you can take",
+    "description": "Learn more about how Clear Path can help",
+    "nextSteps": [
+      {
+        "title": "What is Medication-Assisted Treatment?",
+        "linkOne": "About the Center",
+        "linkOneUrl": "#",
+        "linkTwo": "Meet the Team",
+        "linkTwoUrl": "#"
+      },
+      {
+        "title": "How does Sober Living Placement work?",
+        "linkOne": "Check your insurance coverage",
+        "linkOneUrl": "#",
+        "linkTwo": "",
+        "linkTwoUrl": "#"
+      }
+    ]
+  },
+  "pdf": {
+    "heading": "Download our White Paper",
+    "description": "Empower Your Journey, Embrace Your Potential!",
+    "pdf": { "link": "Download now!", "linkUrl": "#" }
+  },
+  "faq": {
+    "heading": "Frequently Asked Questions",
+    "subheading": "Find answers to common questions about our services and support",
+    "faq": [
+      {
+        "title": "What is Medication-Assisted Treatment?",
+        "details": "Medication-Assisted Treatment (MAT) involves using medication, along with counseling and behavioral therapies, to treat substance use disorders."
+      },
+      {
+        "title": "How does Sober Living Placement work?",
+        "details": "Sober Living Placement helps individuals find safe and supportive housing environments where they can continue their recovery journey."
+      },
+      {
+        "title": "What services are included in Case Management?",
+        "details": "Case Management includes resume building, job search assistance, accessing community resources, and more."
+      }
+    ]
+  }
+}

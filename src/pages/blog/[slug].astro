@@ -1,0 +1,67 @@
+---
+import {
+  fetchGeneralData,
+  fetchBlogPageData,
+  fetchHomeData,
+} from "../../utils/dataMapping.ts";
+import MainLayout from "../../layouts/MainLayout.astro";
+import DisorderGrid from "../../components/sections/DisorderGrid.astro";
+import CTA from "../../components/CTA.astro";
+import HeroProgram from "../../components/sections/HeroProgram.astro";
+import SingleBlog from "../../components/sections/SingleBlog.astro";
+
+// Import utilities to work with markdown content
+import { getCollection } from "astro:content";
+
+// Define getStaticPaths function for dynamic routing
+export async function getStaticPaths() {
+  // Fetch all blog posts from the content collection
+  const blogEntries = await getCollection("blog");
+
+  return blogEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+// Get the blog entry from props
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+const GeneralData = await fetchGeneralData();
+const { data: BlogPageData } = await fetchBlogPageData();
+
+// Format the date for display
+let formattedDate = "";
+if (entry.data.date) {
+  const dateObj = new Date(entry.data.date);
+  formattedDate = dateObj.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
+
+const slugHerodata = {
+  treatmentsLabel: formattedDate,
+  heading: entry.data.title,
+  buttonText: "",
+  phoneQuestionText: "",
+  callButtonText: "Get in Touch",
+  hideButton: true,
+};
+---
+
+<MainLayout
+  title={`${entry.data.title} | Blog`}
+  description={entry.data.description ||
+    "Alcohol and Drug Rehab in Boca Raton, Florida"}
+>
+  <HeroProgram Content={slugHerodata} GeneralData={GeneralData} />
+  <SingleBlog post={entry.data}>
+    <Content />
+  </SingleBlog>
+  <DisorderGrid Content={BlogPageData.disorders} />
+  <CTA Content={BlogPageData.cta} />
+  
+</MainLayout>

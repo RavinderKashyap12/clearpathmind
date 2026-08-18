@@ -1,0 +1,25 @@
+---
+import { Icon } from "astro-icon/components";
+
+const { heading, description,pdf } = Astro.props.Content;
+
+---
+
+<section class="download-pdf bg-[#D9D9D9] section">
+    <div
+        class="container !max-w-[900px] w-full flex flex-col lg:flex-row gap-5 justify-between"
+    >
+        <div class="flex flex-col items-start">
+            <h2 class="mb-3 font-medium">{heading}</h2>
+            <p class="mb-5">
+                {description}
+            </p>
+            <a
+                href={pdf.linkUrl}
+                class="font-semibold text-black text-2xl leading-normal underline"
+                >{pdf.link}</a
+            >
+        </div>
+        <Icon name="download" class="w-[120px] h-[120px]" />
+    </div>
+</section>

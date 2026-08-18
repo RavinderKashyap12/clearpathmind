@@ -1,0 +1,63 @@
+{
+  "seo": {
+    "metaTitle": "Mental Health Blog | Expert Guidance from Clear Path Behavioral Health",
+    "metaDescription": "Professional perspectives and educational resources from Clear Path's mental health experts. Learn about depression, anxiety, PTSD, and evidence-based treatments.",
+    "keywords": [
+      "mental health blog",
+      "Clear Path blog",
+      "mental health resources",
+      "depression information",
+      "anxiety resources",
+      "psychiatric insights"
+    ]
+  },
+  "hero": {
+    "heading": "Expert guidance for your mental health journey",
+    "text": "Professional perspectives and educational resources from Clear Path's mental health experts",
+    "buttonText": "Get Started",
+    "phoneQuestionText": "Have a question?",
+    "treatmentsLabel": "Our Insight",
+    "buttonLink": "/insurance/",
+    "callButtonText": "Get in Touch",
+    "callButtonLink": "/contact/"
+  },
+  "disorders": {
+    "heading": "OUR INSIGHTS",
+    "headingTwo_Part_1": "Expert guidance for your ",
+    "headingTwo_Part_2": "mental health ",
+    "headingTwo_Part_3": "journey",
+    "disorders": [
+      {
+        "link": "/blog/managing-depression/",
+        "title": "Effective Strategies for Managing Depression",
+        "image": "/imgs/depression1.jpg"
+      },
+      {
+        "link": "/blog/managing-anxiety/",
+        "title": "Effective Strategies for Managing Anxiety",
+        "image": "/imgs/anxiety1.jpg"
+      },
+      {
+        "link": "/blog/managing-mental-health/",
+        "title": "Effective Strategies for Managing Mental Health",
+        "image": "/therapy.png"
+      },
+      {
+        "link": "/blog/managing-ptsd/",
+        "title": "Effective Strategies for Coping with and Managing PTSD",
+        "image": "/imgs/PSTD1.jpg"
+      }
+    ]
+  },
+  "cta": {
+    "heading": "Ready to Start Your Journey to Better Mental Health?",
+    "phoneTextOne": "Have a question?",
+    "buttonLink": "/contact/",
+    "text": "Take the first step towards healing. Our experienced team is here to support you with personalized, evidence-based treatment plans.",
+    "phoneTextTwo": "Get in Touch",
+    "altText": "Mental health support",
+    "phoneNumber": "",
+    "image": "/imgs/hand.png",
+    "buttonText": "Get Started"
+  }
+}

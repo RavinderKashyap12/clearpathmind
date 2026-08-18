@@ -1,0 +1,243 @@
+---
+import { Image } from 'astro:assets';
+import Button from '../Button.astro';
+
+const { insuranceData } = Astro.props;
+---
+
+<section class="flex overflow-hidden flex-col px-0 pt-16 pb-9 bg-white max-w-[1320px] mx-3 my-10 hero-mid-mx max-md:px-5 max-md:mx-6 max-sm:px-2 max-sm:mx-2 max-sm:pt-8 max-sm:pb-6 mx-auto">
+  <header class="flex flex-wrap lg:flex-nowrap gap-6 justify-between items-center max-md:flex-col max-md:gap-8 max-md:max-w-full">
+    <Image
+      src="/imgs/insurance/insurance.png"
+      alt="Insurance coverage illustration"
+      class="object-contain self-stretch my-auto rounded-3xl aspect-[1.57] min-w-60 w-[706px] max-md:w-full max-md:min-w-0 max-md:mb-6 max-sm:w-full"
+      width={706}
+      height={450}
+    />
+    <div class="self-stretch my-auto min-w-[550px] max-md:min-w-0 max-md:w-full max-md:px-0 px-6 max-sm:px-0">
+      <div class="w-full min-w-[550px] max-md:min-w-0 max-md:w-full">
+        <h1
+          class="text-5xl font-medium leading-[72px] text-neutral-800 max-md:text-4xl max-md:leading-[64px] max-md:w-full max-sm:text-2xl max-sm:leading-9"
+          style="font-family: Poppins; font-size: 50px; font-style: normal; font-weight: 500; line-height: 72px;"
+        >
+          {insuranceData.heading.split(' ').map((word, idx) => {
+              if (idx === 1 || idx === 2 || idx === 3) {
+                  return <span style="color: rgba(94, 129, 233, 1)">{word} </span>;
+              }
+              return <span >{word} </span>;
+          })}
+        </h1>
+        <p
+          class="mt-8 text-lg leading-9 max-md:w-full max-sm:text-base max-sm:leading-7"
+          style="color: #222; font-family: Inter; font-size: 18px; font-style: normal; font-weight: 400; line-height: 34px;"
+        >
+          {insuranceData.subheading}
+        </p>
+        <div class="flex flex-wrap gap-3 mt-8 w-full max-md:flex-col">
+          <Button 
+            buttonLink={insuranceData.buttonLink}
+            buttonText={insuranceData.buttonText}
+            buttonType="primary"
+            buttonClass="flex-1 max-md:w-full"
+          />
+          <Button
+            buttonLink="/contact/"
+            phoneTextOne="Have a question?"
+            phoneTextTwo="Get in Touch"
+            buttonType="phone"
+            buttonClass="flex-1 max-md:w-full"
+          />
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="flex flex-wrap gap-6 mt-12 w-full max-md:mt-10 max-md:w-full max-sm:gap-4 max-sm:mt-6">
+      {insuranceData.providers.slice(0, 4).map((provider) => (
+        <article class="flex flex-1 shrink gap-2.5 items-start p-6 h-full bg-white rounded-3xl basis-0 min-w-60 shadow-[0px_14px_40px_rgba(0,0,0,0.05)] max-md:px-5 max-md:w-full max-sm:p-3 max-sm:w-full">
+          <div class="flex-1 shrink w-full basis-0 min-w-60 max-md:min-w-0">
+            <header class="w-full">
+              <!--
+              <div class="flex overflow-hidden flex-col items-start w-full rounded-[100px] max-md:pr-5">
+                <Image
+                  src={provider.logo}
+                  alt={`${provider.name} logo`}
+                  class="object-contain w-10 aspect-square"
+                  width={40}
+                  height={40}
+                />
+              </div>
+              -->
+              <h3
+                class="mt-4 !font-semibold text-black"
+              >
+                {provider.name}
+              </h3>
+            </header>
+            <p
+              class="mt-4 text-base leading-6 text-neutral-800"
+              style="color: #222; font-family: Inter; font-size: 16px; font-style: normal; font-weight: 400; line-height: 24px;"
+            >
+              {provider.description}
+            </p>
+          </div>
+        </article>
+      ))}
+    </div>
+
+    <div class="flex flex-wrap gap-6 mt-6 w-full max-md:w-full max-sm:gap-4">
+      {insuranceData.providers.slice(4).map((provider) => (
+        <article class="flex flex-1 shrink gap-2.5 items-start p-6 h-full bg-white rounded-3xl basis-0 min-w-60 shadow-[0px_10px_40px_rgba(0,0,0,0.05)] max-md:px-5 max-md:w-full max-sm:p-3 max-sm:w-full">
+          <div class="flex-1 shrink w-full basis-0 min-w-60 max-md:min-w-0">
+            <header class="w-full">
+              <!--
+              <div class="flex overflow-hidden flex-col items-start w-full rounded-[100px] max-md:pr-5">
+                <Image
+                  src={provider.logo}
+                  alt={`${provider.name} logo`}
+                  class="object-contain w-10 aspect-square"
+                  width={40}
+                  height={40}
+                />
+              </div>
+              -->
+              <h3
+                class="mt-4 !font-semibold text-black"
+              >
+                {provider.name}
+              </h3>
+            </header>
+            <p
+              class="mt-4 text-base leading-6 text-neutral-800"
+              style="color: #222; font-family: Inter; font-size: 16px; font-style: normal; font-weight: 400; line-height: 24px;"
+            >
+              {provider.description}
+            </p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </main>
+
+  <footer class="flex flex-col self-center mt-16 max-w-full w-[648px] max-md:mt-10 max-md:w-full max-sm:w-full">
+    <p
+      class="text-lg leading-9 text-center text-neutral-800 max-md:w-full max-sm:text-base max-sm:leading-7"
+      style="color: #222; text-align: center; font-family: Inter; font-size: 18px; font-style: normal; font-weight: 400; line-height: 34px; opacity: 0.75;"
+    >
+      {insuranceData.footerText}
+    </p>
+    <Button 
+      buttonLink={insuranceData.verifyButtonLink}
+      buttonText={insuranceData.verifyButtonText}
+      buttonType="primary"
+      buttonClass="self-center w-[270px] max-md:w-full"
+    />
+  </footer>
+</section>
+
+<style>
+  @media (min-width: 901px) and (max-width: 1319px) {
+    .hero-mid-mx {
+      margin-left: 1.25rem !important;
+      margin-right: 1.25rem !important;
+    }
+    section {
+      max-width: 96vw !important;
+      padding-left: 1.25rem !important;
+      padding-right: 1.25rem !important;
+    }
+  }
+  @media (max-width: 900px) {
+    .hero-mid-mx {
+      margin-left: 0.5rem !important;
+      margin-right: 0.5rem !important;
+    }
+    section {
+      max-width: 100vw !important;
+      padding-left: 1rem !important;
+      padding-right: 1rem !important;
+      padding-top: 2rem !important;
+      padding-bottom: 1.5rem !important;
+    }
+    h1 {
+      font-size: 2.2rem !important;
+      line-height: 2.7rem !important;
+    }
+    .min-w-60, .min-w-[550px] {
+      min-width: 0 !important;
+    }
+    .w-[706px], .w-full {
+      width: 100% !important;
+    }
+    .px-6 {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+    .mt-8 {
+      margin-top: 1.2rem !important;
+    }
+    .text-lg {
+      font-size: 1rem !important;
+      line-height: 1.5rem !important;
+    }
+    .text-base {
+      font-size: 0.95rem !important;
+      line-height: 1.3rem !important;
+    }
+    .py-4, .py-3.5 {
+      padding-top: 0.8rem !important;
+      padding-bottom: 0.8rem !important;
+    }
+    .px-5, .px-4 {
+      padding-left: 1rem !important;
+      padding-right: 1rem !important;
+    }
+    .gap-6 {
+      gap: 1rem !important;
+    }
+    .mt-12, .mt-16 {
+      margin-top: 1.5rem !important;
+    }
+    .rounded-3xl, .rounded-[50px], .rounded-[100px] {
+      border-radius: 1.2rem !important;
+    }
+    .w-[648px], .w-[270px] {
+      width: 100% !important;
+      max-width: 100% !important;
+    }
+  }
+  @media (max-width: 600px) {
+    section {
+      padding-left: 0.5rem !important;
+      padding-right: 0.5rem !important;
+      padding-top: 1rem !important;
+      padding-bottom: 1rem !important;
+    }
+    h1 {
+      font-size: 1.3rem !important;
+      line-height: 1.7rem !important;
+    }
+    .mt-8, .mt-12, .mt-16 {
+      margin-top: 1rem !important;
+    }
+    .gap-6 {
+      gap: 0.5rem !important;
+    }
+    .rounded-3xl, .rounded-[50px], .rounded-[100px] {
+      border-radius: 0.7rem !important;
+    }
+    .text-lg, .text-base {
+      font-size: 0.9rem !important;
+      line-height: 1.1rem !important;
+    }
+    .py-4, .py-3.5 {
+      padding-top: 0.5rem !important;
+      padding-bottom: 0.5rem !important;
+    }
+    .px-5, .px-4 {
+      padding-left: 0.5rem !important;
+      padding-right: 0.5rem !important;
+    }
+  }
+</style>

@@ -1,0 +1,124 @@
+---
+import { Image } from 'astro:assets';
+import Button from '../Button.astro';
+
+const { headingOne, headingTwo, description, insuranceOptions  , buttonOneLink,  buttonOneText, buttonTwoLink, buttonTwoTextOne, buttonTwoTextTwo } = Astro.props.Content;
+---
+
+<section class="flex flex-col items-center px-5 py-10 mx-auto my-0 max-w-[1440px]">
+  <header class="flex flex-col items-center mb-14 text-center">
+    <span
+      class="px-6 py-2 mb-5 rounded-[50px] bg-purple-900"
+      style="
+      color: #FFF;
+      text-align: center;
+      font-family: Poppins, sans-serif;
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 24px;
+      "
+    >
+      Our Network
+    </span>
+    <h2>
+      <span class="text-neutral-800">{headingOne}</span>
+      <span style="color: rgba(94, 129, 233, 1);">{headingTwo}</span>
+    </h2>
+    <p>
+      {description}
+    </p>
+  </header>
+
+  <div class="relative w-full overflow-hidden mb-14 mask-fade-sides ">
+    <div class="flex w-[200%] animate-marquee gap-9 max-lg:gap-7 max-md:gap-5 max-sm:gap-3">
+      <div class="flex marquee-content bg-white my-4 gap-9 max-lg:gap-7 max-md:gap-5 max-sm:gap-3">
+        {insuranceOptions.map((option) => (
+          <figure
+            class="flex justify-center items-center bg-white rounded-[12px] shadow-[0px_10px_40px_0px_rgba(0,0,0,0.05)] w-72 h-32 max-lg:w-64 max-lg:h-28 max-md:w-48 max-md:h-24 max-sm:w-32 max-sm:h-20"
+          >
+            <img src={option.logo} alt={option.alt || ""} class="h-auto max-w-[80%]" />
+          </figure>
+        ))}
+      </div>
+
+      <div class="flex marquee-content bg-white my-4 gap-9 max-lg:gap-7 max-md:gap-5 max-sm:gap-3">
+        {insuranceOptions.map((option) => (
+          <figure
+            class="flex justify-center items-center bg-white rounded-[12px] shadow-[0px_10px_40px_0px_rgba(0,0,0,0.05)] w-72 h-32 max-lg:w-64 max-lg:h-28 max-md:w-48 max-md:h-24 max-sm:w-32 max-sm:h-20"
+          >
+            <img src={option.logo} alt={option.alt || ""} class="h-auto max-w-[80%]"/>
+          </figure>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <div class="flex gap-3 justify-center max-md:flex-col max-md:w-full max-md:max-w-[400px] max-sm:gap-2.5">
+    <Button 
+      buttonLink={buttonOneLink}
+      buttonText={buttonOneText}
+      buttonType="primary"
+    />
+    <Button
+      buttonLink="/contact/"
+      phoneTextOne="Have a question?"
+      phoneTextTwo="Get in Touch"
+      buttonType="phone"
+    />
+  </div>
+
+  <style>
+    @keyframes marquee {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
+    }
+    
+    /* Base animation for desktop */
+    .animate-marquee {
+      animation: marquee 30s linear infinite;
+    }
+    
+    /* Responsive animation speeds */
+    @media (max-width: 768px) {
+      .animate-marquee {
+        animation: marquee 20s linear infinite;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .animate-marquee {
+        animation: marquee 15s linear infinite;
+      }
+    }
+    
+    /* Optimize for very small screens */
+    @media (max-width: 360px) {
+      .animate-marquee {
+        animation: marquee 12s linear infinite;
+      }
+    }
+    
+    /* Pause animation on hover for better UX */
+    .animate-marquee:hover {
+      animation-play-state: paused;
+    }
+    
+    .mask-fade-sides {
+      mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    }
+    
+    /* Optimize mobile performance */
+    @media (max-width: 768px) {
+      .mask-fade-sides {
+        mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+        -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+      }
+    }
+  </style>
+</section>

@@ -1,0 +1,168 @@
+{
+  "hero": {
+    "heading": "Substance Use Disorder and Mental Health Program at Placeholder Company",
+    "text": "Providing personalized care for substance use and mental health to help individuals achieve lasting recovery.  "
+  },
+
+  "about": {
+    "headingOne": "Understanding Our Rehabilitation Programs",
+    "textOne": "Rehabilitation is a crucial step in overcoming addiction and mental health challenges. Our programs are designed to address the root causes of substance use and to equip individuals with the skills needed for long-term recovery. From detox to aftercare, we provide comprehensive support at every stage of the journey.",
+    "headingTwo": "Who Can Benefit from Our Rehab Programs?",
+    "textTwo": "Our rehab programs are designed for individuals struggling with substance use disorders, including those with co-occurring mental health conditions. Whether you are seeking help for the first time or have experienced setbacks in your recovery, our programs offer the support, structure, and guidance necessary for success.",
+    "images": {
+      "imageOne": "/imgs/about-img-1.jpg",
+      "imageTwo": "/imgs/about-img-2.jpg"
+    }
+  },
+
+  "cta":{
+    "heading": "Ready To make a change?",
+    "text": "Our admissions team is standing by 24/7 to guide you through the admissions process.",
+    "buttonText": "Contact Us Now!"
+  },
+
+  "footerCta":{
+    "heading": "Ready to Start Your Recovery Journey?",
+    "text": "Our admissions team is standing by 24/7 to guide you through the admissions process.",
+    "buttonText": "Contact Us Now!"
+  },
+
+  "coreValues": {
+    "heading": "Why Our Rehab Program Stands Out",
+    "text": "We are committed to providing the highest standard of care with a focus on individualized treatment, compassionate staff, and evidence-based approaches. Our supportive environment fosters healing and growth, making us a trusted choice for recovery.",
+    "list": [
+      {
+        "title": "Personalized Treatment Plans",
+        "description": "Each treatment plan is tailored to the specific needs and circumstances of the individual, ensuring a personalized approach that maximizes the chances of successful recovery."
+      },
+      {
+        "title": "Comprehensive Care",
+        "description": "Our holistic approach addresses not just the addiction, but the whole person. We offer a continuum of care that includes medical, psychological, and social support to help individuals achieve lasting recovery."
+      },
+      {
+        "title": "Experienced and Compassionate Staff",
+        "description": "Our team of experienced professionals is dedicated to providing compassionate care. We understand the challenges of addiction and are here to support you with empathy and expertise."
+      },
+      {
+        "title": "Evidence-Based Approaches",
+        "description": "We utilize proven, evidence-based treatment methods to ensure that our clients receive the most effective care available. Our therapies are grounded in the latest research and tailored to individual needs."
+      },
+      {
+        "title": "Supportive Environment",
+        "description": "Our facility offers a safe, nurturing environment where individuals can focus on their recovery without distractions. We foster a sense of community and belonging, which is essential for healing."
+      }
+    ],
+    "buttonText": "Call Us Now!"
+  },
+
+  "programs": {
+    "heading": "Our Addiction Treatment Programs",
+    "text": "Lorem Ipsum dolor sit amet",
+    "programs": [
+      {
+        "title": "Partial Hospitalization Program (PHP)",
+        "description": "A day treatment program providing intensive therapy and support, ideal for individuals who need structured care but do not require 24-hour supervision.",
+        "image": "/imgs/program-1.webp"
+      },
+      {
+        "title": "Intensive Outpatient Program (IOP)",
+        "description": "A flexible program that allows clients to receive treatment while maintaining their daily responsibilities, including therapy sessions and group activities.",
+        "image": "/imgs/program-2.webp"
+      },
+      {
+        "title": "Outpatient Program (OP)",
+        "description": "Includes individual therapy and one group session per week, suitable for those who require ongoing support with less intensive treatment.",
+        "image": "/imgs/program-3.webp"
+      }
+    ]
+  },
+
+  "facility": {
+    "heading": "Our Facility",
+    "text": "Horem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Ut commodo efficitur neque. Ut diam quam, semper iaculis condimentum ac, vestibulum eu nisl. Ut commodo efficitur neque.",
+    "buttonText": "Learn More",
+    "images": {
+      "imageOne": "/imgs/about-img-1.jpg",
+      "imageTwo": "/imgs/about-img-2.jpg"
+    }
+  },
+
+  "approach": {
+    "headingOne": "Our Approach",
+    "textOne": "Horem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Ut commodo efficitur neque. Ut diam quam, semper iaculis condimentum ac, vestibulum eu nisl. Ut commodo efficitur neque. Ut diam quam, semper iaculis condimentum ac, vestibulum eu nisl. Ut commodo efficitur neque. Ut diam quam, semper iaculis condimentum ac, vestibulum eu nisl.",
+    "headingTwo": "Why Choose Us?",
+    "textTwo": "Yorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum, ac aliquet odio mattis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur tempus urna at turpis condimentum lobortis. Ut commodo efficitur neque.",
+    "images": {
+      "imageOne": "/imgs/about-img-1.jpg",
+      "imageTwo": "/imgs/about-img-2.jpg"
+    }
+  },
+  "disorders": {
+    "heading": "What We Treat",
+    "description": "Clear Path specializes in treating a wide range of mental health conditions, focusing on personalized, evidence-based care. Some of the specific conditions we treat include:",
+    "disorders": [
+      {
+        "iconName": "drugs/icon-alcohol",
+        "title": "Alcohol use disorder"
+      },
+      {
+        "iconName": "drugs/icon-opium",
+        "title": "Opioid use disorder"
+      },
+      {
+        "iconName": "drugs/icon-cocaine",
+        "title": "Cocaine use disorder"
+      },
+      {
+        "iconName": "drugs/icon-meth",
+        "title": "Methamphetamine use disorder"
+      },
+      {
+        "iconName": "drugs/icon-weed",
+        "title": "Marijuana use  disorder"
+      },
+      {
+        "iconName": "drugs/icon-pills-2",
+        "title": "Prescription drug abuse"
+      },
+      {
+        "iconName": "drugs/icon-heroin",
+        "title": "Heroin use disorder"
+      },
+      {
+        "iconName": "drugs/icon-pills",
+        "title": "Benzodiazepine abuse"
+      },
+      {
+        "iconName": "drugs/icon-lsd",
+        "title": "LSD use disorder"
+      },
+      {
+        "iconName": "drugs/icon-inhalator",
+        "title": "Inhalator abuse"
+      },
+      {
+        "iconName": "drugs/icon-mushroom",
+        "title": "Psilocybin use disorder"
+      }
+    ]
+  },
+  "faq": {
+    "heading": "Frequently Asked Questions",
+    "subheading": "Find answers to common questions about our services and support",
+    "faq": [
+      {
+        "title": "What is Medication-Assisted Treatment?",
+        "details": "Medication-Assisted Treatment (MAT) involves using medication, along with counseling and behavioral therapies, to treat substance use disorders."
+      },
+      {
+        "title": "How does Sober Living Placement work?",
+        "details": "Sober Living Placement helps individuals find safe and supportive housing environments where they can continue their recovery journey."
+      },
+      {
+        "title": "What services are included in Case Management?",
+        "details": "Case Management includes resume building, job search assistance, accessing community resources, and more."
+      }
+    ]
+  }
+}

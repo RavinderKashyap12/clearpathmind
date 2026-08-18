@@ -1,0 +1,63 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import { getCollection } from "astro:content";
+import { fetchGeneralData, fetchHomeData, fetchBlogPageData } from "../utils/dataMapping";
+
+import HeroProgram from "../components/sections/HeroProgram.astro";
+import ProgramAbout from "../components/sections/ProgramAbout.astro";
+import Video from "../components/sections/Video.astro";
+import WhoNeeds from "../components/sections/WhoNeeds.astro";
+import Testimonials from "../components/sections/Testimonials.astro";
+import DisorderGrid from "../components/sections/DisorderGrid.astro";
+import CTA from "../components/CTA.astro";
+import ProgramTMS from "../components/sections/programTMS.astro";
+import PatientJourney from "../components/sections/PatientJourney.astro";
+import TestimonialsOffered from "../components/sections/TestimonialsOffered.astro";
+import InsuranceOptions from "../components/sections/InsuranceOptions.astro";
+
+const { data: BlogPageData } = await fetchBlogPageData();
+const GeneralData = await fetchGeneralData();
+const { data: HomeData } = await fetchHomeData();
+
+// Load About page content (structured like a Program entry)
+const [aboutEntry] = await getCollection("pages", (page) => page.id === "about");
+const AboutData = aboutEntry.data as any;
+
+// Generate dynamic SEO data for about page
+const generatePageTitle = (data) => {
+  return data.seo?.metaTitle || "About Clear Path | Mental Health Treatment Center";
+};
+
+const generatePageDescription = (data) => {
+  return data.seo?.metaDescription || "Learn about Clear Path's mental health treatment programs, our experienced team, and our mission to help individuals overcome depression, anxiety, PTSD, and other mental health challenges through evidence-based treatment.";
+};
+
+const pageTitle = generatePageTitle(AboutData);
+const pageDescription = generatePageDescription(AboutData);
+---
+
+<MainLayout title={pageTitle} description={pageDescription}>
+  <main>
+    <div class="px-1 md:px-1 lg:px-0">
+      <HeroProgram Content={AboutData.hero} GeneralData={GeneralData} />
+
+      <ProgramAbout Content={AboutData.about} />
+
+      <Video Content={AboutData.video} />
+
+      <ProgramAbout Content={AboutData.whyChoose} />
+
+      <ProgramTMS Content={AboutData.programTMS} />
+      <TestimonialsOffered Content={AboutData.therapies}/>
+
+      <Testimonials Content={AboutData.testimonials} />
+
+      <PatientJourney Content={AboutData.patientJourney} />
+      <InsuranceOptions Content={AboutData.insuranceOptions} />
+      <CTA Content={AboutData.cta} />
+      <DisorderGrid Content={BlogPageData.disorders} />
+    </div>
+  </main>
+</MainLayout>
+
+

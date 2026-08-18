@@ -1,0 +1,67 @@
+---
+import { Image } from 'astro:assets';
+
+// Treatment2 component - Signs and Symptoms We Treat
+interface Props {
+    Content: {
+        heading: string;
+        headingHighlight: string;
+        description: string;
+        symptoms: {
+            icon: string;
+            text: string;
+        }[];
+        buttonText: string;
+        buttonLink: string;
+        phoneTextOne: string;
+        phoneTextTwo: string;
+        phoneNumber: string;
+        image: string;
+    }
+}
+
+const { Content } = Astro.props;
+---
+
+<section class="flex overflow-hidden flex-col px-3 sm:px-4 lg:px-8 xl:px-16 pt-8 pb-8 sm:pt-10 sm:pb-10 bg-white max-lg:py-12 lg:py-16 mx-auto max-w-7xl">
+    <header class="self-center text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-medium leading-tight text-center text-neutral-800 max-w-full">
+        <h1>
+            {Content.heading}
+            <span class="text-[#5E81E9]">{Content.headingHighlight}</span>
+        </h1>
+    </header>
+
+    <div class="px-3 sm:px-4 lg:px-6 xl:px-8 py-6 sm:py-8 lg:py-10 mt-8 sm:mt-10 lg:mt-16 bg-[#5E81E9] rounded-2xl lg:rounded-3xl max-w-full">
+        <div class="flex gap-4 sm:gap-5 flex-col lg:flex-row">
+            <div class="w-full lg:w-[57%]">
+                <div class="self-stretch my-4 sm:my-6 lg:my-10 w-full max-w-full">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-5 lg:gap-7 w-full text-base sm:text-lg lg:text-xl xl:text-2xl text-white">
+                        {Content.symptoms.map(symptom => (
+                            <div class="flex gap-2 sm:gap-3 items-center">
+                                <Image src={symptom.icon} class="object-contain shrink-0 w-6 sm:w-8 lg:w-10 aspect-square" alt={`${symptom.text} icon`} width={40} height={40} />
+                                <span class="leading-snug">{symptom.text}</span>
+                            </div>
+                        ))}
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-3 mt-6 sm:mt-8 lg:mt-12 max-w-full w-full lg:w-[552px]">
+                        <a href={Content.buttonLink} class="flex flex-col shrink justify-center items-center px-4 sm:px-4 lg:px-5 py-3 sm:py-3 lg:py-4 text-sm sm:text-base lg:text-lg font-semibold leading-none bg-amber-300 w-full sm:basis-0 sm:flex-1 rounded-[50px] text-neutral-800 hover:bg-amber-400 transition-colors">
+                            <span>{Content.buttonText}</span>
+                        </a>
+
+                        <a href="/contact/" class="flex flex-col shrink justify-center items-center px-4 sm:px-4 lg:px-5 py-3 sm:py-3 lg:py-4 mt-2 sm:mt-0 text-white bg-purple-900 w-full sm:basis-0 sm:flex-1 rounded-[50px] hover:bg-purple-800 transition-colors">
+                            <div class="flex flex-col items-center">
+                                <div class="text-xs">{Content.phoneTextOne}</div>
+                                <div class="text-xs font-semibold leading-6">Get in Touch</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full mt-2 sm:mt-4 lg:mt-0" style="width: 100%; max-width: 100%;" data-breakpoint="below-900">
+                <Image src={Content.image} class="object-contain mx-auto w-full rounded-2xl lg:rounded-xl" alt="Treatment illustration" width={0} height={410} />
+            </div>
+        </div>
+    </div>
+</section>

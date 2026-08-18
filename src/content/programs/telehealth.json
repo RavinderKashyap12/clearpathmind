@@ -1,0 +1,598 @@
+{
+  "seo": {
+    "metaTitle": "Telehealth Psychiatry & Online Therapy | Clear Path Behavioral Health",
+    "metaDescription": "Access licensed psychiatrists and therapists from home with Clear Path's telehealth program. Secure, HIPAA-compliant online therapy and psychiatry for depression, anxiety, PTSD, and more.",
+    "keywords": [
+      "telehealth",
+      "online therapy",
+      "telepsychiatry",
+      "virtual mental health care",
+      "online psychiatrist",
+      "remote therapy",
+      "video therapy sessions",
+      "telemedicine mental health",
+      "Clear Path"
+    ]
+  },
+  "slug": "telehealth",
+  "jsonLd": {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "MedicalWebPage",
+        "@id": "https://clearpathmind.com/program/telehealth/#webpage",
+        "url": "https://clearpathmind.com/program/telehealth/",
+        "name": "Telehealth Psychiatry & Online Therapy | Clear Path Behavioral Health",
+        "description": "Access licensed psychiatrists and therapists from home with Clear Path's telehealth program. Secure, HIPAA-compliant online therapy and psychiatry for depression, anxiety, PTSD, and more.",
+        "inLanguage": "en-US",
+        "isPartOf": {
+          "@id": "https://clearpathmind.com/#website"
+        },
+        "about": {
+          "@type": "MedicalTherapy",
+          "name": "Telehealth Psychiatry and Online Therapy",
+          "relevantSpecialty": {
+            "@type": "MedicalSpecialty",
+            "name": "Psychiatry"
+          }
+        },
+        "audience": {
+          "@type": "MedicalAudience",
+          "audienceType": "Patient",
+          "healthCondition": [
+            {
+              "@type": "MedicalCondition",
+              "name": "Major Depressive Disorder"
+            },
+            {
+              "@type": "MedicalCondition",
+              "name": "Generalized Anxiety Disorder"
+            },
+            {
+              "@type": "MedicalCondition",
+              "name": "PTSD"
+            },
+            {
+              "@type": "MedicalCondition",
+              "name": "Bipolar Disorder"
+            },
+            {
+              "@type": "MedicalCondition",
+              "name": "Obsessive-Compulsive Disorder"
+            }
+          ]
+        },
+        "reviewedBy": {
+          "@type": "Organization",
+          "name": "Clear Path Behavioral Health",
+          "url": "https://clearpathmind.com/"
+        },
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://clearpathmind.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Treatments",
+              "item": "https://clearpathmind.com/program/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Telehealth",
+              "item": "https://clearpathmind.com/program/telehealth/"
+            }
+          ]
+        }
+      },
+      {
+        "@type": "MedicalBusiness",
+        "@id": "https://clearpathmind.com/#organization",
+        "name": "Clear Path Behavioral Health",
+        "url": "https://clearpathmind.com/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://clearpathmind.com/branding/Clear path blue logo.png"
+        },
+        "description": "Clear Path Behavioral Health is a psychiatric outpatient clinic in Orange County, California offering telehealth psychiatry, medication management, and psychotherapy for depression, anxiety, PTSD, and bipolar disorder.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Orange County",
+          "addressRegion": "CA",
+          "addressCountry": "US"
+        },
+        "telephone": "",
+        "medicalSpecialty": [
+          "Psychiatry",
+          "MentalHealth"
+        ],
+        "availableService": [
+          {
+            "@type": "MedicalTherapy",
+            "name": "Telehealth Psychiatry and Online Therapy",
+            "url": "https://clearpathmind.com/program/telehealth/"
+          },
+          {
+            "@type": "MedicalTherapy",
+            "name": "Psychiatric Medication Management",
+            "url": "https://clearpathmind.com/program/medication-management/"
+          }
+        ],
+        "sameAs": []
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://clearpathmind.com/program/telehealth/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is telehealth for mental health care?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Telehealth (also called telepsychiatry or online therapy) is the delivery of mental health services through secure video or phone appointments. At Clear Path, it gives you access to licensed psychiatrists and therapists for evaluation, therapy, and medication management without needing to travel to an office."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is online therapy as effective as in-person care?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "For many conditions, yes. Research shows telehealth-delivered psychiatry and therapy produce outcomes comparable to in-person treatment for depression, anxiety, PTSD, and other conditions, while improving access and consistency of care."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What do I need for a telehealth appointment?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You only need a smartphone, tablet, or computer with a camera and a private, quiet space with an internet connection. We send a secure link before your appointment, no special software or account setup is required."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I get prescriptions through telehealth?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Our psychiatric providers can prescribe and manage many medications through secure video visits and send electronic prescriptions to your preferred pharmacy. Certain medications may require an in-person visit in accordance with state and federal regulations."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does insurance cover telehealth visits?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Most major insurance plans cover telehealth mental health services. You can verify your coverage quickly through our online insurance verification page or by calling our team."
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "title": "Telehealth Program",
+  "hero": {
+    "heading": "Telehealth Mental Health Care at Clear Path",
+    "text": "",
+    "buttonText": "Get Started",
+    "phoneQuestionText": "Have a question?",
+    "treatmentsLabel": "Treatments",
+    "buttonLink": "/insurance/",
+    "callButtonText": "Get in Touch",
+    "callButtonLink": "/contact/"
+  },
+  "about": {
+    "headingOne": "Clear Path Telehealth: Expert Mental Health Care ",
+    "headingTwo": "From Anywhere",
+    "textOne": "Telehealth brings evidence-based psychiatric care and therapy directly to you through secure video and phone appointments. At Clear Path, our telehealth program connects you with the same licensed psychiatrists and therapists you would see in person, removing barriers like travel, scheduling conflicts, and time off work, so you can get the support you need from the comfort and privacy of home.",
+    "textTwo": "",
+    "images": {
+      "imageOne": "/imgs/program_about.png",
+      "imageTwo": ""
+    },
+    "buttonText": "Get Started",
+    "buttonLink": "/insurance/",
+    "buttonTwo_Part_1": "Have a question?",
+    "buttonTwo_Part_2": "Get in Touch",
+    "buttonTwo_Number": ""
+  },
+  "singleReview": {
+    "heading": "Some next steps you can take",
+    "description": "At Clear Path Behavioral Health, our expert multidisciplinary team and secure virtual care platform are designed to help patients overcome mental health challenges and achieve lasting wellness, wherever they are.",
+    "buttonText": "Meet Our Experts",
+    "cardDetail": "Being able to meet with my psychiatrist over video made all the difference. I got real, consistent care without rearranging my whole week around appointments.",
+    "cardTitle": "- Shannon B."
+  },
+  "therapies": {
+    "heading": "What Services are Included in the Telehealth Program at Clear Path Behavioral Health?",
+    "description": "The services included in the telehealth program at Clear Path Behavioral Health are designed to address a range of mental health conditions, including depression, anxiety, PTSD, bipolar disorder, and other psychiatric disorders, all delivered through a secure, HIPAA-compliant virtual platform.",
+    "therapies": [
+      {
+        "title": "1. Virtual Psychiatric Evaluations:",
+        "details": "Comprehensive online assessments with a licensed psychiatrist to understand your symptoms, history, and goals, and to build a personalized treatment plan."
+      },
+      {
+        "title": "2. Online Individual Therapy:",
+        "details": "One-on-one video counseling sessions focused on your mental health concerns, coping strategies, and progress, scheduled around your life."
+      },
+      {
+        "title": "3. Telepsychiatry & Medication Management:",
+        "details": "Ongoing prescribing, monitoring, and adjustment of medications through secure video visits, with electronic prescriptions sent to your preferred pharmacy."
+      },
+      {
+        "title": "4. Cognitive Behavioral Therapy (CBT):",
+        "details": "Evidence-based virtual therapy that helps identify and change negative thought patterns and behaviors contributing to mental health challenges."
+      },
+      {
+        "title": "5. Family & Support Sessions:",
+        "details": "Virtual sessions that involve loved ones to strengthen your support system and create a healthier home environment for recovery."
+      }
+    ]
+  },
+  "otherTreatments": {
+    "heading": "Other Mental Health Treatments",
+    "buttonText": "View all",
+    "buttonUrl": "#",
+    "cards": [
+      {
+        "title": "Medication Management",
+        "buttonText": "Read More",
+        "image": "/imgs/medication_management.svg"
+      }
+    ]
+  },
+  "pdf": {
+    "heading": "Download our White Paper",
+    "description": "Empower Your Journey, Embrace Your Potential!",
+    "pdf": {
+      "link": "Download now!",
+      "linkUrl": "#"
+    }
+  },
+  "residentialRehab": {
+    "img": "https://acss.brixies.co/wp-content/uploads/2023/10/Img-placeholder-16-9-1024x577.png",
+    "heading": "How Does Virtual Care Work at Clear Path?",
+    "description": "Our telehealth process is designed to make expert mental health care simple and accessible. Here is how patients connect with care from anywhere:",
+    "cardTitle": "Would you like to learn more about Telehealth?",
+    "process": [
+      {
+        "title": "Secure Video Visits: ",
+        "details": "All appointments take place over an encrypted, HIPAA-compliant video platform you can join from a smartphone, tablet, or computer, no special software required. Research published in the Journal of Medical Internet Research shows that telehealth-delivered psychiatric care produces outcomes comparable to in-person treatment for many conditions."
+      },
+      {
+        "title": "Flexible Scheduling: ",
+        "details": "Virtual appointments remove travel and waiting rooms, making it easier to keep consistent appointments, which is one of the strongest predictors of positive mental health outcomes. Evening and early-morning slots help patients fit care around work and family."
+      },
+      {
+        "title": "Continuity of Care: ",
+        "details": "You see the same provider over time, so your treatment plan evolves with you. According to the American Psychiatric Association, telepsychiatry improves access to care while maintaining the therapeutic relationship that supports long-term recovery."
+      }
+    ]
+  },
+  "nextSteps": {
+    "heading": "Some next steps you can take",
+    "description": "Learn more about Clear Path Behavioral Health",
+    "nextSteps": [
+      {
+        "title": "How do telehealth appointments work?",
+        "linkOne": "About the Center",
+        "linkOneUrl": "/about/",
+        "linkTwo": "Meet the Team",
+        "linkTwoUrl": "/about/"
+      },
+      {
+        "title": "Is telehealth covered by my insurance?",
+        "linkOne": "Verify Insurance",
+        "linkOneUrl": "/insurance/",
+        "linkTwo": "Contact Us",
+        "linkTwoUrl": "/contact/"
+      }
+    ]
+  },
+  "faq": {
+    "heading": "Frequently Asked Questions",
+    "subheading": "Find answers to common questions about our telehealth services and support",
+    "faq": [
+      {
+        "title": "What is telehealth for mental health care?",
+        "details": "Telehealth (also called telepsychiatry or online therapy) is the delivery of mental health services through secure video or phone appointments. At Clear Path, it gives you access to licensed psychiatrists and therapists for evaluation, therapy, and medication management without needing to travel to an office."
+      },
+      {
+        "title": "Is online therapy as effective as in-person care?",
+        "details": "For many conditions, yes. Research shows telehealth-delivered psychiatry and therapy produce outcomes comparable to in-person treatment for depression, anxiety, PTSD, and other conditions, while improving access and consistency of care."
+      },
+      {
+        "title": "What do I need for a telehealth appointment?",
+        "details": "You only need a smartphone, tablet, or computer with a camera and a private, quiet space with an internet connection. We send a secure link before your appointment, no special software or account setup is required."
+      },
+      {
+        "title": "Can I get prescriptions through telehealth?",
+        "details": "Yes. Our psychiatric providers can prescribe and manage many medications through secure video visits and send electronic prescriptions to your preferred pharmacy. Certain medications may require an in-person visit in accordance with state and federal regulations."
+      },
+      {
+        "title": "Does insurance cover telehealth visits?",
+        "details": "Most major insurance plans cover telehealth mental health services. You can verify your coverage quickly through our online insurance verification page or by calling our team."
+      }
+    ]
+  },
+  "amenities": {
+    "img": "https://acss.brixies.co/wp-content/uploads/2023/10/Img-placeholder-16-9-1024x577.png",
+    "heading": "What Makes Clear Path Telehealth Different?",
+    "description": "Clear Path telehealth is built around convenience, privacy, and clinical excellence. Every virtual visit takes place on a secure, HIPAA-compliant platform, protecting your privacy while giving you direct access to experienced, licensed psychiatrists and therapists. Because there is no commute or waiting room, patients are able to attend appointments more consistently, an important factor in achieving lasting results. Our providers deliver the same personalized, evidence-based care online that they offer in person, from comprehensive psychiatric evaluations and individual therapy to ongoing medication management. Flexible scheduling, including evening and early-morning options, means care fits around work, school, and family responsibilities. For individuals in rural areas, those with mobility challenges, busy professionals, and anyone who simply prefers the comfort of home, telehealth removes the most common barriers to getting help. By combining accessibility with high-quality clinical care, Clear Path ensures that distance is never a reason to go without the mental health support you deserve."
+  },
+  "video": {
+    "heading": "What is ",
+    "headingColored": "Telehealth?",
+    "description": "Telehealth is the delivery of mental health care through secure video and phone appointments, giving you access to expert psychiatric and therapy services from anywhere. At Clear Path, our telehealth program offers a convenient, private, and effective way to receive personalized care, making support accessible whenever and wherever you need it.",
+    "image": "/imgs/twoperson.jpg",
+    "imageAlt": "Patient attending a telehealth mental health appointment from home"
+  },
+  "howWeTreat": {
+    "heading": "What is the Telehealth Treatment Process at Clear Path?",
+    "description": "The telehealth process at Clear Path is designed to make expert mental health care simple, secure, and tailored to each individual. The steps we follow include:",
+    "process": [
+      {
+        "title": " Initial Assessment:",
+        "details": "A thorough virtual evaluation of your mental health history, symptoms, and goals to create a personalized treatment plan."
+      },
+      {
+        "title": " Personalized Plan:",
+        "details": "Your provider designs a treatment plan combining therapy, medication management, or both, based on your specific needs."
+      },
+      {
+        "title": " Ongoing Virtual Sessions:",
+        "details": "Regular secure video appointments keep your care consistent and allow your provider to track progress over time."
+      },
+      {
+        "title": " Continuous Support:",
+        "details": "Your plan is adjusted as you improve, with easy access to your care team between scheduled visits."
+      }
+    ]
+  },
+  "team": {
+    "heading": "Our Team",
+    "description": "Our licensed psychiatrists, therapists, and clinicians bring the same expertise and compassion to every virtual visit that they offer in person, ensuring you receive high-quality care no matter where you are.",
+    "team": [
+      {
+        "name": "Team Member",
+        "designation": "Staff",
+        "image": "/imgs/placeholder-avatar.png"
+      },
+      {
+        "name": "Team Member",
+        "designation": "Staff",
+        "image": "/imgs/placeholder-avatar.png"
+      },
+      {
+        "name": "Team Member",
+        "designation": "Staff",
+        "image": "/imgs/placeholder-avatar.png"
+      }
+    ]
+  },
+  "disorders": {
+    "heading": "OUR INSIGHTS",
+    "headingTwo_Part_1": "Expert guidance for your ",
+    "headingTwo_Part_2": "mental health ",
+    "headingTwo_Part_3": "journey",
+    "disorders": [
+      {
+        "link": "/blog/managing-depression/",
+        "title": "Effective Strategies for Managing Depression",
+        "image": "/imgs/Depression_Article.png"
+      },
+      {
+        "link": "/blog/managing-anxiety/",
+        "title": "Effective Strategies for Managing Anxiety",
+        "image": "/imgs/Anxiety_Article.png"
+      },
+      {
+        "link": "/blog/managing-adhd/",
+        "title": "Effective Strategies for Managing ADHD",
+        "image": "/imgs/ADHD_Article.png"
+      },
+      {
+        "link": "/blog/managing-ptsd/",
+        "title": "Effective Strategies for Coping with and Managing PTSD",
+        "image": "/imgs/PTSD_Article.png"
+      }
+    ]
+  },
+  "cta": {
+    "heading": "Ready to Start Care from the Comfort of Home?",
+    "text": "Take the first step towards healing. Our experienced team is here to support you with personalized, evidence-based telehealth care, wherever you are.",
+    "buttonText": "Schedule a Consultation",
+    "buttonLink": "/insurance/",
+    "image": "/imgs/hand.png",
+    "altText": "Mental health support",
+    "phoneTextOne": "Have a question?",
+    "phoneTextTwo": "Get in Touch",
+    "phoneNumber": ""
+  },
+  "whoNeeds": {
+    "heading": "Who Benefits from",
+    "headingColored": "Telehealth",
+    "headingEnd": "Care?",
+    "description": "Telehealth is ideal for anyone who wants expert mental health care without the barriers of travel, time, or location. It offers a flexible, private way to receive consistent support that fits into daily life.",
+    "listHeading": "The people who benefit from telehealth include:",
+    "listItems": [
+      "Individuals in rural or underserved areas with limited access to in-person psychiatric care.",
+      "Busy professionals and caregivers who need flexible scheduling around work and family.",
+      "People with mobility challenges, chronic illness, or no reliable transportation.",
+      "Anyone who feels more comfortable and open receiving care from the privacy of home.",
+      "Existing patients who want to maintain consistent follow-up and medication management."
+    ],
+    "listDescription": "Telehealth at Clear Path is a powerful option for those ready to prioritize their mental health, providing accessible, professional support in a secure and convenient setting.",
+    "buttonText": "Get Started",
+    "buttonLink": "/insurance/",
+    "buttonTwo_Part_1": "Have a question?",
+    "buttonTwo_Part_2": "Get in Touch",
+    "buttonTwo_Number": ""
+  },
+  "testimonials": {
+    "list": [
+      {
+        "name": "Veronica L.",
+        "position": "Client from California",
+        "text": "Telehealth with Clear Path made it possible to keep up with therapy despite my schedule. The video sessions felt just as personal and supportive as being in the office.",
+        "image": "/imgs/testimonial_1.png"
+      },
+      {
+        "name": "Michael S.",
+        "position": "Client from Florida",
+        "text": "Being able to see my psychiatrist from home removed every excuse to skip appointments. The care has been consistent, and I finally feel like I'm making real progress.",
+        "image": "/imgs/testimonial_1.png"
+      }
+    ]
+  },
+  "treatmentGrid": {
+    "heading": "What is the Treatment Process During Telehealth at Clear Path?",
+    "subheading": "Treatment Process",
+    "description": "The telehealth process at Clear Path is designed to be simple, secure, and tailored to each individual's needs. We ensure patients receive direct, personal care from experienced psychiatrists and healthcare professionals, all delivered virtually.",
+    "featuredImage": "/imgs/treatment_process.png",
+    "treatments": [
+      {
+        "icon": "/imgs/depression_icon.svg",
+        "title": "Booking and Initial Assessment",
+        "description": "Appointments can be scheduled directly through our website. During your first virtual visit, you receive a comprehensive evaluation to determine the right telehealth treatment plan for your needs."
+      },
+      {
+        "icon": "/imgs/medication_management.svg",
+        "title": "Personalized Treatment Path",
+        "description": "Following the assessment, a customized plan is created, combining therapy, medication management, or both, tailored to your condition and goals."
+      },
+      {
+        "icon": "/imgs/service_icon.svg",
+        "title": "Secure Virtual Sessions",
+        "description": "Sessions take place on a HIPAA-compliant video platform you can join from any device. Each visit offers the same focused, personal attention as an in-office appointment."
+      },
+      {
+        "icon": "/imgs/anxiety_icon.svg",
+        "title": "Ongoing Monitoring and Support",
+        "description": "You attend regular virtual sessions with progress monitored closely by the Clear Path team, with adjustments made as needed to optimize your outcomes."
+      }
+    ]
+  },
+  "whyChoose": {
+    "headingOne": "Why Choose Telehealth?",
+    "headingTwo": "",
+    "textOne": "Telehealth offers a convenient and effective option for individuals seeking expert mental health care without the barriers of travel and rigid scheduling. Unlike traditional in-office visits, telehealth lets you connect with licensed psychiatrists and therapists from wherever you are, making it easier to start care sooner and stay consistent, which is essential for lasting results.",
+    "textTwo": "For those with busy schedules, limited transportation, or a preference for the privacy of home, telehealth complements Clear Path's full range of services to create an accessible and effective pathway to recovery. By removing common obstacles to care, telehealth helps individuals maintain momentum, build a strong relationship with their provider, and take lasting control of their mental health.",
+    "images": {
+      "imageOne": "/imgs/why_choose_us.png",
+      "imageTwo": ""
+    },
+    "buttonText": "Get Started",
+    "buttonLink": "/insurance/",
+    "buttonTwo_Part_1": "Have a question?",
+    "buttonTwo_Part_2": "Get in Touch",
+    "buttonTwo_Number": ""
+  },
+  "benefits": {
+    "headingOne": "What Are the Benefits of Telehealth at Clear Path?",
+    "headingTwo": "",
+    "textOne": "The benefits of telehealth at Clear Path include convenient, private, and consistent access to expert mental health care. Virtual visits remove the need for travel and time off, making it easier to attend appointments and follow through on treatment. This approach is especially valuable for individuals in rural areas, those with demanding schedules, and anyone who prefers the comfort of receiving care at home.",
+    "textTwo": "With care provided by experienced, licensed professionals on a secure, HIPAA-compliant platform, Clear Path ensures each telehealth plan is tailored to the individual's needs. Regular virtual check-ins and easy communication between visits enhance continuity of care, while the flexibility of online appointments supports long-term engagement. By combining accessibility with evidence-based treatment, Clear Path empowers patients to achieve lasting mental well-being and an improved quality of life.",
+    "images": {
+      "imageOne": "/imgs/program/tenth.png",
+      "imageTwo": ""
+    },
+    "buttonText": "Get Started",
+    "buttonLink": "/insurance/",
+    "buttonTwo_Part_1": "Have a question?",
+    "buttonTwo_Part_2": "Get in Touch",
+    "buttonTwo_Number": ""
+  },
+  "program12": {
+    "badgeText": "Steps to Choose a Telehealth Program",
+    "heading": "How to Choose a Telehealth Mental Health Program?",
+    "description": "Choosing the right telehealth program is important to ensure you receive effective, secure care tailored to your specific needs. A systematic approach can help you identify the program that best aligns with your mental health goals.",
+    "mainImage": "/imgs/program/eleventh.png",
+    "mainImageAlt": "Person meeting with a therapist during a secure video appointment",
+    "steps": [
+      {
+        "stepNumber": "01",
+        "title": "Understand Your Health Needs",
+        "description": "Identify the conditions you want to address, such as depression, anxiety, or PTSD, and consider how virtual care could fit into your overall treatment plan."
+      },
+      {
+        "stepNumber": "02",
+        "title": "Consult with Healthcare Professionals",
+        "description": "Engage with licensed mental health providers who can determine whether telehealth is a suitable and effective option for your situation."
+      },
+      {
+        "stepNumber": "03",
+        "title": "Confirm Provider Credentials",
+        "description": "Ensure the telehealth program uses licensed psychiatrists and therapists who are qualified to practice in your state."
+      },
+      {
+        "stepNumber": "04",
+        "title": "Check Platform Security & Privacy",
+        "description": "Verify that appointments take place on a secure, HIPAA-compliant platform that protects your personal health information."
+      },
+      {
+        "stepNumber": "05",
+        "title": "Assess the Treatment Plan",
+        "description": "Review the proposed plan to ensure it combines the therapy, medication management, and follow-up you need."
+      },
+      {
+        "stepNumber": "06",
+        "title": "Evaluate Convenience & Scheduling",
+        "description": "Consider whether appointment times and technology requirements fit easily into your daily routine."
+      },
+      {
+        "stepNumber": "07",
+        "title": "Check Financial and Insurance Coverage",
+        "description": "Review your insurance plan to understand coverage for telehealth visits and inquire about any out-of-pocket costs."
+      }
+    ]
+  },
+  "programTMS": {
+    "mainHeading": "What Conditions are ",
+    "coloredHeading": "Treated Through Telehealth?",
+    "description": "The conditions treated through telehealth at Clear Path include a wide range of mental health disorders. Each condition is addressed using evidence-based therapies delivered over a secure virtual platform, ensuring accessible and holistic care for individuals seeking to improve their mental well-being.",
+    "buttonText": "Get Started",
+    "buttonLink": "/insurance/",
+    "buttonTwo_Part_1": "Have a question?",
+    "buttonTwo_Part_2": "Get in Touch",
+    "buttonTwo_Number": "",
+    "image": "/imgs/program/twelfth.png",
+    "imageAlt": "Telehealth Mental Health Care Illustration",
+    "conditions": [
+      {
+        "title": "Depression",
+        "icon": "/imgs/program/Depression.svg",
+        "description": "Telehealth provides consistent access to therapy and medication management for individuals living with depression, wherever they are."
+      },
+      {
+        "title": "Stress and Insomnia",
+        "icon": "/imgs/program/Stress and Insomnia.svg",
+        "description": "Virtual sessions help patients develop coping strategies and treatment plans for stress and sleep difficulties from the comfort of home."
+      },
+      {
+        "title": "Anxiety Disorders",
+        "icon": "/imgs/program/Anxiety Disorders.svg",
+        "description": "Telehealth offers a private, low-pressure setting that many individuals with anxiety find more comfortable for engaging in care."
+      },
+      {
+        "title": "Post-Traumatic Stress Disorder (PTSD)",
+        "icon": "/imgs/program/Post-Traumatic Stress Disorder (PTSD).svg",
+        "description": "Secure virtual therapy makes it easier to access trauma-focused treatment consistently, supporting steady progress over time."
+      },
+      {
+        "title": "Obsessive-Compulsive Disorder (OCD)",
+        "icon": "/imgs/program/Obsessive-Compulsive Disorder (OCD).svg",
+        "description": "Telehealth connects patients with specialized care for OCD, including therapy and medication management, without geographic limits."
+      },
+      {
+        "title": "Bipolar Disorder",
+        "icon": "/imgs/program/Bipolar Disorder.svg",
+        "description": "Regular virtual check-ins support mood stability and ongoing medication management for individuals with bipolar disorder."
+      }
+    ]
+  }
+}

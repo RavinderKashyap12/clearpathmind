@@ -1,0 +1,70 @@
+---
+import { fetchGeneralData, fetchLocationHomeData, fetchBlogPageData } from '../../utils/dataMapping.ts';
+
+import MainLayout from "../../layouts/MainLayout.astro"
+
+import Hero from '../../components/sections/HeroHome.astro';
+import About from "../../components/sections/About.astro";
+import ProgramCards from "../../components/sections/ProgramCards.astro";
+import Testimonials from "../../components/sections/Testimonials.astro";
+import TestimonialsOffered from "../../components/sections/TestimonialsOffered.astro";
+import DisorderGrid from "../../components/sections/DisorderGrid.astro";
+import InsuranceOptions from "../../components/sections/InsuranceOptions.astro";
+import CTA from "../../components/CTA.astro";
+import PatientJourney from '../../components/sections/PatientJourney.astro';
+
+export async function getStaticPaths() {
+    const locations = import.meta.glob('../../content/locations/*.json', { eager: true });
+    const paths = Object.keys(locations)
+        .filter(file => !file.includes('config.yml') && file.endsWith('.json'))
+        .map((file) => {
+            const slug = file.split('/').pop().replace('.json', '');
+            return { params: { slug } };
+        });
+    return paths;
+}
+
+const { slug } = Astro.params;
+const GeneralData = await fetchGeneralData();
+const { data: LocationHomeData } = await fetchLocationHomeData(slug);
+const { data: BlogPageData } = await fetchBlogPageData();
+
+// Generate dynamic SEO data for location pages
+const generateLocationTitle = (data, location) => {
+  if (data.seo?.metaTitle) return data.seo.metaTitle;
+  const locationName = location.charAt(0).toUpperCase() + location.slice(1);
+  return `Mental Health Treatment Center in ${locationName}, CA | Clear Path Behavioral Health`;
+};
+
+const generateLocationDescription = (data, location) => {
+  if (data.seo?.metaDescription) return data.seo.metaDescription;
+  const locationName = location.charAt(0).toUpperCase() + location.slice(1);
+  return `Clear Path Behavioral Health in ${locationName} provides comprehensive mental health care including medication management and psychotherapy. Serving the local community with evidence-based treatments.`;
+};
+
+const pageTitle = generateLocationTitle(LocationHomeData, slug);
+const pageDescription = generateLocationDescription(LocationHomeData, slug);
+---
+
+<MainLayout title={pageTitle} description={pageDescription}>
+	<Hero Content={LocationHomeData.hero} GeneralData={GeneralData}/>
+	<About Content={LocationHomeData.about}/>
+	<ProgramCards Content={LocationHomeData.programs}/>
+	<InsuranceOptions Content={LocationHomeData.insuranceOptions} />
+	<Testimonials Content={LocationHomeData.testimonials} />
+	<TestimonialsOffered Content={LocationHomeData.therapies}/>
+	<PatientJourney Content={LocationHomeData.patientJourney}/>
+	<DisorderGrid  Content={BlogPageData.disorders} />
+	<CTA Content={LocationHomeData.cta}/>
+</MainLayout>
+
+<style is:global>
+  /* Override the background color globally */
+  body {
+    background-color: #ffffff !important;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+</style>

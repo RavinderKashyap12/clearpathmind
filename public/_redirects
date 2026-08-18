@@ -1,0 +1,21 @@
+# Netlify redirect rules. HTTP headers live in _headers — putting them here
+# makes Netlify reject them as malformed redirects.
+
+# Retired programs (TMS / Spravato). Clear Path no longer offers interventional
+# services; these URLs are indexed, so send them to the surviving program pages
+# rather than 404ing them.
+/program/tms                                  /program/medication-management/   301!
+/program/tms/*                                /program/medication-management/   301!
+/program/spravato                             /program/medication-management/   301!
+/program/spravato/*                           /program/medication-management/   301!
+/location/orange-county/program/tms           /location/orange-county/program/medication-management/   301!
+/location/orange-county/program/tms/*         /location/orange-county/program/medication-management/   301!
+/location/orange-county/program/spravato      /location/orange-county/program/medication-management/   301!
+/location/orange-county/program/spravato/*    /location/orange-county/program/medication-management/   301!
+
+# Form API -> Netlify Functions (must come before the 404 catch-all)
+/api/*  /.netlify/functions/:splat  200!
+
+# 404 fallback. Previously written as `/\*`, which matched nothing and left the
+# custom 404 page unreachable.
+/*  /404.html  404

@@ -1,0 +1,23 @@
+---
+const { heading, description,therapies} = Astro.props.Content;
+---
+
+
+<section class="section">
+    <div class="container program-content-width">
+        <h2 class="font-medium mb-10">
+            {heading}
+        </h2>
+        <p class="mb-5">
+            {description}
+        </p>
+
+        {therapies.map((therapies) => (
+            <h3 class="mb-5 text-4xl">{therapies.title}</h3>
+        <p class="mb-5">
+            {therapies.details}
+        </p>
+          ))}
+
+    </div>
+</section>

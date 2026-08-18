@@ -1,0 +1,115 @@
+---
+// Button Component Usage:
+// 
+// Primary Button (Yellow):
+// <Button 
+//   buttonLink="/some-link" 
+//   buttonText="Click Me" 
+//   buttonType="primary" 
+// />
+//
+// Phone Button (Purple with two text lines) — links to a page (e.g. contact form):
+// <Button
+//   buttonLink="/contact/"
+//   phoneTextOne="Have a question?"
+//   phoneTextTwo="Get in Touch"
+//   buttonType="phone"
+// />
+//
+// Secondary Button (White with dark text and two lines) — links to a page:
+// <Button
+//   buttonLink="/contact/"
+//   phoneTextOne="Have a question?"
+//   phoneTextTwo="Get in Touch"
+//   buttonType="secondary"
+// />
+//
+// Optional: Add custom classes with buttonClass prop
+const { 
+  buttonLink, 
+  buttonText, 
+  buttonType = "primary", // "primary", "phone", or "secondary"
+  phoneTextOne, 
+  phoneTextTwo,
+  buttonClass = ""
+} = Astro.props;
+
+// Default classes for each button type - better responsive sizing
+const primaryButtonClasses = "flex items-center justify-center px-5 py-4 text-lg font-semibold text-center bg-[#F5C348] cursor-pointer rounded-[50px] text-neutral-800 w-full sm:w-auto sm:min-w-[160px] md:min-w-[180px] lg:min-w-[220px] xl:min-w-[250px]";
+const phoneButtonClasses = "flex flex-col items-center justify-center text-white bg-purple-900 rounded-[50px] w-full sm:w-auto sm:min-w-[160px] md:min-w-[180px] lg:min-w-[220px] xl:min-w-[250px]";
+const secondaryButtonClasses = "flex flex-col items-center justify-center text-purple-900 bg-white rounded-[50px] w-full sm:w-auto sm:min-w-[160px] md:min-w-[180px] lg:min-w-[220px] xl:min-w-[250px]";
+
+// Determine which classes to use
+const baseClasses = buttonType === "phone" ? phoneButtonClasses : 
+                   buttonType === "secondary" ? secondaryButtonClasses : 
+                   primaryButtonClasses;
+const finalClasses = buttonClass ? `${baseClasses} ${buttonClass}` : baseClasses;
+---
+
+{buttonType === "phone" ? (
+  <a href={buttonLink} class={finalClasses} style="padding: 16px 20px;">
+    <p
+      class="mb-0 text-xs text-white"
+      style="
+        color: #FFF;
+        font-family: Poppins;
+        font-size: 12px !important;
+        line-height: normal;
+      "
+    >
+      {phoneTextOne}
+    </p>
+    <p
+      class="text-xs font-semibold text-white"
+      style="
+        color: #FFF;
+        font-family: Poppins;
+        line-height: 24px;
+      "
+    >
+      {phoneTextTwo}
+    </p>
+  </a>
+) : buttonType === "secondary" ? (
+  <a href={buttonLink} class={finalClasses} style="padding: 16px 20px;">
+    <p
+      class="mb-0 text-xs text-purple-900"
+      style="
+        color: #0A277E;
+        font-family: Poppins;
+        font-size: 12px !important;
+        line-height: normal;
+      "
+    >
+      {phoneTextOne}
+    </p>
+    <p
+      class="text-xs font-semibold text-purple-900"
+      style="
+        color: #0A277E;
+        font-family: Poppins;
+        line-height: 24px;
+      "
+    >
+      {phoneTextTwo}
+    </p>
+  </a>
+) : (
+  <a
+    href={buttonLink}
+    class={finalClasses}
+    style="
+      color: #222;
+      font-family: Poppins, sans-serif;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 24px;
+      padding: 16px 20px;
+    "
+  >
+    {buttonText}
+  </a>
+)}
+
+

@@ -1,0 +1,174 @@
+{
+  "seo": {
+    "metaTitle": "Insurance Coverage | Clear Path Mental Health Treatment",
+    "metaDescription": "Clear Path accepts most major insurance plans for mental health treatment including medication management and psychotherapy. Verify your insurance coverage today.",
+    "keywords": [
+      "insurance coverage",
+      "mental health insurance",
+      "Clear Path insurance",
+      "verify insurance",
+      "behavioral health coverage",
+      "psychiatry insurance"
+    ]
+  },
+  "hero": {
+    "heading": "Insurance Verification",
+    "text": "Learn about our insurance coverage options for addiction and mental health treatment",
+    "buttonText": "Verify Insurance",
+    "phoneQuestionText": "Questions about insurance?",
+    "treatmentsLabel": "Insurance",
+    "buttonLink": "#insurance-form",
+    "callButtonText": "Get in Touch",
+    "callButtonLink": "/contact/"
+  },
+  "contactHero": {
+    "title": {
+      "line1": "Insurance",
+      "line2": " Verification",
+      "line3": " at ClearPath"
+    },
+    "description": "Starting your recovery journey can seem daunting, especially when considering the financial aspects. At ClearPath, we're committed to removing barriers to treatment by working with most major insurance providers. Our dedicated team will verify your insurance benefits and explain your coverage options for addiction and mental health treatment. We believe everyone deserves access to quality care without financial stress.",
+    "bottomDescription": "Don't see your provider listed? Contact us to discuss other options. We're here to help you find a path to recovery that works for your situation.",
+    "formTitle": "Verify Your Insurance Benefits",
+    "formSubtitle": "Complete the form below, and our admissions team will contact you promptly with your coverage details.",
+    "insuranceProviders": [
+      {
+        "name": "Blue Cross Blue Shield"
+      },
+      {
+        "name": "Aetna"
+      },
+      {
+        "name": "Cigna"
+      },
+      {
+        "name": "UnitedHealthcare"
+      },
+      {
+        "name": "Humana"
+      },
+      {
+        "name": "And many more"
+      }
+    ],
+    "privacyNotice": "Your information is confidential and protected by HIPAA regulations. We respect your privacy and will only use this information to verify your insurance benefits."
+  },
+  "insuranceProviders": {
+    "heading": "Insurance Companies We Work With",
+    "subheading": "ClearPath partners with numerous insurance providers to ensure you receive the coverage you deserve for your recovery journey. Our team will help you navigate your insurance benefits.",
+    "buttonText": "Get Started",
+    "buttonLink": "#insurance-form",
+    "callText": "Have a question?",
+    "callTextTwo": "Get in Touch",
+    "phoneNumber": "",
+    "footerText": "Don't see your insurance provider listed? We work with many more companies and plans. Contact our team to verify your specific coverage.",
+    "verifyButtonText": "Check Your Coverage Now",
+    "verifyButtonLink": "#insurance-form",
+    "providers": [
+      {
+        "name": "Blue Cross Blue Shield",
+        "description": "Coverage for mental health and substance abuse treatment",
+        "logo": "/imgs/insurance/first.png"
+      },
+      {
+        "name": "Aetna",
+        "description": "Comprehensive addiction treatment coverage options",
+        "logo": "/imgs/insurance/second.png"
+      },
+      {
+        "name": "Cigna",
+        "description": "Behavioral health services and substance abuse treatment",
+        "logo": "/imgs/insurance/third.png"
+      },
+      {
+        "name": "United Healthcare",
+        "description": "Mental health and substance use disorder services",
+        "logo": "/imgs/insurance/fourth.png"
+      },
+      {
+        "name": "Humana",
+        "description": "Behavioral health and substance abuse treatment benefits",
+        "logo": "/imgs/insurance/fifth.png"
+      },
+      {
+        "name": "Anthem",
+        "description": "Behavioral health coverage for addiction treatment",
+        "logo": "/imgs/insurance/sixth.png"
+      },
+      {
+        "name": "Kaiser Permanente",
+        "description": "Chemical dependency and mental health treatment",
+        "logo": "/imgs/insurance/seventh.png"
+      },
+      {
+        "name": "Other Providers",
+        "description": "Contact us to verify coverage with your specific provider",
+        "logo": "/imgs/insurance/eighth.png"
+      }
+    ]
+  },
+  "cta": {
+    "heading": "Begin Your Recovery Journey Today",
+    "text": "Our admissions team is available 24/7 to answer your questions and guide you through the insurance verification process.",
+    "buttonText": "Verify Insurance Now",
+    "buttonLink": "#insurance-form",
+    "image": "/imgs/hand.png",
+    "altText": "Mental health support",
+    "phoneTextOne": "Have a question?",
+    "phoneTextTwo": "Get in Touch",
+    "phoneNumber": ""
+  },
+  "insuranceVerification": {
+    "title": {
+      "line1": "Fast, Confidential &",
+      "line2": "No-Obligation"
+    },
+    "description": "Our insurance verification process is designed to be quick and straightforward. We understand that seeking treatment is a significant decision, and we're here to make at least one part of that process easier.",
+    "features": [
+      {
+        "text": "Most verifications are completed within 24 hours"
+      },
+      {
+        "text": "Your information is completely confidential and protected"
+      },
+      {
+        "text": "No obligation to proceed with treatment after verification"
+      },
+      {
+        "text": "We advocate for maximum coverage on your behalf"
+      }
+    ],
+    "cta": {
+      "heading": "Need Immediate Assistance?",
+      "subheading": "Our admissions team is available 24/7 to help you verify your insurance benefits right now.",
+      "buttonText": "Get Started",
+      "buttonLink": "#insurance-form",
+      "callText": "Have a question?",
+      "callTextTwo": "Get in Touch",
+      "phoneNumber": ""
+    }
+  },
+  "treatmentGrid": {
+    "heading": "What is the Treatment Process at Clear Path?",
+    "subheading": "Treatment Process",
+    "description": "The treatment process at Clear Path is designed to be simple, effective, and tailored to each individual's needs. We stand apart by ensuring patients receive direct, in-person care from experienced psychiatrists and healthcare professionals.",
+    "featuredImage": "/imgs/treatment_process.png",
+    "treatments": [
+      {
+        "icon": "/imgs/medication_management.svg",
+        "title": "Booking and Initial Assessment",
+        "description": "Appointments can be scheduled directly through our website using Zocdoc integration. During the initial assessment, new patients receive a comprehensive evaluation to determine if this is the right treatment option for their needs."
+      },
+      {
+        "icon": "/imgs/depression_icon.svg",
+        "title": "Personalized Treatment Path",
+        "description": "Following the assessment, a customized treatment plan is created, tailored to the individual's condition and goals. This plan ensures that each session targets the symptoms affecting them most."
+      },
+      {
+        "icon": "/imgs/therapy_icon.svg",
+        "title": "Ongoing Monitoring and Support",
+        "description": "Patients will attend regular sessions over several weeks, with progress monitored closely by the Clear Path team. Adjustments are made as needed to optimize results and ensure the best possible outcomes."
+      }
+    ]
+  }
+}

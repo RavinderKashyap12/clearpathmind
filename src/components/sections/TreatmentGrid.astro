@@ -1,0 +1,670 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+    Content: {
+        heading: string;
+        subheading: string;
+        description: string;
+        featuredImage: string;
+        treatments: {
+            icon: string;
+            title: string;
+            description: string;
+            link?: string;
+        }[];
+    };
+}
+
+const { Content } = Astro.props;
+---
+
+<section
+    class="mx-auto my-20 max-w-[1320px] relative treatment-grid"
+>
+    <div class="relative px-20 pt-20 pb-16 w-full rounded-[24px] bg-gradient-to-l from-[#F6F2EE] to-[#F3EFEC] max-lg:px-12 max-md:p-10 max-sm:p-5 max-sm:rounded-[24px]">
+        <!-- Background Wave SVG -->
+        <div class="absolute w-full h-full top-0 left-0 overflow-hidden rounded-[24px] bg-svg-bg max-sm:hidden z-[0]">
+            <svg
+                viewBox="0 0 1320 261"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="absolute top-[80px] w-full h-auto max-w-none"
+                preserveAspectRatio="xMidYMid slice"
+            >
+                <path
+                    d="M-29 159.359C4 128.359 105.5 73.3593 167 103.359C225.389 131.842 318.785 141.851 362.533 96.4732C391.024 66.9222 361.543 17.1347 320.893 22.8408C283.379 28.1068 249.542 59.3098 253.5 149.859C259.9 296.259 1031.5 218.026 1354.5 211.359"
+                    stroke="white"
+                    stroke-opacity="0.46"
+                    stroke-width="44"></path>
+            </svg>
+        </div>
+
+        <!-- Header Section -->
+        <header class="relative mb-16 z-[1] flex flex-wrap justify-between items-start gap-8 max-lg:mb-12 max-lg:flex-col max-lg:gap-6">
+            <h2 class="flex-1 max-w-[50%] max-lg:max-w-full">
+                {Content?.heading}
+            </h2>
+            <p class="flex-1 max-w-[50%] max-lg:max-w-full">
+                {Content?.description}
+            </p>
+        </header>
+
+        <!-- Hero Image Section -->
+        <figure
+            class="relative mb-12 h-[596px] w-full max-w-[1160px] max-lg:h-[450px] max-md:h-[400px] max-sm:h-[300px] max-sm:mb-8"
+        >
+            <div
+                class="box-border flex absolute top-0 left-0 items-center pt-4 pb-64 pl-4 bg-white rounded-3xl h-full w-full max-md:p-4"
+            >
+            </div>
+            <img
+                src={Content?.featuredImage}
+                alt="Treatment Process"
+                class="absolute rounded-3xl object-cover h-[calc(100%_-_52px)] w-[calc(100%_-_54px)] left-[27px] top-[26px] max-md:top-4 max-md:left-4 max-md:h-[calc(100%_-_32px)] max-md:w-[calc(100%_-_32px)] max-sm:static max-sm:relative max-sm:h-full max-sm:w-full"
+            />
+        </figure>
+
+        <!-- Treatment Process Cards -->
+        <section class="grid grid-cols-2 gap-6 w-full max-md:grid-cols-1 max-md:gap-5 max-md:w-full z-[1]">
+            {Content?.treatments.map((treatment) => (
+                <article class="flex gap-2.5 items-start bg-white rounded-3xl flex-[1_0_0] max-sm:p-5 transition-all duration-200 hover:shadow-lg hover:scale-[1.02] z-[1]" style="box-shadow: 0px 10px 40px 0px rgba(0, 0, 0, 0.05);">
+                    {treatment.link ? (
+                        <a href={treatment.link} class="flex p-6 gap-2.5 items-start flex-[1_0_0] w-full text-decoration-none cursor-pointer">
+                            <div class="flex flex-col gap-4 items-start flex-[1_0_0]">
+                                <header class="flex flex-col gap-4 items-start self-stretch">
+                                    <div class="flex items-center self-stretch h-10 rounded-[100px]">
+                                        <Image
+                                            src={treatment.icon}
+                                            alt={`${treatment.title} icon`}
+                                            class="object-contain shrink-0 w-10 h-10"
+                                            width={40}
+                                            height={40}
+                                        />
+                                    </div>
+                                    <h3 class="!text-2xl !font-medium text-gray-900 hover:text-blue-600 transition-colors duration-200">
+                                        {treatment.title}
+                                    </h3>
+                                </header>
+                                <p class="text-gray-700">
+                                    {treatment.description}
+                                </p>
+                            </div>
+                        </a>
+                    ) : (
+                        <div class="flex p-6 gap-2.5 items-start flex-[1_0_0]">
+                            <div class="flex flex-col gap-4 items-start flex-[1_0_0]">
+                                <header class="flex flex-col gap-4 items-start self-stretch">
+                                    <div class="flex items-center self-stretch h-10 rounded-[100px]">
+                                        <Image
+                                            src={treatment.icon}
+                                            alt={`${treatment.title} icon`}
+                                            class="object-contain shrink-0 w-10 h-10"
+                                            width={40}
+                                            height={40}
+                                        />
+                                    </div>
+                                    <h3 class="!text-2xl !font-medium">
+                                        {treatment.title}
+                                    </h3>
+                                </header>
+                                <p>
+                                    {treatment.description}
+                                </p>
+                            </div>
+                        </div>
+                    )}
+                </article>
+            ))}
+        </section>
+    </div>
+</section>
+
+<style>
+/* Large tablets and small desktops: 1025px to 1319px */
+@media (min-width: 1025px) and (max-width: 1319px) {
+    .treatment-grid {
+        margin-left: 1.25rem;
+        margin-right: 1.25rem;
+        width: calc(100% - 2.5rem);
+    }
+
+    .treatment-grid .relative {
+        padding-left: 48px;
+        padding-right: 48px;
+        padding-top: 80px;
+        padding-bottom: 64px;
+    }
+
+    .treatment-grid header {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 48px;
+    }
+
+    .treatment-grid header h1 {
+        width: 100%;
+        margin-bottom: 24px;
+        font-size: 42px !important;
+        line-height: 56px !important;
+    }
+
+    .treatment-grid header p {
+        width: 100%;
+        margin-bottom: 0;
+        font-size: 16px;
+        line-height: 28px;
+    }
+
+    .treatment-grid figure {
+        height: 450px;
+    }
+
+    .treatment-grid .grid {
+        width: 100%;
+        gap: 20px;
+    }
+}
+
+/* Medium tablets: 901px to 1024px */
+@media (min-width: 901px) and (max-width: 1024px) {
+    .treatment-grid {
+        margin-left: 1rem;
+        margin-right: 1rem;
+        width: calc(100% - 2rem);
+    }
+
+    .treatment-grid .relative {
+        padding-left: 32px;
+        padding-right: 32px;
+        padding-top: 64px;
+        padding-bottom: 48px;
+    }
+
+    .treatment-grid header {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 40px;
+    }
+
+    .treatment-grid header h1 {
+        width: 100%;
+        margin-bottom: 20px;
+        font-size: 38px !important;
+        line-height: 48px !important;
+    }
+
+    .treatment-grid header p {
+        width: 100%;
+        margin-bottom: 0;
+        font-size: 16px;
+        line-height: 26px;
+    }
+
+    .treatment-grid figure {
+        height: 400px;
+    }
+
+    .treatment-grid .grid {
+        width: 100%;
+        gap: 18px;
+    }
+}
+
+/* Small tablets: 768px to 900px */
+@media (min-width: 768px) and (max-width: 900px) {
+    .treatment-grid {
+        margin-left: 0.75rem;
+        margin-right: 0.75rem;
+        width: calc(100% - 1.5rem);
+    }
+
+    .treatment-grid .relative {
+        padding-left: 24px;
+        padding-right: 24px;
+        padding-top: 48px;
+        padding-bottom: 40px;
+    }
+
+    .treatment-grid header {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 32px;
+    }
+
+    .treatment-grid header h1 {
+        width: 100%;
+        margin-bottom: 16px;
+        font-size: 34px !important;
+        line-height: 44px !important;
+    }
+
+    .treatment-grid header p {
+        width: 100%;
+        margin-bottom: 0;
+        font-size: 15px;
+        line-height: 24px;
+    }
+
+    .treatment-grid figure {
+        height: 350px;
+    }
+
+    .treatment-grid .grid {
+        width: 100%;
+        gap: 16px;
+    }
+}
+
+/* Mobile landscape and small tablets: 481px to 767px */
+@media (min-width: 481px) and (max-width: 767px) {
+    .treatment-grid {
+        margin-left: 0.75rem;
+        margin-right: 0.75rem;
+        width: calc(100% - 1.5rem);
+    }
+
+    .treatment-grid .relative {
+        padding: 24px;
+    }
+
+    .treatment-grid header {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 24px;
+    }
+
+    .treatment-grid header h1 {
+        width: 100%;
+        margin-bottom: 16px;
+        font-size: 30px !important;
+        line-height: 38px !important;
+    }
+
+    .treatment-grid header p {
+        width: 100%;
+        margin-bottom: 0;
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+    .treatment-grid figure {
+        height: 250px;
+        margin-bottom: 20px;
+    }
+
+    /* Hide background SVG on mobile */
+    .treatment-grid .bg-svg-bg {
+        display: none;
+    }
+
+    /* Simplify figure styling for mobile */
+    .treatment-grid figure > div {
+        padding: 8px;
+        background: white;
+    }
+
+    .treatment-grid figure img {
+        left: 8px;
+        top: 8px;
+        width: calc(100% - 16px);
+        height: calc(100% - 16px);
+        object-fit: cover;
+        border-radius: 16px;
+    }
+
+    .treatment-grid .grid {
+        width: 100%;
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .treatment-grid article {
+        padding: 20px;
+    }
+}
+
+/* Mobile portrait: 320px to 480px */
+@media (min-width: 320px) and (max-width: 480px) {
+    .treatment-grid {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+        width: calc(100% - 1rem);
+    }
+
+    .treatment-grid .relative {
+        padding: 16px;
+    }
+
+    .treatment-grid header {
+        flex-direction: column;
+        align-items: flex-start;
+        margin-bottom: 20px;
+    }
+
+    .treatment-grid header h1 {
+        width: 100%;
+        margin-bottom: 12px;
+        font-size: 26px !important;
+        line-height: 34px !important;
+    }
+
+    .treatment-grid header p {
+        width: 100%;
+        margin-bottom: 0;
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .treatment-grid figure {
+        height: 180px;
+        margin-bottom: 16px;
+    }
+
+    /* Hide background SVG on mobile */
+    .treatment-grid .bg-svg-bg {
+        display: none;
+    }
+
+    /* Simplify figure styling for mobile */
+    .treatment-grid figure > div {
+        padding: 4px;
+        background: white;
+    }
+
+    .treatment-grid figure img {
+        left: 4px;
+        top: 4px;
+        width: calc(100% - 8px);
+        height: calc(100% - 8px);
+        object-fit: cover;
+        border-radius: 16px;
+    }
+
+    .treatment-grid .grid {
+        width: 100%;
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .treatment-grid article {
+        padding: 16px;
+    }
+
+    .treatment-grid article h2 {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .treatment-grid article p {
+        font-size: 13px;
+        line-height: 18px;
+    }
+}
+
+/* Very small devices: below 320px */
+@media (max-width: 319px) {
+    .treatment-grid {
+        margin-left: 0.25rem;
+        margin-right: 0.25rem;
+        width: calc(100% - 0.5rem);
+    }
+
+    .treatment-grid .relative {
+        padding: 12px;
+    }
+
+    .treatment-grid header {
+        margin-bottom: 16px;
+    }
+
+    .treatment-grid header h1 {
+        font-size: 22px !important;
+        line-height: 30px !important;
+        margin-bottom: 8px;
+    }
+
+    .treatment-grid header p {
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .treatment-grid figure {
+        height: 150px;
+        margin-bottom: 12px;
+        position: relative;
+    }
+
+    /* Hide the white box background completely below 320px */
+    .treatment-grid figure > div {
+        display: none;
+    }
+
+    /* Make image responsive and remove absolute positioning */
+    .treatment-grid figure img {
+        position: relative;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 16px;
+    }
+
+    .treatment-grid article {
+        padding: 12px;
+    }
+
+    .treatment-grid article h2 {
+        font-size: 13px;
+        line-height: 18px;
+    }
+
+    .treatment-grid article p {
+        font-size: 12px;
+        line-height: 16px;
+    }
+
+    .treatment-grid .grid {
+        gap: 8px;
+    }
+}
+
+/* Extra small devices: below 280px */
+@media (max-width: 279px) {
+    .treatment-grid {
+        margin-left: 0.125rem;
+        margin-right: 0.125rem;
+        width: calc(100% - 0.25rem);
+    }
+
+    .treatment-grid .relative {
+        padding: 8px;
+    }
+
+    .treatment-grid header h1 {
+        font-size: 20px !important;
+        line-height: 28px !important;
+        margin-bottom: 6px;
+    }
+
+    .treatment-grid header p {
+        font-size: 11px;
+        line-height: 16px;
+    }
+
+    .treatment-grid figure {
+        height: 120px;
+        margin-bottom: 10px;
+    }
+
+    /* Ensure white box is hidden */
+    .treatment-grid figure > div {
+        display: none;
+    }
+
+    /* Make image fully responsive */
+    .treatment-grid figure img {
+        position: relative;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 12px;
+    }
+
+    .treatment-grid article {
+        padding: 10px;
+    }
+
+    .treatment-grid article h2 {
+        font-size: 12px;
+        line-height: 16px;
+    }
+
+    .treatment-grid article p {
+        font-size: 11px;
+        line-height: 14px;
+    }
+
+    .treatment-grid .grid {
+        gap: 6px;
+    }
+}
+
+/* Ultra small devices: below 240px */
+@media (max-width: 239px) {
+    .treatment-grid {
+        margin-left: 0.0625rem;
+        margin-right: 0.0625rem;
+        width: calc(100% - 0.125rem);
+    }
+
+    .treatment-grid .relative {
+        padding: 6px;
+    }
+
+    .treatment-grid header h1 {
+        font-size: 18px !important;
+        line-height: 26px !important;
+        margin-bottom: 4px;
+    }
+
+    .treatment-grid header p {
+        font-size: 10px;
+        line-height: 14px;
+    }
+
+    .treatment-grid figure {
+        height: 100px;
+        margin-bottom: 8px;
+    }
+
+    /* Ensure white box is completely hidden */
+    .treatment-grid figure > div {
+        display: none !important;
+    }
+
+    /* Make image fully responsive with minimal border radius */
+    .treatment-grid figure img {
+        position: relative;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 8px;
+    }
+
+    .treatment-grid article {
+        padding: 8px;
+    }
+
+    .treatment-grid article h2 {
+        font-size: 11px;
+        line-height: 14px;
+    }
+
+    .treatment-grid article p {
+        font-size: 10px;
+        line-height: 12px;
+    }
+
+    .treatment-grid .grid {
+        gap: 4px;
+    }
+}
+
+/* Additional responsive breakpoints for better heading scaling */
+@media (min-width: 1200px) and (max-width: 1319px) {
+    .treatment-grid header h1 {
+        font-size: 46px !important;
+        line-height: 60px !important;
+    }
+}
+
+@media (min-width: 1100px) and (max-width: 1199px) {
+    .treatment-grid header h1 {
+        font-size: 44px !important;
+        line-height: 58px !important;
+    }
+}
+
+@media (min-width: 600px) and (max-width: 767px) {
+    .treatment-grid header h1 {
+        font-size: 32px !important;
+        line-height: 40px !important;
+    }
+}
+
+@media (min-width: 400px) and (max-width: 480px) {
+    .treatment-grid header h1 {
+        font-size: 28px !important;
+        line-height: 36px !important;
+    }
+}
+
+@media (min-width: 360px) and (max-width: 399px) {
+    .treatment-grid header h1 {
+        font-size: 24px !important;
+        line-height: 32px !important;
+    }
+}
+
+/* Ensure equal margins at all breakpoints */
+@media (max-width: 1319px) {
+    .treatment-grid {
+        margin-top: 5rem;
+        margin-bottom: 5rem;
+    }
+}
+
+@media (max-width: 900px) {
+    .treatment-grid {
+        margin-top: 4rem;
+        margin-bottom: 4rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .treatment-grid {
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .treatment-grid {
+        margin-top: 2.5rem;
+        margin-bottom: 2.5rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .treatment-grid {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+}
+</style>

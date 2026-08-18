@@ -1,0 +1,39 @@
+---
+import { fetchGeneralData ,fetchInsuranceData , fetchHomeData } from '../utils/dataMapping.ts';
+import MainLayout from "../layouts/MainLayout.astro"
+
+const GeneralData = await fetchGeneralData();
+// const Data = { heading: "Blog", text: "Providing personalized care for substance use and mental health to help individuals achieve lasting recovery."}
+
+import HeroProgram from "../components/sections/HeroProgram.astro";
+import Insurancehero from '../components/sections/Insurancehero.astro';
+import ContactHero from '../components/sections/ContactHero.astro';
+import Insurance2 from '../components/sections/Insurance2.astro';
+import Testimonials from '../components/sections/Testimonials.astro';
+import TreatmentGrid from '../components/sections/TreatmentGrid.astro';
+
+const {data:InsuranceData} = await fetchInsuranceData();
+const { data: HomeData } = await fetchHomeData();
+
+// Generate dynamic SEO data for insurance page
+const generatePageTitle = (data) => {
+  return data.seo?.metaTitle || "Insurance Coverage | Clear Path Mental Health";
+};
+
+const generatePageDescription = (data) => {
+  return data.seo?.metaDescription || "Clear Path accepts most major insurance plans for mental health treatment including medication management and psychotherapy. Verify your insurance coverage today.";
+};
+
+const pageTitle = generatePageTitle(InsuranceData);
+const pageDescription = generatePageDescription(InsuranceData);
+---
+
+<MainLayout title={pageTitle} description={pageDescription}>
+    <HeroProgram Content={InsuranceData?.hero} GeneralData={GeneralData} />
+    <ContactHero isInsurancePage={true} insuranceData={InsuranceData?.contactHero} />
+    <Insurance2 insuranceData={InsuranceData?.insuranceProviders} />
+    <Testimonials Content={HomeData?.testimonials} />
+    <TreatmentGrid Content={InsuranceData?.treatmentGrid}  />
+    <Insurancehero Content={InsuranceData?.insuranceVerification} />
+    
+</MainLayout>

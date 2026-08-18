@@ -1,0 +1,120 @@
+---
+const { Content } = Astro.props;
+---
+
+<section class="box-border relative px-0 pt-16 pb-0 mx-auto my-0 w-full bg-white h-[1004px] max-w-[1440px] max-md:px-5 max-md:py-10 max-md:h-auto max-md:max-w-[991px] max-sm:px-4 max-sm:py-6 max-sm:max-w-screen-sm">
+    <header class="flex flex-col items-center mb-20 text-center max-sm:mb-10">
+      <h2>
+        <span>{Content.header} </span>
+        <span class="text-indigo-500">{Content.subheaderHighlight}</span>
+      </h2>
+      <p class="text-lg leading-9 text-center opacity-75 text-neutral-800 w-[819px] max-md:w-full max-md:text-base max-md:leading-7 max-sm:text-sm max-sm:leading-6 ">
+        {Content.description}
+      </p>
+    </header>
+
+    <article class="box-border flex relative flex-col shrink-0 gap-6 p-12 mx-auto my-0 rounded-3xl h-[449px] w-[640px] max-md:p-8 max-md:w-full max-md:max-w-[600px] max-sm:p-6 max-sm:h-auto bg-[linear-gradient(270deg,#F6F2EE_0%,#F3EFEC_100%)]">
+      <!-- Background Wave SVG -->
+      <div class="absolute w-full h-full top-0 left-0 overflow-hidden rounded-3xl">
+        <svg
+          viewBox="0 0 1320 261"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          class="absolute top-[20px] w-full h-auto max-w-none"
+          preserveAspectRatio="xMidYMid slice"
+        >
+          <path
+            d="M-29 159.359C4 128.359 105.5 73.3593 167 103.359C225.389 131.842 318.785 141.851 362.533 96.4732C391.024 66.9222 361.543 17.1347 320.893 22.8408C283.379 28.1068 249.542 59.3098 253.5 149.859C259.9 296.259 1031.5 218.026 1354.5 211.359"
+            stroke="white"
+            stroke-opacity="0.46"
+            stroke-width="44">
+          </path>
+        </svg>
+      </div>
+
+      <header class="relative z-[1]">
+        <h3>
+          {Content.locationInfo.title}
+        </h3>
+      </header>
+
+      <div class="flex flex-col flex-1 gap-6 relative z-[1]">
+        <address class="not-italic">
+          <div class="flex gap-2 items-center">
+            <div>
+              <svg
+                width="24"
+                height="25"
+                viewBox="0 0 24 25"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="location-icon"
+                style="width: 24px; height: 24px; flex-shrink: 0"
+                aria-hidden="true"
+              >
+                <path
+                  d="M12 21.7127C11.7667 21.7127 11.5333 21.671 11.3 21.5877C11.0667 21.5044 10.8583 21.3794 10.675 21.2127C9.59167 20.2127 8.63333 19.2377 7.8 18.2877C6.96667 17.3377 6.27083 16.4169 5.7125 15.5252C5.15417 14.6335 4.72917 13.7752 4.4375 12.9502C4.14583 12.1252 4 11.3377 4 10.5877C4 8.0877 4.80417 6.09603 6.4125 4.6127C8.02083 3.12936 9.88333 2.3877 12 2.3877C14.1167 2.3877 15.9792 3.12936 17.5875 4.6127C19.1958 6.09603 20 8.0877 20 10.5877C20 11.3377 19.8542 12.1252 19.5625 12.9502C19.2708 13.7752 18.8458 14.6335 18.2875 15.5252C17.7292 16.4169 17.0333 17.3377 16.2 18.2877C15.3667 19.2377 14.4083 20.2127 13.325 21.2127C13.1417 21.3794 12.9333 21.5044 12.7 21.5877C12.4667 21.671 12.2333 21.7127 12 21.7127ZM12 12.3877C12.55 12.3877 13.0208 12.1919 13.4125 11.8002C13.8042 11.4085 14 10.9377 14 10.3877C14 9.8377 13.8042 9.36686 13.4125 8.9752C13.0208 8.58353 12.55 8.3877 12 8.3877C11.45 8.3877 10.9792 8.58353 10.5875 8.9752C10.1958 9.36686 10 9.8377 10 10.3877C10 10.9377 10.1958 11.4085 10.5875 11.8002C10.9792 12.1919 11.45 12.3877 12 12.3877Z"
+                  fill="#543783"
+                />
+              </svg>
+            </div>
+            <div class="text-base leading-6 text-neutral-800 max-sm:text-sm max-sm:leading-5">
+              <span>{Content.locationInfo.addressLine1}</span>
+              <br>
+              <span>{Content.locationInfo.addressLine2}</span>
+            </div>
+          </div>
+        </address>
+
+        <div class="flex gap-2 items-center">
+          <div>
+            <svg
+              width="24"
+              height="25"
+              viewBox="0 0 24 25"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class="email-icon"
+              style="width: 24px; height: 24px; flex-shrink: 0"
+              aria-hidden="true"
+            >
+              <path
+                d="M4 20.3877C3.45 20.3877 2.97917 20.1919 2.5875 19.8002C2.19583 19.4085 2 18.9377 2 18.3877V6.3877C2 5.8377 2.19583 5.36686 2.5875 4.9752C2.97917 4.58353 3.45 4.3877 4 4.3877H20C20.55 4.3877 21.0208 4.58353 21.4125 4.9752C21.8042 5.36686 22 5.8377 22 6.3877V18.3877C22 18.9377 21.8042 19.4085 21.4125 19.8002C21.0208 20.1919 20.55 20.3877 20 20.3877H4ZM12 13.2127C12.0833 13.2127 12.1708 13.2002 12.2625 13.1752C12.3542 13.1502 12.4417 13.1127 12.525 13.0627L19.6 8.6377C19.7333 8.55436 19.8333 8.4502 19.9 8.3252C19.9667 8.2002 20 8.0627 20 7.9127C20 7.57936 19.8583 7.32936 19.575 7.1627C19.2917 6.99603 19 7.00436 18.7 7.1877L12 11.3877L5.3 7.1877C5 7.00436 4.70833 7.0002 4.425 7.1752C4.14167 7.3502 4 7.59603 4 7.9127C4 8.07936 4.03333 8.2252 4.1 8.3502C4.16667 8.4752 4.26667 8.57103 4.4 8.6377L11.475 13.0627C11.5583 13.1127 11.6458 13.1502 11.7375 13.1752C11.8292 13.2002 11.9167 13.2127 12 13.2127Z"
+                fill="#543783"
+              />
+            </svg>
+          </div>
+          <a href={`mailto:${Content.locationInfo.email}`} class="text-base leading-6 text-neutral-800 max-sm:text-sm max-sm:leading-5">
+            {Content.locationInfo.email}
+          </a>
+        </div>
+
+        <div class="flex gap-2 items-center">
+          <div>
+            <svg
+              width="24"
+              height="25"
+              viewBox="0 0 24 25"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class="schedule-icon"
+              style="width: 24px; height: 24px; flex-shrink: 0"
+              aria-hidden="true"
+            >
+              <path
+                d="M13 11.9877V8.3877C13 8.10436 12.9042 7.86686 12.7125 7.6752C12.5208 7.48353 12.2833 7.3877 12 7.3877C11.7167 7.3877 11.4792 7.48353 11.2875 7.6752C11.0958 7.86686 11 8.10436 11 8.3877V12.3627C11 12.496 11.025 12.6252 11.075 12.7502C11.125 12.8752 11.2 12.9877 11.3 13.0877L14.6 16.3877C14.7833 16.571 15.0167 16.6627 15.3 16.6627C15.5833 16.6627 15.8167 16.571 16 16.3877C16.1833 16.2044 16.275 15.971 16.275 15.6877C16.275 15.4044 16.1833 15.171 16 14.9877L13 11.9877ZM12 22.3877C10.6167 22.3877 9.31667 22.1252 8.1 21.6002C6.88333 21.0752 5.825 20.3627 4.925 19.4627C4.025 18.5627 3.3125 17.5044 2.7875 16.2877C2.2625 15.071 2 13.771 2 12.3877C2 11.0044 2.2625 9.70436 2.7875 8.4877C3.3125 7.27103 4.025 6.2127 4.925 5.3127C5.825 4.4127 6.88333 3.7002 8.1 3.1752C9.31667 2.6502 10.6167 2.3877 12 2.3877C13.3833 2.3877 14.6833 2.6502 15.9 3.1752C17.1167 3.7002 18.175 4.4127 19.075 5.3127C19.975 6.2127 20.6875 7.27103 21.2125 8.4877C21.7375 9.70436 22 11.0044 22 12.3877C22 13.771 21.7375 15.071 21.2125 16.2877C20.6875 17.5044 19.975 18.5627 19.075 19.4627C18.175 20.3627 17.1167 21.0752 15.9 21.6002C14.6833 22.1252 13.3833 22.3877 12 22.3877Z"
+                fill="#543783"
+              />
+            </svg>
+          </div>
+          <time class="text-base leading-6 text-neutral-800 max-sm:text-sm max-sm:leading-5">
+            {Content.locationInfo.hours}
+          </time>
+        </div>
+      </div>
+
+      <a href = {Content.locationInfo.buttonLink} class="gap-2.5 px-5 py-3.5 text-center text-base font-bold leading-6 text-white bg-indigo-500 cursor-pointer h-[52px] rounded-[50px] max-sm:mt-2 hover:bg-indigo-600 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 relative z-[1]">
+        {Content.locationInfo.buttonText}
+      </a>
+    </article>
+  </section>

@@ -1,0 +1,128 @@
+---
+import Button from '../Button.astro';
+
+interface Props {
+  Content: {
+    title: {
+      line1: string;
+      line2: string;
+    };
+    description: string;
+    features: {
+      text: string;
+    }[];
+    cta: {
+      heading: string;
+      subheading: string;
+      buttonText: string;
+      buttonLink: string;
+      callText: string;
+      callTextTwo: string;
+      phoneNumber: string;
+    };
+  };
+}
+
+const { Content } = Astro.props;
+---
+
+<section class="box-border flex gap-16 justify-between items-start px-[0px] pt-20 pb-20 mx-auto max-w-none bg-white  w-[1440px] max-md:flex-col max-md:gap-10 max-md:px-10 max-md:py-16 max-md:w-full max-md:h-auto max-md:max-w-[991px] max-midtablet:flex-col max-midtablet:gap-8 max-midtablet:px-8 max-midtablet:py-12 max-midtablet:h-auto max-midtablet:w-full max-tablet:gap-8 max-tablet:px-6 max-tablet:py-12 max-tablet:h-auto max-tablet:w-full max-sm:gap-8 max-sm:px-5 max-sm:py-10 max-sm:max-w-screen-sm max-[820px]:flex-col max-[820px]:gap-6 max-[820px]:px-6 max-[820px]:py-10 max-[820px]:h-auto max-[820px]:w-full max-[820px]:pb-16"
+  style="max-width:1320px;width:100%;">
+  <article class="flex flex-col gap-8 items-start h-[488px] w-[591px] max-md:w-full max-md:max-w-[600px] max-midtablet:h-auto max-midtablet:w-full max-midtablet:max-w-full max-tablet:h-auto max-tablet:w-full max-sm:h-auto max-[820px]:h-auto max-[820px]:w-full max-[820px]:gap-6"
+    style="max-width:591px;width:100%;">
+    <header class="self-stretch text-neutral-800 max-md:text-4xl max-md:leading-[52px] max-midtablet:text-3xl max-midtablet:leading-[46px] max-tablet:text-3xl max-tablet:leading-[46px] max-sm:text-3xl max-sm:leading-10 max-[820px]:text-3xl max-[820px]:leading-[46px]"
+      style="font-family: Poppins; font-size: 50px; font-style: normal; font-weight: 500; line-height: 72px;">
+      <div>{Content.title.line1}</div>
+      <div class="text-indigo-500">{Content.title.line2}</div>
+    </header>
+    <p
+      class="w-[554px] max-md:w-full max-md:text-base max-md:leading-7 max-midtablet:w-full max-midtablet:text-base max-midtablet:leading-7 max-tablet:w-full max-tablet:text-base max-tablet:leading-7 max-sm:text-sm max-sm:leading-6 max-[820px]:w-full max-[820px]:text-base max-[820px]:leading-7"
+      style="color: #222; font-family: Inter; font-size: 18px; font-style: normal; font-weight: 400; line-height: 34px; opacity: 0.75;"
+    >
+      {Content.description}
+    </p>
+    <ul class="flex flex-col gap-4 items-start w-full max-[820px]:gap-3">
+      {Content.features.map((feature) => (
+        <li class="flex gap-2 items-center h-auto min-h-6 w-full">
+          <div>
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class="check-icon max-[820px]:w-[14px] max-[820px]:h-[14px]"
+              style="width: 16px; height: 16px; flex-shrink: 0"
+            >
+              <path
+                d="M7.06732 9.19967L5.63398 7.76634C5.51176 7.64412 5.35621 7.58301 5.16732 7.58301C4.97843 7.58301 4.82287 7.64412 4.70065 7.76634C4.57843 7.88856 4.51732 8.04412 4.51732 8.23301C4.51732 8.4219 4.57843 8.57745 4.70065 8.69967L6.60065 10.5997C6.73398 10.733 6.88954 10.7997 7.06732 10.7997C7.2451 10.7997 7.40065 10.733 7.53398 10.5997L11.3007 6.83301C11.4229 6.71079 11.484 6.55523 11.484 6.36634C11.484 6.17745 11.4229 6.0219 11.3007 5.89967C11.1784 5.77745 11.0229 5.71634 10.834 5.71634C10.6451 5.71634 10.4895 5.77745 10.3673 5.89967L7.06732 9.19967ZM8.00065 14.6663C7.07843 14.6663 6.21176 14.4913 5.40065 14.1413C4.58954 13.7913 3.88398 13.3163 3.28398 12.7163C2.68398 12.1163 2.20898 11.4108 1.85898 10.5997C1.50898 9.78856 1.33398 8.9219 1.33398 7.99967C1.33398 7.07745 1.50898 6.21079 1.85898 5.39967C2.20898 4.58856 2.68398 3.88301 3.28398 3.28301C3.88398 2.68301 4.58954 2.20801 5.40065 1.85801C6.21176 1.50801 7.07843 1.33301 8.00065 1.33301C8.92287 1.33301 9.78954 1.50801 10.6007 1.85801C11.4118 2.20801 12.1173 2.68301 12.7173 3.28301C13.3173 3.88301 13.7923 4.58856 14.1423 5.39967C14.4923 6.21079 14.6673 7.07745 14.6673 7.99967C14.6673 8.9219 14.4923 9.78856 14.1423 10.5997C13.7923 11.4108 13.3173 12.1163 12.7173 12.7163C12.1173 13.3163 11.4118 13.7913 10.6007 14.1413C9.78954 14.4913 8.92287 14.6663 8.00065 14.6663Z"
+                fill="#543783"
+              />
+            </svg>
+          </div>
+            <span
+            class="text-base leading-6 text-neutral-800 max-midtablet:text-sm max-midtablet:leading-5 max-tablet:text-sm max-tablet:leading-5 max-sm:text-xs max-[820px]:text-sm max-[820px]:leading-5"
+            style="color: #222; font-family: Inter; font-size: 16px; font-style: normal; font-weight: 400; line-height: 24px;"
+            >
+            {feature.text}
+            </span>
+        </li>
+      ))}
+    </ul>
+  </article>
+  <aside class="shrink-0 mt-12 w-[668px] max-md:w-full max-md:max-w-[600px] max-midtablet:mt-6 max-midtablet:w-full max-tablet:mt-8 max-tablet:w-full max-sm:mt-6 max-[820px]:mt-6 max-[820px]:w-full max-[820px]:max-w-full"
+    style="max-width:668px;width:100%;">
+    <div class="box-border flex flex-col gap-2.5 items-center px-[50px] py-[40px] bg-indigo-500 rounded-3xl w-full
+      max-md:px-6 max-md:py-8
+      max-sm:px-4 max-sm:py-6
+      max-[820px]:px-5 max-[820px]:py-7">
+      <div class="flex flex-col gap-6 items-center w-full px-0">
+        <h2
+          class="self-stretch text-center text-white max-md:text-3xl max-md:leading-10 max-midtablet:text-2xl max-midtablet:leading-9 max-tablet:text-2xl max-tablet:leading-9 max-sm:text-2xl max-sm:leading-9 max-[820px]:text-2xl max-[820px]:leading-9"
+          style="
+            color: #FFF;
+            text-align: center;
+            font-family: Poppins;
+            font-size: 40px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 61px;
+          "
+        >
+          {Content.cta.heading} <br/>
+        </h2>
+        <p
+          class="text-lg leading-7 text-center text-white opacity-75 mb-6 max-midtablet:text-base max-midtablet:leading-6 max-midtablet:mb-4 max-tablet:text-base max-tablet:leading-6 max-tablet:mb-4 max-sm:text-base max-sm:leading-7 max-[820px]:text-base max-[820px]:leading-6 max-[820px]:mb-4"
+          style="
+            color: #FFF;
+            text-align: center;
+            font-family: Inter;
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: 34px;
+            opacity: 0.75;
+          "
+        >
+          {Content.cta.subheading}
+        </p>
+        <div class="flex gap-3 items-center w-full max-md:flex-col max-md:gap-4 max-md:w-full max-midtablet:flex-col max-midtablet:gap-3 max-tablet:flex-col max-tablet:gap-3 max-[820px]:flex-col max-[820px]:gap-3 max-[820px]:w-full">
+            <Button
+              buttonLink={Content.cta.buttonLink}
+              buttonText={Content.cta.buttonText}
+              buttonType="primary"
+              buttonClass="flex-1 max-md:w-full max-midtablet:w-full max-tablet:w-full max-[820px]:w-full"
+            />
+          <Button
+            buttonLink="/contact/"
+            phoneTextOne="Have a question?"
+            phoneTextTwo="Get in Touch"
+            buttonType="phone"
+            buttonClass="flex-1 max-md:w-full max-midtablet:w-full max-tablet:w-full max-[820px]:w-full"
+          />
+        </div>
+      </div>
+    </div>
+  </aside>
+</section>
+

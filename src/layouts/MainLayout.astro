@@ -1,0 +1,165 @@
+---
+import '../styles/global.css';
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import { fetchGeneralData, fetchHomeData } from '../utils/dataMapping';
+
+const Data = await fetchGeneralData();
+const HomeData = await fetchHomeData();
+const gtmId = Data.analytics.gtmId;
+
+// Accessing the title from Astro.props
+const { title, description } = Astro.props;
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<meta name="description" content={description} />
+		<title>{title}</title>
+		
+		<!-- Canonical URL - Critical for SEO -->
+		<link rel="canonical" href={Astro.url.href} />
+		
+		<!-- SEO Meta Tags -->
+		<meta name="robots" content="index, follow" />
+		<meta name="keywords" content="mental health, depression, anxiety, Clear Path, treatment, therapy, medication management, mental health care" />
+		<meta name="author" content="Clear Path" />
+		
+		<!-- Open Graph tags for social media sharing -->
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content="website" />
+		<meta property="og:url" content={Astro.url} />
+		<meta property="og:image" content={new URL("/branding/Clear path blue logo.png", Astro.site).href} />
+		<meta property="og:site_name" content="Clear Path" />
+		
+		<!-- Twitter Card tags -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content={title} />
+		<meta name="twitter:description" content={description} />
+		<meta name="twitter:image" content={new URL("/branding/Clear path blue logo.png", Astro.site).href} />
+
+		<!-- Netlify Identity widget (CMS login) -->
+		<script is:inline src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+		<style>
+			#contact-section {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0.3s ease;
+}
+
+#contact-section.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+body {
+    background-color: rgb(255, 255, 255); /* Changed to white */
+}
+		</style>
+	</head>
+	<body class="bg-white">
+        <Header
+          logo={HomeData.data.hero.logo}
+          buttonText={HomeData.data.hero.buttonText}
+        />
+        
+        <main id="main-content" role="main" tabindex="-1">
+            <slot />
+        </main>
+		<Footer />
+
+		<script>
+			window.addEventListener('scroll', () => {
+    const section = document.getElementById('contact-section');
+    if (section) {
+        const scrollPosition = window.scrollY;
+
+        if (scrollPosition > 200) {
+            section.classList.add('visible');
+        } else {
+            section.classList.remove('visible');
+        }
+    }
+});
+		</script>
+		<!-- Netlify Identity: redirect to CMS admin after login / handle invite tokens -->
+		<script>
+			declare global {
+				interface Window {
+					netlifyIdentity: any;
+				}
+			}
+			if (typeof window !== 'undefined' && window.netlifyIdentity) {
+				window.netlifyIdentity.on('init', (user: any) => {
+					if (!user) {
+						window.netlifyIdentity.on('login', () => {
+							document.location.href = '/admin/';
+						});
+					}
+				});
+				const hash = window.location.hash;
+				if (hash.startsWith('#invite_token=') || hash.startsWith('#recovery_token=')) {
+					window.location.replace(`/admin/${hash}`);
+				}
+			}
+		</script>
+		<!-- Schema.org Structured Data for SEO -->
+		<script type="application/ld+json" set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "MedicalBusiness",
+			"name": "Clear Path",
+			"description": "Mental health treatment center offering medication management and therapy for depression, anxiety, and other mental health conditions",
+			"url": Astro.url,
+			"logo": "/branding/Clear path blue logo.png",
+			"image": "/branding/Clear path blue logo.png",
+			"address": {
+				"@type": "PostalAddress",
+				"addressLocality": "Orange County",
+				"addressRegion": "CA",
+				"addressCountry": "US"
+			},
+			"medicalSpecialty": ["Psychiatry", "Mental Health"],
+			"availableService": [
+				"Medication Management",
+				"Psychotherapy",
+				"Mental Health Assessment"
+			]
+		})}></script>
+
+		<script defer set:html={`
+			(function (w, d, s, l, i) {
+				w[l] = w[l] || [];
+				w[l].push({
+					"gtm.start": new Date().getTime(),
+					event: "gtm.js",
+				});
+				var f = d.getElementsByTagName(s)[0],
+					j = d.createElement(s),
+					dl = l != "dataLayer" ? "&l=" + l : "";
+				j.async = true;
+				j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
+				f.parentNode.insertBefore(j, f);
+			})(
+				window,
+				document,
+				"script",
+				"dataLayer",
+				"${gtmId}"
+			);
+		`}></script>
+
+		<noscript
+			><iframe
+				src=https://www.googletagmanager.com/ns.html?id=${gtmId}
+				height="0"
+				width="0"
+				style="display:none;visibility:hidden"></iframe>
+		</noscript>
+	</body>
+</html>

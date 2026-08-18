@@ -1,0 +1,108 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+import { getCollection } from "astro:content";
+
+// Clean display names + preferred ordering (shared conventions with the footer)
+const programLabels = {
+  "medication-management": "Medication Management",
+  psychotherapy: "Psychotherapy",
+  telehealth: "Telehealth",
+};
+const programOrder = ["medication-management", "psychotherapy", "telehealth"];
+
+const conditionLabels = {
+  depression: "Depression",
+  anxiety: "Anxiety",
+  ptsd: "PTSD",
+  bipolar: "Bipolar",
+  stress: "Stress & Insomnia",
+};
+const conditionOrder = ["depression", "anxiety", "ptsd", "bipolar", "stress"];
+
+const titleCase = (slug) =>
+  slug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+
+const buildLinks = (entries, basePath, labels, order) =>
+  entries
+    .map((entry) => {
+      const slug = entry.id.replace(/\.json$/, "");
+      return { text: labels[slug] || titleCase(slug), url: `${basePath}/${slug}/`, slug };
+    })
+    .sort((a, b) => {
+      const ia = order.indexOf(a.slug);
+      const ib = order.indexOf(b.slug);
+      return (ia === -1 ? 999 : ia) - (ib === -1 ? 999 : ib);
+    });
+
+// Core Pages
+const corePages = [
+  { text: "Home", url: "/" },
+  { text: "About Us", url: "/about/" },
+  { text: "Resources", url: "/blog/" },
+  { text: "Insurance Verification", url: "/insurance/" },
+  { text: "Locations", url: "/location/" },
+  { text: "Contact Us", url: "/contact/" },
+];
+
+// Treatments We Offer (program pages)
+const treatmentsWeOffer = buildLinks(
+  await getCollection("programs"),
+  "/program",
+  programLabels,
+  programOrder
+);
+
+// Conditions We Treat (condition pages)
+const conditionsWeTreat = buildLinks(
+  await getCollection("treatments"),
+  "/treatment",
+  conditionLabels,
+  conditionOrder
+);
+
+// Blog Posts
+const blogPosts = (await getCollection("blog"))
+  .map((entry) => ({ text: entry.data.title, url: `/blog/${entry.slug}/`, date: entry.data.date }))
+  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+const sections = [
+  { heading: "Core Pages", links: corePages },
+  { heading: "Treatments We Offer", links: treatmentsWeOffer },
+  { heading: "Conditions We Treat", links: conditionsWeTreat },
+  { heading: "Blog Posts", links: blogPosts },
+];
+---
+
+<MainLayout
+  title="Sitemap | Clear Path Behavioral Health"
+  description="Browse all pages on the Clear Path Behavioral Health website, organized by category: core pages, treatments we offer, conditions we treat, and blog posts."
+>
+  <section class="px-6 pt-32 pb-20 md:pt-40 max-w-[1160px] mx-auto">
+    <h1 class="text-3xl md:text-4xl font-semibold text-[#0A277E] mb-3">Sitemap</h1>
+    <p class="text-neutral-600 mb-12 max-w-[720px]">
+      A complete list of pages on the Clear Path Behavioral Health website, organized by category.
+    </p>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12">
+      {sections.map((section) => (
+        <section aria-label={section.heading}>
+          <h2 class="text-xl font-semibold text-[#0A277E] mb-4 pb-2 border-b border-neutral-200">
+            {section.heading}
+          </h2>
+          <ul class="flex flex-col gap-3">
+            {section.links.map((link) => (
+              <li>
+                <a
+                  href={link.url}
+                  class="text-neutral-700 hover:text-[#0A277E] hover:underline transition-colors"
+                >
+                  {link.text}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
+    </div>
+  </section>
+</MainLayout>

@@ -1,0 +1,308 @@
+---
+const currentYear = new Date().getFullYear();
+
+import { fetchGeneralData } from "../../utils/dataMapping.ts";
+import { getCollection } from "astro:content";
+
+const Data = await fetchGeneralData();
+const { footer, logo, companyName } = Data;
+
+// Column 2 — Useful Links
+const usefulLinks = [
+  { text: "About Us", url: "/about/" },
+  { text: "Resources", url: "/blog/" },
+  { text: "Insurance Verification", url: "/insurance/" },
+  { text: "Locations", url: "/location/" },
+  { text: "Contact Us", url: "/contact/" },
+  { text: "Sitemap", url: "/sitemap/" },
+];
+
+// Clean display names + preferred ordering for the dynamic columns
+const programLabels = {
+  "medication-management": "Medication Management",
+  psychotherapy: "Psychotherapy",
+  telehealth: "Telehealth",
+};
+const programOrder = ["medication-management", "psychotherapy", "telehealth"];
+
+const conditionLabels = {
+  depression: "Depression",
+  anxiety: "Anxiety",
+  ptsd: "PTSD",
+  bipolar: "Bipolar",
+  stress: "Stress & Insomnia",
+};
+const conditionOrder = ["depression", "anxiety", "ptsd", "bipolar", "stress"];
+
+const titleCase = (slug) =>
+  slug.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
+
+const buildLinks = (entries, basePath, labels, order) =>
+  entries
+    .map((entry) => {
+      const slug = entry.id.replace(/\.json$/, "");
+      return { text: labels[slug] || titleCase(slug), url: `${basePath}/${slug}/`, slug };
+    })
+    .sort((a, b) => {
+      const ia = order.indexOf(a.slug);
+      const ib = order.indexOf(b.slug);
+      return (ia === -1 ? 999 : ia) - (ib === -1 ? 999 : ib);
+    });
+
+// Column 3 — Treatments We Offer (program pages)
+const treatmentsWeOffer = buildLinks(
+  await getCollection("programs"),
+  "/program",
+  programLabels,
+  programOrder
+);
+
+// Column 4 — Conditions We Treat (condition pages)
+const conditionsWeTreat = buildLinks(
+  await getCollection("treatments"),
+  "/treatment",
+  conditionLabels,
+  conditionOrder
+);
+---
+
+<footer
+  class="mx-auto my-5 max-w-[1320px]  max-md:rounded-3xl relative max-[900px]:mb-0 max-[900px]:mt-20"
+  role="contentinfo"
+  aria-label="Site footer"
+>
+  <div class="flex flex-wrap gap-10 text-base">
+    <div class="grow shrink-0 basis-0 w-fit max-md:max-w-full">
+      <div
+        class="px-9 py-8 w-full rounded-3xl max-[900px]:rounded-t-3xl max-[900px]:rounded-b-none bg-neutral-800 max-w-[1320px] max-md:px-5 max-md:max-w-full footer-radius"
+      >
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1fr] gap-10 items-start w-full text-white max-md:max-w-full"
+        >
+          <!-- Column 1: Logo + explanation -->
+          <div class="leading-6 max-md:max-w-full">
+            <a href="/" aria-label="Go to homepage">
+              <img
+                src={logo}
+                alt={`${companyName} Logo`}
+                class="object-contain max-w-full aspect-[4.55] w-[220px]"
+              />
+            </a>
+            <p
+                class="mt-2.5 max-md:max-w-full text-white text-[16px] leading-[24px] max-sm:text-[15px] max-sm:leading-[22px] max-xs:text-[14px] max-xs:leading-[20px]"
+              style="
+              color: #FFF;
+              font-family: Poppins, sans-serif;
+              font-style: normal;
+              font-weight: 400;
+
+              "
+              set:html={footer.description}
+            >
+            </p>
+          </div>
+
+          <!-- Column 2: Useful Links -->
+          <nav role="navigation" aria-label="Useful links">
+            <h3 class="footer-heading">Useful Links</h3>
+            <ul class="flex flex-col space-y-3">
+              {usefulLinks.map((link) => (
+                <li><a href={link.url} class="footer-link">{link.text}</a></li>
+              ))}
+            </ul>
+          </nav>
+
+          <!-- Column 3: Treatments We Offer -->
+          <nav role="navigation" aria-label="Treatments we offer">
+            <h3 class="footer-heading">Treatments We Offer</h3>
+            <ul class="flex flex-col space-y-3">
+              {treatmentsWeOffer.map((link) => (
+                <li><a href={link.url} class="footer-link">{link.text}</a></li>
+              ))}
+            </ul>
+          </nav>
+
+          <!-- Column 4: Conditions We Treat -->
+          <nav role="navigation" aria-label="Conditions we treat">
+            <h3 class="footer-heading">Conditions We Treat</h3>
+            <ul class="flex flex-col space-y-3">
+              {conditionsWeTreat.map((link) => (
+                <li><a href={link.url} class="footer-link">{link.text}</a></li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+        <div
+          class="flex flex-wrap gap-5 justify-between items-start mt-16 w-full max-md:mt-10 max-md:max-w-full"
+        >
+          <div class="flex flex-wrap justify-between gap-10 mt-5 text-white w-full">
+            <p 
+              class="my-auto text-white opacity-50"
+              style="
+              color: #FFF;
+              font-family: Poppins, sans-serif;
+              font-size: 16px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: 24px;
+              opacity: 0.5;
+
+              "
+            >
+              {footer.copyrightText.replace('{year}', currentYear.toString())} {currentYear}
+            </p>
+            <button id="back-to-top"
+              class="px-6 py-2 text-base text-white rounded-[12px] border border-solid border-[rgba(255,255,255,0.53)] bg-[linear-gradient(96deg,rgba(93,131,196,0.5)_0%,rgba(93,131,196,0.1)_100%)] cursor-pointer"
+              aria-label="Back to top of page"
+            >
+              {footer.backToTopText}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<script defer>
+document.addEventListener("DOMContentLoaded", () => {
+  // Back to top button functionality
+  const backToTopButton = document.getElementById("back-to-top");
+  if (backToTopButton) {
+    backToTopButton.addEventListener("click", (event) => {
+      event.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+  
+  // Handle hash navigation
+  const handleHashNavigation = () => {
+    // Get the hash from the URL (remove the leading '#' if present)
+    const hash = window.location.hash.replace(/^#\/?/, '');
+    
+    if (hash) {
+      // Give the page a moment to fully render before scrolling
+      setTimeout(() => {
+        const targetElement = document.getElementById(hash);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100);
+    }
+  };
+  
+  // Handle hash navigation on page load
+  handleHashNavigation();
+  
+  // Also handle hash changes without page reload
+  window.addEventListener('hashchange', handleHashNavigation);
+});
+</script>
+<style>
+  .footer-heading {
+    color: #fff;
+    font-family: Poppins, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px;
+    margin-bottom: 1rem;
+    white-space: nowrap;
+  }
+
+  .footer-link {
+    color: #fff;
+    font-family: Poppins, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    opacity: 0.6;
+    transition: opacity 0.2s ease;
+  }
+
+  .footer-link:hover {
+    opacity: 1;
+    text-decoration: underline;
+  }
+
+  @media (max-width: 1319px) {
+    .footer-radius {
+      border-bottom-left-radius: 0 !important;
+      border-bottom-right-radius: 0 !important;
+    }
+    footer {
+      margin-bottom: 0 !important;
+      margin-top: 20px !important;
+      border-radius: 0 !important;
+      max-width: 100vw !important;
+      width: 100% !important;
+    }
+    .px-9 {
+      padding-left: 1.25rem !important;
+      padding-right: 1.25rem !important;
+    }
+    .py-8 {
+      padding-top: 1.5rem !important;
+      padding-bottom: 1.5rem !important;
+    }
+    .max-w-\[1320px\] {
+      max-width: 100vw !important;
+    }
+    .max-w-\[1081px\] {
+      max-width: 100vw !important;
+    }
+    .w-\[220px\] {
+      width: 180px !important;
+    }
+    .text-\[16px\], .text-base {
+      font-size: 15px !important;
+      line-height: 22px !important;
+    }
+    .max-sm\:text-\[15px\] {
+      font-size: 14px !important;
+      line-height: 20px !important;
+    }
+    .max-xs\:text-\[14px\] {
+      font-size: 13px !important;
+      line-height: 18px !important;
+    }
+    .p-4 {
+      padding: 0.75rem !important;
+    }
+    .px-6 {
+      padding-left: 1rem !important;
+      padding-right: 1rem !important;
+    }
+    .py-2 {
+      padding-top: 0.5rem !important;
+      padding-bottom: 0.5rem !important;
+    }
+    .rounded-3xl {
+      /* border-radius: 24px !important; */
+    }
+    .rounded-lg {
+      border-radius: 12px !important;
+    }
+    .gap-10 {
+      gap: 1.25rem !important;
+    }
+    .gap-5 {
+      gap: 1rem !important;
+    }
+    .mt-16 {
+      margin-top: 2rem !important;
+    }
+    .mt-2\.5 {
+      margin-top: 0.5rem !important;
+    }
+    .w-\[50\%\], .w-1\/2 {
+      width: 100% !important;
+    }
+    .w-\[39\%\] {
+      width: 100% !important;
+    }
+    .aspect-\[4\.55\] {
+      aspect-ratio: 4.55 !important;
+    }
+  }
+</style>

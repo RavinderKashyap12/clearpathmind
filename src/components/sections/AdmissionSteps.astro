@@ -1,0 +1,25 @@
+---
+import AdmissionStep from "../ui/AdmissionStep.astro"; // Import the AdmissionStep component
+import { fetchAdmissions } from "../../utils/dataMapping.ts";
+
+const { data: admissionsData } = await fetchAdmissions();
+---
+
+<section class="admission-steps-section py-16 bg-gray-100">
+  <div class="container mx-auto text-center">
+    <h2 class="">Our Admissions Process</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      {
+        admissionsData.steps.map((step) => (
+          <AdmissionStep
+            name={step.name}
+            title={step.title}
+            text={step.text}
+            icon={step.icon}
+            modalText={step.modalText}
+          />
+        ))
+      }
+    </div>
+  </div>
+</section>

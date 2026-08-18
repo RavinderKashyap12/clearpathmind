@@ -1,0 +1,359 @@
+---
+import { Image } from "astro:assets";
+import Button from "../Button.astro";
+
+const { headingOne, textOne, headingTwo, textTwo, images,buttonText,buttonLink,buttonTwo_Part_1,buttonTwo_Part_2,buttonTwo_Number } = Astro.props.Content;
+---
+
+<section class="mx-auto my-20 max-w-[1320px] max-md:my-8 relative program-about">
+    <div class="rounded-none">
+        <div class="flex gap-5 max-md:flex-col max-[820px]:flex-col">
+            <article class="w-[56%] max-md:ml-0 max-md:w-full max-[820px]:ml-0 max-[820px]:w-full">
+                <img
+                    src={images.imageOne}
+                    alt="Clear Path Treatment"
+                    class="my-auto w-full h-full object-cover rounded-2xl max-md:mt-6 max-[820px]:mt-4 max-md:max-w-full max-[820px]:max-w-full"
+                />
+            </article>
+            <article class="ml-5 w-[44%] max-md:ml-0 max-md:w-full max-[820px]:ml-0 max-[820px]:w-full">
+                <div class="w-full max-md:mt-6 max-md:max-w-full max-[820px]:mt-6 max-[820px]:max-w-full">
+                    <h2 
+                    >
+                      {headingOne}
+                      <span class="text-[#5E81E9]">
+                        {headingTwo}
+                      </span>
+                    </h2>
+                    <p>
+
+                      {textOne}
+                    </p>
+                    {textTwo && textTwo.trim() !== "" && (
+                      <p class="mt-4">
+                        {textTwo}
+                      </p>
+                    )}
+                    <div class="flex gap-3 justify-center max-md:flex-col max-md:w-full max-md:mx-auto max-md:mt-4  max-md:max-w-[400px] max-sm:gap-2.5 mt-6">
+                        <Button 
+                          buttonLink={buttonLink}
+                          buttonText={buttonText}
+                          buttonType="primary"
+                        />
+                        <Button
+                          buttonLink="/contact/"
+                          phoneTextOne="Have a question?"
+                          phoneTextTwo="Get in Touch"
+                          buttonType="phone"
+                        />
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Enhanced responsive breakpoints with improved spacing */
+@media (min-width: 1321px) {
+  .program-about {
+    margin-top: 5rem;
+    margin-bottom: 5rem;
+  }
+}
+
+@media (min-width: 1201px) and (max-width: 1320px) {
+  .program-about {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+  }
+}
+
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .program-about {
+    margin-left: 1.25rem;
+    margin-right: 1.25rem;
+    margin-top: 3.5rem;
+    margin-bottom: 3.5rem;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1024px) {
+  .program-about {
+    margin-left: 1.25rem;
+    margin-right: 1.25rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+}
+
+@media (min-width: 801px) and (max-width: 900px) {
+  .program-about {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    margin-top: 2.5rem;
+    margin-bottom: 2.5rem;
+  }
+}
+
+/* Significantly reduced margins below 800px */
+@media (min-width: 701px) and (max-width: 800px) {
+  .program-about {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 700px) {
+  .program-about {
+    margin-left: 0.875rem;
+    margin-right: 0.875rem;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 600px) {
+  .program-about {
+    margin-left: 0.75rem;
+    margin-right: 0.75rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+}
+
+@media (min-width: 401px) and (max-width: 480px) {
+  .program-about {
+    margin-left: 0.625rem;
+    margin-right: 0.625rem;
+    margin-top: 0.875rem;
+    margin-bottom: 0.875rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .program-about {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+}
+
+/* Enhanced paragraph responsiveness with reduced spacing */
+@media (max-width: 1320px) {
+  .program-about p {
+    margin-top: 1.75rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .program-about p {
+    margin-top: 1.5rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .program-about p {
+    font-size: 16px !important;
+    line-height: 28px !important;
+    margin-top: 1.25rem;
+  }
+}
+
+@media (max-width: 700px) {
+  .program-about p {
+    font-size: 15px !important;
+    line-height: 26px !important;
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .program-about p {
+    font-size: 15px !important;
+    line-height: 26px !important;
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .program-about p {
+    font-size: 14px !important;
+    line-height: 24px !important;
+    margin-top: 0.875rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .program-about p {
+    font-size: 14px !important;
+    line-height: 22px !important;
+    margin-top: 0.75rem;
+  }
+}
+
+/* Enhanced button responsiveness with reduced spacing */
+@media (max-width: 1320px) {
+  .program-about .flex.flex-wrap {
+    margin-top: 1.75rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .program-about .flex.flex-wrap {
+    margin-top: 1.5rem;
+  }
+}
+
+@media (max-width: 800px) {
+  .program-about .flex.flex-wrap {
+    margin-top: 1.25rem;
+    gap: 0.75rem;
+  }
+  
+  .program-about a {
+    min-width: auto !important;
+    padding: 0.75rem 1rem !important;
+    font-size: 16px !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .program-about .flex.flex-wrap {
+    margin-top: 1rem;
+    gap: 0.625rem;
+  }
+  
+  .program-about a {
+    padding: 0.75rem 0.875rem !important;
+    font-size: 15px !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .program-about .flex.flex-wrap {
+    margin-top: 1rem;
+    gap: 0.5rem;
+    flex-direction: column;
+  }
+  
+  .program-about a {
+    width: 100% !important;
+    flex: none !important;
+    padding: 0.875rem 1rem !important;
+    font-size: 16px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .program-about .flex.flex-wrap {
+    margin-top: 0.875rem;
+  }
+  
+  .program-about a {
+    padding: 0.75rem 0.875rem !important;
+    font-size: 15px !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .program-about .flex.flex-wrap {
+    margin-top: 0.75rem;
+  }
+  
+  .program-about a {
+    padding: 0.625rem 0.75rem !important;
+    font-size: 14px !important;
+  }
+}
+
+/* Enhanced image spacing with reduced margins */
+@media (max-width: 1320px) {
+  .program-about img {
+    margin-top: 1.5rem !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  .program-about img {
+    margin-top: 1.25rem !important;
+  }
+}
+
+@media (max-width: 800px) {
+  .program-about img {
+    margin-top: 1rem !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .program-about img {
+    margin-top: 0.875rem !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .program-about img {
+    margin-top: 0.75rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .program-about img {
+    margin-top: 0.625rem !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .program-about img {
+    margin-top: 0.5rem !important;
+  }
+}
+
+/* Enhanced text container spacing */
+@media (max-width: 1320px) {
+  .program-about article > div {
+    margin-top: 1.5rem !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  .program-about article > div {
+    margin-top: 1.25rem !important;
+  }
+}
+
+@media (max-width: 800px) {
+  .program-about article > div {
+    margin-top: 1rem !important;
+  }
+}
+
+@media (max-width: 700px) {
+  .program-about article > div {
+    margin-top: 0.875rem !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .program-about article > div {
+    margin-top: 0.75rem !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .program-about article > div {
+    margin-top: 0.625rem !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .program-about article > div {
+    margin-top: 0.5rem !important;
+  }
+}
+</style>

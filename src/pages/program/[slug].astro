@@ -1,0 +1,86 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import { fetchGeneralData, fetchSubProgramData , fetchHomeData , fetchBlogPageData } from '../../utils/dataMapping';
+
+
+import FAQ from "../../components/sections/FAQ.astro";
+import HeroProgram from "../../components/sections/HeroProgram.astro";
+import ProgramAbout from "../../components/sections/ProgramAbout.astro";
+import Video from "../../components/sections/Video.astro";
+import TreatmentGrid from "../../components/sections/TreatmentGrid.astro";
+
+import WhoNeeds from "../../components/sections/WhoNeeds.astro";
+import Testimonials from "../../components/sections/Testimonials.astro";
+import DisorderGrid from "../../components/sections/DisorderGrid.astro";
+import CTA from "../../components/CTA.astro";
+import ProgramTMS from "../../components/sections/programTMS.astro";
+import Program12 from "../../components/sections/Program12.astro";
+
+export async function getStaticPaths() {
+    const treatments = import.meta.glob('../../content/programs/*.json', { eager: true });
+    const paths = Object.keys(treatments).map((file) => {
+        const slug = file.split('/').pop().replace('.json', '');
+        return { params: { slug } };
+    });
+    return paths;
+}
+
+const { data: BlogPageData } = await fetchBlogPageData();
+
+const sub_type = Astro.params.slug;
+const GeneralData = await fetchGeneralData();
+const { data: ProgramData } = await fetchSubProgramData(sub_type);
+const { data: HomeData } = await fetchHomeData(); // Assuming HomeData is also needed for links
+
+// Generate dynamic SEO data
+const generateTitle = (data) => {
+  return data.seo?.metaTitle || 
+         `${data.hero?.heading || data.title || 'Program'} | Clear Path Behavioral Health`;
+};
+
+const generateDescription = (data) => {
+  if (data.seo?.metaDescription) return data.seo.metaDescription;
+  if (data.hero?.text) return data.hero.text.substring(0, 160) + '...';
+  return 'Clear Path provides evidence-based mental health programs with personalized care and innovative therapies.';
+};
+
+const pageTitle = generateTitle(ProgramData);
+const pageDescription = generateDescription(ProgramData);
+---
+
+<MainLayout title={pageTitle} description={pageDescription}>
+    <div class="px-1 md:px-1 lg:px-0">
+        <!-- Hero Section -->
+        <HeroProgram Content={ProgramData.hero}  GeneralData={GeneralData} />
+
+        <!-- About Section -->
+        <ProgramAbout Content={ProgramData.about} />
+
+        <!-- Video Section -->
+        <Video Content={ProgramData.video} />
+
+        <!-- Treatment Grid - Now passing Content prop -->
+        <TreatmentGrid Content={ProgramData.treatmentGrid} />
+
+        <!-- First ProgramAbout with content from CMS -->
+        <ProgramAbout Content={ProgramData.whyChoose} />
+        
+        <ProgramTMS Content={ProgramData.programTMS} />
+        <Testimonials Content={HomeData.testimonials} />
+        <Program12 Content={ProgramData.program12} />
+        
+        <!-- Second ProgramAbout with custom content from CMS -->
+        <ProgramAbout Content={ProgramData.benefits} />
+        
+        <WhoNeeds Content={ProgramData.whoNeeds} />
+        <FAQ Content={ProgramData.faq} />
+        <DisorderGrid Content={BlogPageData.disorders} />
+        <CTA Content={ProgramData.cta}/>
+    </div>
+
+    {ProgramData.jsonLd && (
+        <script type="application/ld+json" set:html={JSON.stringify(ProgramData.jsonLd)} />
+    )}
+</MainLayout>
+
+

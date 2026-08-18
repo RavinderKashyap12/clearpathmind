@@ -1,0 +1,103 @@
+---
+import MainLayout from "../../../../layouts/MainLayout.astro";
+import { fetchGeneralData, fetchLocationProgramData, fetchLocationHomeData, fetchBlogPageData } from '../../../../utils/dataMapping';
+
+import FAQ from "../../../../components/sections/FAQ.astro";
+import HeroProgram from "../../../../components/sections/HeroProgram.astro";
+import ProgramAbout from "../../../../components/sections/ProgramAbout.astro";
+import Video from "../../../../components/sections/Video.astro";
+import TreatmentGrid from "../../../../components/sections/TreatmentGrid.astro";
+import WhoNeeds from "../../../../components/sections/WhoNeeds.astro";
+import Testimonials from "../../../../components/sections/Testimonials.astro";
+import DisorderGrid from "../../../../components/sections/DisorderGrid.astro";
+import CTA from "../../../../components/CTA.astro";
+import ProgramTMS from "../../../../components/sections/programTMS.astro";
+import Program12 from "../../../../components/sections/Program12.astro";
+
+export async function getStaticPaths() {
+    // Get all location slugs
+    const locations = import.meta.glob('../../../../content/locations/*.json', { eager: true });
+    const locationSlugs = Object.keys(locations)
+        .filter(file => !file.includes('config.yml') && file.endsWith('.json'))
+        .map(file => file.split('/').pop().replace('.json', ''));
+
+    const locationPrograms = import.meta.glob('../../../../content/location_program/*.json', { eager: true });
+    
+    const paths = Object.keys(locationPrograms)
+        .map(file => {
+            const filename = file.split('/').pop().replace('.json', '');
+            
+            // Find which location slug is a prefix of the filename
+            const locationSlug = locationSlugs.find(slug => filename.startsWith(slug + '-'));
+
+            if (locationSlug) {
+                const programSlug = filename.substring(locationSlug.length + 1);
+                return {
+                    params: {
+                        location: locationSlug,
+                        program: programSlug
+                    }
+                };
+            }
+            return null;
+        }).filter(p => p !== null); // Filter out files that didn't match a location
+    
+    return paths;
+}
+
+const { location, program } = Astro.params;
+const GeneralData = await fetchGeneralData();
+const { data: ProgramData } = await fetchLocationProgramData(location, program);
+const { data: HomeData } = await fetchLocationHomeData(location);
+const { data: BlogPageData } = await fetchBlogPageData();
+
+// Generate dynamic SEO data for location-based programs
+const generateLocationTitle = (data, location, program) => {
+  if (data.seo?.metaTitle) return data.seo.metaTitle;
+  const locationName = location.charAt(0).toUpperCase() + location.slice(1);
+  const programName = program.charAt(0).toUpperCase() + program.slice(1).replace(/-/g, ' ');
+  return `${programName} Program in ${locationName} | Clear Path Behavioral Health`;
+};
+
+const generateLocationDescription = (data, location, program) => {
+  if (data.seo?.metaDescription) return data.seo.metaDescription;
+  const locationName = location.charAt(0).toUpperCase() + location.slice(1);
+  const programName = program.charAt(0).toUpperCase() + program.slice(1).replace(/-/g, ' ');
+  if (data.hero?.text) return `${programName} program in ${locationName}. ${data.hero.text.substring(0, 120)}...`;
+  return `Clear Path provides ${programName.toLowerCase()} program in ${locationName} with personalized care and innovative therapies.`;
+};
+
+const pageTitle = generateLocationTitle(ProgramData, location, program);
+const pageDescription = generateLocationDescription(ProgramData, location, program);
+---
+
+<MainLayout title={pageTitle} description={pageDescription}>
+    <div class="px-1 md:px-1 lg:px-0">
+        <!-- Hero Section -->
+        <HeroProgram Content={ProgramData.hero} GeneralData={GeneralData} />
+
+        <!-- About Section -->
+        <ProgramAbout Content={ProgramData.about} />
+
+        <!-- Video Section -->
+        <Video Content={ProgramData.video} />
+
+        <!-- Treatment Grid - Now passing Content prop -->
+        <TreatmentGrid Content={ProgramData.treatmentGrid} />
+
+        <!-- First ProgramAbout with content from CMS -->
+        <ProgramAbout Content={ProgramData.whyChoose} />
+        
+        <ProgramTMS Content={ProgramData.programTMS} />
+        <Testimonials Content={HomeData.testimonials} />
+        <Program12 Content={ProgramData.program12} />
+        
+        <!-- Second ProgramAbout with custom content from CMS -->
+        <ProgramAbout Content={ProgramData.benefits} />
+        
+        <WhoNeeds Content={ProgramData.whoNeeds} />
+        <FAQ Content={ProgramData.faq} />
+        <DisorderGrid Content={BlogPageData.disorders} />
+        <CTA Content={ProgramData.cta}/>
+    </div>
+</MainLayout> 

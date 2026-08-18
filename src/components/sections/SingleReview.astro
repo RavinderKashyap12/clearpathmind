@@ -1,0 +1,35 @@
+---
+import Button from "../Button.astro"
+
+const {heading, description, buttonText, cardDetail, cardTitle } = Astro.props.Content;
+
+---
+
+<section class="py-20 md:overflow-visible overflow-hidden">
+    <div class="container section relative !pr-14  ">
+        <img
+            src="/imgs/review-bg.jpg"
+            alt=""
+            class="absolute top-0 w-full h-full object-cover rounded-md"
+        />
+        <div
+            class="flex flex-col gap-5 items-start max-w-[27rem] w-full z-10 relative ml-auto pl-5"
+        >
+            <h2 class="h3">{heading}</h2>
+            <p>
+                {description}
+            </p>
+            <Button
+                buttonText={buttonText}
+                buttonClass="primary-button"
+            />
+        </div>
+        <div class="lg:absolute relative bottom-[-20px] 2xl:left-[-8rem] z-10 w-full lg:max-w-md lg:max-h-md bg-white pt-16 px-10 pb-10 review-card-shadow
+        xl:left-[-3rem] rounded-md ">
+            <p class="mb-4">
+                {cardDetail}
+            </p>
+            <span class="text-2xl font-semibold text-primary-500">{cardTitle}</span>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,119 @@
+---
+import Button from "../Button.astro";
+import Form from "../Form.astro";
+import { Image } from "astro:assets";
+
+const GeneralData = Astro.props.GeneralData;
+const { heading, text, buttonText, buttonLink, phoneQuestionText, treatmentsLabel, callButtonText, callButtonLink, navItems , hideButton = false } = Astro.props.Content;
+---
+
+<section class="mx-auto mt-2 mb-16 max-w-[1320px] relative hero-program max-[1320px]:mt-20">
+  <div class="rounded-none">
+    <section class="flex flex-col px-20 pt-16 pb-8 w-full bg-purple-900 rounded-3xl max-xl:px-16 max-lg:px-12 max-md:px-6 max-sm:px-4 max-md:max-w-full min-h-[500px] max-md:min-h-[400px] max-sm:min-h-[350px] relative">
+      <!-- Main Content Section - Centered -->
+      <div class="flex-1 flex items-center justify-center">
+        <section class="flex flex-col items-center text-center max-w-3xl mx-auto px-4">
+          <!-- Treatment Label Badge -->
+          {treatmentsLabel && (
+            <div class="mb-4 mt-6">
+              <span
+                class="inline-block px-8 py-2 rounded-full bg-white max-lg:px-6 max-md:px-5 max-sm:px-4"
+                style="
+                  color: #0A277E;
+                font-family: Inter, sans-serif;
+                font-size: 16px;
+                font-style: normal;
+                font-weight: 400;
+                line-height: 24px;
+              "
+            >
+              {treatmentsLabel}
+            </span>
+          </div>
+          )}
+
+          <!-- Main Heading -->
+            <h1 
+            class="text-white !mb-4"
+            >
+            {heading}
+            </h1>
+
+          <!-- Description Text -->
+          {text && (
+            <p class="text-white/75 mb-8">
+              {text}
+            </p>
+          )}
+
+          <!-- Action Buttons -->
+          {hideButton == false && (
+            <div class="flex flex-col justify-center sm:flex-row gap-4 w-full max-w-md">
+                <Button 
+                  buttonLink={buttonLink}
+                  buttonText={buttonText}
+                  buttonType="primary"
+                  buttonClass="flex-1 min-h-[56px] max-[639px]:px-4 max-[639px]:py-2.5 whitespace-nowrap"
+                />
+
+              <Button
+                buttonLink="/contact/"
+                phoneTextOne="Have a question?"
+                phoneTextTwo="Get in Touch"
+                buttonType="secondary"
+                buttonClass="flex-1 min-h-[56px] max-[639px]:px-3 max-[639px]:py-1.5 whitespace-nowrap"
+              />
+            </div>
+          )}
+        </section>
+      </div>
+    </section>
+  </div>
+</section>
+
+<style>
+  @media (min-width: 901px) and (max-width: 1319px) {
+    .hero-program {
+      margin-left: 1.25rem;
+      margin-right: 1.25rem;
+      margin-top: 12px;
+      margin-bottom: 4rem;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .hero-program {
+      margin-left: 1.5rem;
+      margin-right: 1.5rem;
+      margin-top: 10px;
+      margin-bottom: 3.5rem;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .hero-program {
+      margin-left: 1.25rem;
+      margin-right: 1.25rem;
+      margin-top: 8px;
+      margin-bottom: 3rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-program {
+      margin-left: 1rem;
+      margin-right: 1rem;
+      margin-top: 6px;
+      margin-bottom: 2.5rem;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .hero-program {
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
+      margin-top: 4px;
+      margin-bottom: 2rem;
+    }
+  }
+</style>

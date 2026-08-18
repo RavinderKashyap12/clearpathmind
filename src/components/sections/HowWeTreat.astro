@@ -1,0 +1,48 @@
+---
+const { heading, description,process} = Astro.props.Content;
+---
+
+
+
+<section class="program_what-we-treat section">
+    <div class="container program-content-width">
+        <h2 class="font-medium mb-8">
+           {heading}
+        </h2>
+        <p class="mb-8">
+            {description}
+        </p>
+        <ul class="content-ul">
+            {process.map((process) => (
+                <li>
+                <strong>{process.title} </strong>{process.details}
+            </li>
+              ))}
+            
+            <!-- <li>
+                <strong>Initial Assessment: </strong>A thorough evaluation
+                of the individual’s substance use history, mental health
+                conditions, and physical health to create a personalized
+                treatment plan.
+            </li>{team.map((team) => (
+                    <TeamCard 
+                      Name={team.name} 
+                      Designation={team.designation} 
+                      Image={team.image} 
+                    />
+                  ))}
+            <li>
+                <strong>Initial Assessment: </strong>A thorough evaluation
+                of the individual’s substance use history, mental health
+                conditions, and physical health to create a personalized
+                treatment plan.
+            </li>
+            <li>
+                <strong>Initial Assessment: </strong>A thorough evaluation
+                of the individual’s substance use history, mental health
+                conditions, and physical health to create a personalized
+                treatment plan.
+            </li> -->
+        </ul>
+    </div>
+</section>

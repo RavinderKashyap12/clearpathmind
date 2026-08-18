@@ -1,0 +1,140 @@
+---
+import Button from '../Button.astro';
+
+interface Props {
+  Content: {
+    heading: string;
+    headingColored: string;
+    headingEnd: string;
+    description: string;
+    listHeading: string;
+    listItems: string[];
+    listDescription: string;
+    buttonText: string;
+    buttonLink: string;
+    buttonTwo_Part_1: string;
+    buttonTwo_Part_2: string;
+    buttonTwo_Number: string;
+  };
+}
+
+const { Content } = Astro.props;
+---
+
+<section class="mx-auto my-10 max-w-[1320px] relative who-needs">
+    <div class="rounded-none">
+        <div class="flex gap-5 lg:flex-row flex-col">
+            <article class="lg:w-6/12 w-full">
+            <div class="self-stretch w-full">
+                <h2>
+                {Content.heading}
+                <span class="text-[#5E81E9]">
+                    {Content.headingColored}
+                </span>
+                {Content.headingEnd}
+                </h2>
+                <p set:html={Content.description}>
+                </p>
+                <div class="flex flex-col sm:flex-row gap-3 mt-6 lg:mt-8 w-full lg:max-w-[552px]">
+                <Button 
+                  buttonLink="/insurance/"
+                  buttonText={Content.buttonText}
+                  buttonType="primary"
+                  buttonClass="w-full sm:flex-1"
+                />
+                <Button
+                  buttonLink="/contact/"
+                  phoneTextOne="Have a question?"
+                  phoneTextTwo="Get in Touch"
+                  buttonType="phone"
+                  buttonClass="w-full sm:flex-1"
+                />
+                </div>
+            </div>
+            </article>
+            <article class="lg:w-6/12 w-full">
+            <div id="textctn" class="flex flex-col grow justify-center p-6 sm:p-8 w-full text-white bg-indigo-500 rounded-3xl">
+                <div>
+                <p class="!text-2xl !font-medium   uppercase text-white">
+                    {Content.listHeading}
+                </p>
+                <ul class="mt-4 sm:mt-6 w-full sm:text-lg text-white list-disc pl-6">
+                    {Content.listItems.map((item) => (
+                      <li class="mt-3 sm:mt-5 first:mt-0 text-white" style="opacity: 0.85;">
+                        {item}
+                      </li>
+                    ))}
+                </ul>
+                <p class="mt-4 sm:mt-6 text-sm text-white" style="opacity: 0.85;">
+                    {Content.listDescription}
+                </p>
+                </div>
+            </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<style>
+/* Responsive margins matching HeroProgram */
+.who-needs {
+  width: 100%;
+  max-width: 1320px;
+}
+
+@media (min-width: 901px) and (max-width: 1319px) {
+  .who-needs {
+    margin-left: 1.25rem;
+    margin-right: 1.25rem;
+    width: calc(100% - 2.5rem);
+  }
+}
+
+@media (max-width: 900px) {
+  .who-needs {
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    width: calc(100% - 3rem);
+  }
+}
+
+@media (max-width: 767px) {
+  .who-needs {
+    margin-left: 1.25rem;
+    margin-right: 1.25rem;
+    width: calc(100% - 2.5rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .who-needs {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    width: calc(100% - 2rem);
+  }
+}
+
+@media (max-width: 400px) {
+  .who-needs {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    width: calc(100% - 1rem);
+  }
+}
+
+#textctn {
+    color: #FFF;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 34px;
+}
+
+/* Ensure text remains readable on smaller screens */
+@media (max-width: 640px) {
+    #textctn {
+        font-size: 14px;
+        line-height: 28px;
+    }
+}
+</style>

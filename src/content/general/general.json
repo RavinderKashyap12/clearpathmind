@@ -1,0 +1,43 @@
+{
+  "analytics": {
+    "gtmId": "GTM-TT65WQBH"
+  },
+  "companyName": "ClearPath Mental Health",
+  "city": "",
+  "logo": "/imgs/clearpath_logo.png",
+  "state": "",
+  "address": "",
+  "phoneNumber": "",
+  "footer": {
+    "description": "We are mental health experienced therapists that are passionate about our <br>goal on empowering you mentally with our wellness journey.",
+    "navColumn1": {
+      "links": [
+        {
+          "text": "Home",
+          "url": "/"
+        },
+        {
+          "text": "About Us",
+          "url": "/about/"
+        }
+      ]
+    },
+    "navColumn2": {
+      "links": [
+        {
+          "text": "Resources",
+          "url": "/blog/"
+        },
+        {
+          "text": "Contact Us",
+          "url": "/contact/"
+        }
+      ]
+    },
+    "emailPlaceholder": "email@gmail.com",
+    "signUpButtonText": "Sign Up",
+    "copyrightText": "Copyright © ClearPath",
+    "backToTopText": "Back to Top"
+  },
+  "Email": "info@clearpathmind.com"
+}

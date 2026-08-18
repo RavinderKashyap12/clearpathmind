@@ -1,0 +1,301 @@
+{
+  "insuranceOptions": {
+    "buttonSecondLink": "/contact/",
+    "buttonOneText": "Check Your Insurance",
+    "headingOne": "Insurance",
+    "insuranceOptions": [
+      {
+        "logo": "/imgs/bluecross.png",
+        "alt": "Blue Cross Blue Shield"
+      },
+      {
+        "logo": "/imgs/aetna.png",
+        "alt": "Aetna"
+      },
+      {
+        "logo": "/imgs/anthem.png",
+        "alt": "Anthem"
+      },
+      {
+        "logo": "/imgs/tufts.png",
+        "alt": "Tufts Health Plan"
+      },
+      {
+        "logo": "/imgs/cigna1.png",
+        "alt": "Cigna"
+      }
+    ],
+    "headingTwo": "Partners",
+    "buttonOneLink": "/insurance/",
+    "buttonSecondTextOne": "Have a question?",
+    "buttonSecondTextTwo": "Get in Touch",
+    "description": "We work with multiple insurance providers and healthcare networks to ensure accessible mental health care for our patients."
+  },
+  "therapies": {
+    "coloredHeading": "Your Needs",
+    "mainHeading": "Treatments Tailored to",
+    "buttonTwo_Part_1": "Have a question?",
+    "buttonTwo_Part_2": "Get in Touch",
+    "buttonLink": "/insurance/",
+    "buttonTwo_Number": "",
+    "imageAlt": "Mental health treatment options and therapies illustration",
+    "image": "/imgs/treatmenthero.png",
+    "description": "From the moment you begin your journey with Clear Path, our mission is to provide a full spectrum of scientifically supported treatments designed to address a wide range of mental health challenges. At launch, we are proud to offer an array of core therapies, each personalized to support your unique path toward healing and long-term wellness.",
+    "list": [
+      {
+        "title": "Medication Management",
+        "description": "Ongoing evaluation and adjustment of psychiatric medications to manage mental health conditions.",
+        "image": "/imgs/medication_management.svg",
+        "imageAlt": "Medication management treatment icon",
+        "link": "/program/medication-management/"
+      },
+      {
+        "title": "Psychotherapy",
+        "description": "Evidence-based talk therapy that helps you understand and manage the root causes of your symptoms.",
+        "image": "/imgs/service_icon.svg",
+        "imageAlt": "Psychotherapy treatment icon",
+        "link": "/program/psychotherapy/"
+      },
+      {
+        "title": "Telehealth",
+        "description": "Secure virtual appointments that make ongoing psychiatric care accessible from home.",
+        "image": "/imgs/therapy_icon.svg",
+        "imageAlt": "Telehealth treatment icon",
+        "link": "/program/telehealth/"
+      }
+    ],
+    "buttonText": "Get Started"
+  },
+  "about": {
+    "headingOne_Part_1": "Clear Path",
+    "headingOne_Part_2": "Behavioral Health",
+    "headingTwo": "Provider",
+    "buttonTwo_Part_1": "Have a question?",
+    "buttonTwo_Part_2": "Get in Touch",
+    "buttonTwo_Number": "",
+    "buttonOneLink": "/insurance/",
+    "buttonOne": "Get Started",
+    "textOne": "Specializing in medication management and mental health intervention services. With a focus on offering individualized care, Clear Path differentiates itself from other telehealth-only providers by ensuring patients receive treatment from experienced psychiatrists and psychiatric physician assistants (PAs) with whom they can develop a relationship"
+  },
+  "programs": {
+    "heading": "Conditions Treated",
+    "text": "Clear Path focuses on addressing a wide range of mental health conditions through psychiatric care and medication management. The primary target conditions include:",
+    "programs": [
+      {
+        "title": "Depression",
+        "image": "/imgs/depression_icon.svg",
+        "imageAlt": "Depression treatment icon",
+        "link": "/treatment/depression/"
+      },
+      {
+        "title": "Anxiety",
+        "image": "/imgs/anxiety_icon.svg",
+        "imageAlt": "Anxiety treatment icon",
+        "link": "/treatment/anxiety/"
+      },
+      {
+        "title": "Stress and Insomnia",
+        "image": "/imgs/adhd_icon.svg",
+        "imageAlt": "Stress and insomnia treatment icon",
+        "link": "/treatment/stress/"
+      },
+      {
+        "title": "PTSD",
+        "image": "/imgs/ptsd_icon.svg",
+        "imageAlt": "PTSD treatment icon",
+        "link": "/treatment/ptsd/"
+      },
+      {
+        "title": "Bipolar Disorder",
+        "image": "/imgs/bipolar_icon.svg",
+        "imageAlt": "Bipolar disorder treatment icon",
+        "link": "/treatment/bipolar/"
+      }
+    ]
+  },
+  "cta": {
+    "heading": "Ready to Start Your Journey to Better Mental Health?",
+    "phoneTextOne": "Have a question?",
+    "buttonLink": "/insurance/",
+    "text": "Take the first step towards healing. Our experienced team is here to support you with personalized, evidence-based treatment plans.",
+    "phoneTextTwo": "Get in Touch",
+    "altText": "Mental health support",
+    "phoneNumber": "",
+    "image": "/imgs/hand.png",
+    "buttonText": "Get Started"
+  },
+  "disorders": {
+    "heading": "OUR INSIGHTS",
+    "headingTwo_Part_1": "Expert guidance for your ",
+    "headingTwo_Part_2": "mental health ",
+    "headingTwo_Part_3": "journey",
+    "disorders": [
+      {
+        "link": "/blog/managing-depression/",
+        "title": "Effective Strategies for Managing Depression",
+        "image": "/imgs/Depression_Article.png",
+        "imageAlt": "Depression management strategies article"
+      },
+      {
+        "link": "/blog/managing-anxiety/",
+        "title": "Effective Strategies for Managing Anxiety",
+        "image": "/imgs/Anxiety_Article.png",
+        "imageAlt": "Anxiety management strategies article"
+      },
+      {
+        "link": "/blog/managing-adhd/",
+        "title": "Effective Strategies for Managing ADHD",
+        "image": "/imgs/ADHD_Article.png",
+        "imageAlt": "ADHD management strategies article"
+      },
+      {
+        "link": "/blog/managing-ptsd/",
+        "title": "Effective Strategies for Coping with and Managing PTSD",
+        "image": "/imgs/PTSD_Article.png",
+        "imageAlt": "PTSD management strategies article"
+      }
+    ]
+  },
+  "testimonials": {
+    "list": [
+      {
+        "name": "Veronica L.",
+        "position": "Client from California",
+        "text": "Clearpath gave me the strength to overcome my anxiety. The compassionate therapists provided unwavering support, and I've found a renewed sense of purpose andtranquility in my life.",
+        "image": "/imgs/testimonial_1.png",
+        "imageAlt": "Veronica L. - Clear Path client testimonial"
+      },
+      {
+        "name": "Michael S.",
+        "position": "Client from Florida",
+        "text": "Clearpath helped me regain control of my life. The personalized treatment plan and the caring staff made all the difference. I am now on a path to recovery and happiness.",
+        "image": "/imgs/testimonial_1.png",
+        "imageAlt": "Michael S. - Clear Path client testimonial"
+      }
+    ]
+  },
+  "faq": {
+    "heading": "Frequently Asked Questions",
+    "subheading": "Answers about our care model and services",
+    "faq": [
+      {
+        "title": "What services do you provide?",
+        "details": "Medication management, psychotherapy, telehealth, and coordinated care alongside therapy referrals."
+      },
+      {
+        "title": "How soon can I get started?",
+        "details": "Most new patients can book within days using our online scheduling."
+      }
+    ]
+  },
+  "hero": {
+    "logo": "/imgs/hero_logo.png",
+    "telephoneNumber": "",
+    "backgroundImage": "/imgs/hero_home_bg.webp",
+    "buttonOneLink": "/insurance/",
+    "textBox2_Part_1": "Highly",
+    "textBox2_Part_2": "effective evidence-based",
+    "textBox2_Part_3": "mental health treatment",
+    "textBox1": "Outpatient Psychiatry",
+    "buttonOne": "Get Started",
+    "textBox3": "Clear Path's treatments address the root cause of anxiety, depression, stress, and PTSD symptoms.",
+    "buttonTwo": "Have a question?",
+    "backgroundImageAlt": "Background image of mental health treatment facility",
+    "buttonText": "Get in Touch"
+  },
+  "patientJourney": {
+    "heading": "Patient Journey and Process",
+    "headingTwo_Part_1": "Patient Journey",
+    "headingTwo_Part_2": "and Process",
+    "image": "/imgs/patient_journey.png",
+    "imageAlt": "Patient showing signs of distress while sitting with laptop",
+    "steps": [
+      {
+        "title": "Booking and Initial Assessment",
+        "description": "Patients can book appointments directly through the website using Zocdoc integration. New patients will undergo an initial assessment to establish care and begin treatment."
+      },
+      {
+        "title": "Treatment Path",
+        "description": "Following the initial assessment, patients will receive ongoing medication management and, when necessary, be introduced to additional services like psychotherapy or telehealth follow-ups."
+      },
+      {
+        "title": "Follow-up Appointments",
+        "description": "Patients will typically attend monthly in-person follow-up appointments to ensure progress and make medication adjustments as needed."
+      }
+    ]
+  },
+  "seo": {
+    "metaTitle": "Mental Health Treatment Center in California | Medication Management & Psychotherapy | Clear Path",
+    "metaDescription": "Clear Path provides evidence-based mental health treatments including medication management and psychotherapy for depression, anxiety, PTSD, and bipolar disorder. Located in Orange County, CA.",
+    "keywords": [
+      "mental health treatment",
+      "medication management",
+      "psychotherapy",
+      "depression treatment",
+      "anxiety treatment",
+      "Clear Path",
+      "Orange County CA",
+      "behavioral health"
+    ]
+  },
+  "services": {
+    "heading": "Services",
+    "description": "Clear Path offers a variety of additional services to support your care journey:",
+    "services": [
+      {
+        "iconName": "features/icon-medication-treatment",
+        "title": "Medication-Assisted Treatment (MAT)",
+        "description": "Plans to implement mental health outpatient care and psychiatric services, including medications such as Suboxone, Methadone, Vivitrol, and Subutex."
+      },
+      {
+        "iconName": "programs/icon-sober-homes",
+        "title": "Sober Living Placement",
+        "description": "Strong partnership with Sober Living ensures access to supportive, substance-free housing environments."
+      },
+      {
+        "iconName": "features/icon-transport",
+        "title": "Transportation Coordination",
+        "description": "Assistance in arranging transportation services to ensure clients can attend their sessions."
+      },
+      {
+        "iconName": "features/icon-dining",
+        "title": "Nutritional Counseling",
+        "description": "A nutritionist provides guidance on healthy eating habits and diet plans, with snacks and lunch available for full day treatment clients."
+      },
+      {
+        "iconName": "features/icon-evidence-2",
+        "title": "Case Management",
+        "description": "Assistance with resume building, job search, court paperwork, and accessing community resources to help clients develop life skills and achieve long-term stability."
+      }
+    ]
+  },
+  "treatmentGrid": {
+    "heading": "What Makes Clear Path Unique?",
+    "subheading": "Your Care Journey",
+    "description": "A simple, personalized process that makes high-quality mental health care accessible and effective.",
+    "featuredImage": "/mm3.png",
+    "featuredImageAlt": "Clear Path mental health treatment process and care journey",
+    "treatments": [
+      {
+        "icon": "/imgs/depression_icon.svg",
+        "title": "Expert Care, Close to Home",
+        "description": "Clear Path sets itself apart by prioritizing in-person appointments. We understand the value of face-to-face interactions, which foster trust and better communication between patients and providers."
+      },
+      {
+        "icon": "/imgs/medication_management.svg",
+        "title": "Cutting-Edge Treatments",
+        "description": "From medication management to evidence-based psychotherapy, we use proven, up-to-date clinical approaches to deliver effective care."
+      },
+      {
+        "icon": "/imgs/service_icon.svg",
+        "title": "Specialized Focus on Adults",
+        "description": "Our services are exclusively designed for individuals aged 18 and older, allowing us to tailor treatments specifically for adult mental health needs."
+      },
+      {
+        "icon": "/imgs/anxiety_icon.svg",
+        "title": "Compassionate Environment",
+        "description": "At Clear Path, we've created a welcoming space where patients feel supported and understood at every step of their journey."
+      }
+    ]
+  }
+}

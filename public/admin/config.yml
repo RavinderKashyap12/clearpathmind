@@ -1,0 +1,1699 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "public"
+public_folder: "/"
+
+collections:
+  - name: "blog"
+    label: "Blog"
+    folder: "src/content/blog"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { label: "Slug", name: "slug", widget: "string"}
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Description", name: "description", widget: "text"  }
+      - { label: "Featured Image", name: "featuredImg", widget: "image" }
+      - { label: "Date", name: "date", widget: "datetime" }
+      - { label: "Author", name: "author", widget: "string" }
+      - { label: "Tags", name: "tags", widget: "list", field: { widget: "string", name: "tag" } }
+      - { label: "Reading Time", name: "readingTime", widget: "string"}
+      - { label: "Body", name: "body", widget: "markdown" }
+  
+  - name: "treatments"
+    label: "Treatments"
+    folder: "src/content/treatments"
+    create: true
+    format: "json"  # Add this line
+    extension: "json"
+    slug: "{{slug}}"
+    fields:
+      - { label: "Slug", name: "slug", widget: "string"}
+      - { label: "Title", name: "title", widget: "string", required: false }
+      - label: "Hero"
+        name: "hero"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Heading", name: "heading", widget: "string", required: false }
+          - { label: "Text", name: "text", widget: "string", required: false }
+          - { label: "Button Text", name: "buttonText", widget: "string", required: false }
+          - { label: "Button Link", name: "buttonLink", widget: "string", required: false }
+          - { label: "Phone Question Text", name: "phoneQuestionText", widget: "string", required: false }
+          - { label: "Treatments Label", name: "treatmentsLabel", widget: "string", required: false }
+          - { label: "Call Button Text", name: "callButtonText", widget: "string", required: false }
+          - { label: "Call Button Link", name: "callButtonLink", widget: "string", required: false }
+          
+      - label: "About"
+        name: "about"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Heading One", name: "headingOne", widget: "string", required: false }
+          - { label: "Heading Two", name: "headingTwo", widget: "string", required: false }
+          - { label: "Text One", name: "textOne", widget: "text", required: false }
+          - { label: "Text Two", name: "textTwo", widget: "text", required: false }
+          - { label: "Button Text", name: "buttonText", widget: "string", required: false }
+          - { label: "Button Link", name: "buttonLink", widget: "string", required: false }
+          - { label: "Button Two Part 1", name: "buttonTwo_Part_1", widget: "string", required: false }
+          - { label: "Button Two Part 2", name: "buttonTwo_Part_2", widget: "string", required: false }
+          - { label: "Button Two Number", name: "buttonTwo_Number", widget: "string", required: false }
+          - label: "Images"
+            name: "images"
+            widget: "object"
+            required: false
+            fields:
+              - { label: "Image One", name: "imageOne", widget: "image", required: false }
+              - { label: "Image Two", name: "imageTwo", widget: "image", required: false }
+      - label: "Video"
+        name: "video"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Heading", name: "heading", widget: "string", required: false }
+          - { label: "Heading Colored", name: "headingColored", widget: "string", required: false }
+          - { label: "Description", name: "description", widget: "text", required: false }
+          - { label: "Image", name: "image", widget: "image", required: false }
+          - { label: "Image Alt Text", name: "imageAlt", widget: "string", required: false }
+      - label: "Who Needs"
+        name: "whoNeeds"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Heading", name: "heading", widget: "string", required: false }
+          - { label: "Heading Colored", name: "headingColored", widget: "string", required: false }
+          - { label: "Heading End", name: "headingEnd", widget: "string", required: false }
+          - { label: "Description", name: "description", widget: "text", required: false }
+          - { label: "List Heading", name: "listHeading", widget: "string", required: false }
+          - { label: "List Items", name: "listItems", widget: "list", field: { widget: "string" , name: "item"}, required: false }
+          - { label: "List Description", name: "listDescription", widget: "text", required: false }
+          - { label: "Button Text", name: "buttonText", widget: "string", required: false }
+          - { label: "Button Link", name: "buttonLink", widget: "string", required: false }
+          - { label: "Button Two Part 1", name: "buttonTwo_Part_1", widget: "string", required: false }
+          - { label: "Button Two Part 2", name: "buttonTwo_Part_2", widget: "string", required: false }
+          - { label: "Button Two Number", name: "buttonTwo_Number", widget: "string", required: false }
+      - label: "Treatment Grid"
+        name: "treatmentGrid"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Heading", name: "heading", widget: "string", required: false }
+          - { label: "Subheading", name: "subheading", widget: "string", required: false }
+          - { label: "Description", name: "description", widget: "text", required: false }
+          - { label: "Featured Image", name: "featuredImage", widget: "image", required: false }
+          - label: "Treatments"
+            name: "treatments"
+            widget: "list"
+            required: false
+            fields:
+              - { label: "Icon", name: "icon", widget: "string", required: false }
+              - { label: "Title", name: "title", widget: "string", required: false }
+              - { label: "Description", name: "description", widget: "text", required: false }
+      - label: "Why Choose"
+        name: "whyChoose"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Title", name: "title", widget: "string", required: false }
+          - { label: "Title Two", name: "titleTwo", widget: "string", required: false }
+          - label: "Content"
+            name: "content"
+            widget: "object"
+            fields:
+              - { label: "Paragraph 1", name: "paragraph1", widget: "text", required: false }
+              - { label: "Paragraph 2", name: "paragraph2", widget: "text", required: false }
+          - { label: "Image URL", name: "imageUrl", widget: "image", required: false }
+          - { label: "Image Alt", name: "imageAlt", widget: "string", required: false }
+          - { label: "Button Text", name: "buttonText", widget: "string", required: false }
+          - { label: "Button Link", name: "buttonLink", widget: "string", required: false }
+          - { label: "Button Two Part 1", name: "buttonTwo_Part_1", widget: "string", required: false }
+          - { label: "Button Two Part 2", name: "buttonTwo_Part_2", widget: "string", required: false }
+          - { label: "Button Two Number", name: "buttonTwo_Number", widget: "string", required: false }
+      - label: "Second Why Choose"
+        name: "secondWhyChoose"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Title", name: "title", widget: "string", required: false }
+          - label: "Content"
+            name: "content"
+            widget: "object"
+            fields:
+              - { label: "Paragraph 1", name: "paragraph1", widget: "text", required: false }
+              - { label: "Paragraph 2", name: "paragraph2", widget: "text", required: false }
+          - { label: "Image URL", name: "imageUrl", widget: "image", required: false }
+          - { label: "Image Alt", name: "imageAlt", widget: "string", required: false }
+          - { label: "Button Text", name: "buttonText", widget: "string", required: false }
+          - { label: "Button Link", name: "buttonLink", widget: "string", required: false }
+          - { label: "Button Two Part 1", name: "buttonTwo_Part_1", widget: "string", required: false }
+          - { label: "Button Two Part 2", name: "buttonTwo_Part_2", widget: "string", required: false }
+          - { label: "Button Two Number", name: "buttonTwo_Number", widget: "string", required: false }
+      - label: "Program Steps"
+        name: "program12"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Badge Text", name: "badgeText", widget: "string", required: false }
+          - { label: "Heading", name: "heading", widget: "string", required: false }
+          - { label: "Description", name: "description", widget: "text", required: false }
+          - { label: "Main Image", name: "mainImage", widget: "image", required: false }
+          - { label: "Main Image Alt Text", name: "mainImageAlt", widget: "string", required: false }
+          - label: "Steps"
+            name: "steps"
+            widget: "list"
+            required: false
+            fields:
+              - { label: "Step Number", name: "stepNumber", widget: "string", required: false }
+              - { label: "Title", name: "title", widget: "string", required: false }
+              - { label: "Description", name: "description", widget: "text", required: false }
+      - label: "Program Section"
+        name: "programTMS"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Main Heading", name: "mainHeading", widget: "string", required: false }
+          - { label: "Colored Heading", name: "coloredHeading", widget: "string", required: false }
+          - { label: "Description", name: "description", widget: "text", required: false }
+          - { label: "Button Text", name: "buttonText", widget: "string", required: false }
+          - { label: "Button Link", name: "buttonLink", widget: "string", required: false }
+          - { label: "Button Two Part 1", name: "buttonTwo_Part_1", widget: "string", required: false }
+          - { label: "Button Two Part 2", name: "buttonTwo_Part_2", widget: "string", required: false }
+          - { label: "Button Two Number", name: "buttonTwo_Number", widget: "string", required: false }
+          - { label: "Image", name: "image", widget: "image", required: false }
+          - { label: "Image Alt", name: "imageAlt", widget: "string", required: false }
+          - label: "Conditions"
+            name: "conditions"
+            widget: "list"
+            required: false
+            fields:
+              - { label: "Title", name: "title", widget: "string", required: false }
+              - { label: "Icon", name: "icon", widget: "image", required: false }
+              - { label: "Description", name: "description", widget: "text", required: false }
+      # - label: "Testimonials"
+      #   name: "testimonials"
+      #   widget: "object"
+      #   collapsed: true
+      #   required: false
+      #   fields:
+      #     - label: "Testimonials List"
+      #       name: "list"
+      #       widget: "list"
+      #       fields:
+      #         - { label: "Name", name: "name", widget: "string", required: false }
+      #         - { label: "Position", name: "position", widget: "string", required: false }
+      #         - { label: "Text", name: "text", widget: "text", required: false }
+      #         - { label: "Image", name: "image", widget: "image", required: false }
+      - label: "FAQ"
+        name: "faq"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Heading", name: "heading", widget: "string", required: false }
+          - { label: "SubHeading", name: "subheading", widget: "string", required: false }
+          - label: "FAQ List"
+            name: "faq"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string", required: false }
+              - { label: "Details", name: "details", widget: "text", required: false }
+      - label: "Call to Action"
+        name: "cta"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+              - { label: "Heading", name: "heading", widget: "string", required: false }
+              - { label: "Text", name: "text", widget: "text", required: false }
+              - { label: "Button Text", name: "buttonText", widget: "string", required: false }
+              - { label: "Button Link", name: "buttonLink", widget: "string", required: false }
+              - { label: "Image", name: "image", widget: "image", required: false }
+              - { label: "Image Alt Text", name: "altText", widget: "string", required: false }
+              - { label: "Phone Question One Text", name: "phoneTextOne", widget: "string", required: false }
+              - { label: "Phone Question Two Text", name: "phoneTextTwo", widget: "string", required: false }
+              - { label: "Phone Number", name: "phoneNumber", widget: "string", required: false }
+
+  - name: "programs"
+    label: "Programs"
+    folder: "src/content/programs"
+    create: true
+    format: "json"  # Add this line
+    extension: "json"
+    slug: "{{slug}}"
+    fields:
+      - { label: "Slug", name: "slug", widget: "string"}
+      - { label: "Title", name: "title", widget: "string", required: false }
+      - label: "Hero"
+        name: "hero"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Heading", name: "heading", widget: "string", required: false }
+          - { label: "Text", name: "text", widget: "string", required: false }
+          - { label: "Button Text", name: "buttonText", widget: "string", required: false }
+          - { label: "Button Link", name: "buttonLink", widget: "string", required: false }
+          - { label: "Phone Question Text", name: "phoneQuestionText", widget: "string", required: false }
+          - { label: "Treatments Label", name: "treatmentsLabel", widget: "string", required: false }
+          - { label: "Call Button Text", name: "callButtonText", widget: "string", required: false }
+          - { label: "Call Button Link", name: "callButtonLink", widget: "string", required: false }
+          
+      - label: "About"
+        name: "about"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Heading One", name: "headingOne", widget: "string", required: false }
+          - { label: "Heading Two", name: "headingTwo", widget: "string", required: false }
+          - { label: "Text One", name: "textOne", widget: "text", required: false }
+          - { label: "Text Two", name: "textTwo", widget: "text", required: false }
+          - { label: "Button Text", name: "buttonText", widget: "string", required: false }
+          - { label: "Button Link", name: "buttonLink", widget: "string", required: false }
+          - { label: "Button Two Part 1", name: "buttonTwo_Part_1", widget: "string", required: false }
+          - { label: "Button Two Part 2", name: "buttonTwo_Part_2", widget: "string", required: false }
+          - { label: "Button Two Number", name: "buttonTwo_Number", widget: "string", required: false }
+          - label: "Images"
+            name: "images"
+            widget: "object"
+            required: false
+            fields:
+              - { label: "Image One", name: "imageOne", widget: "image", required: false }
+              - { label: "Image Two", name: "imageTwo", widget: "image", required: false }
+      - label: "Video"
+        name: "video"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Heading", name: "heading", widget: "string", required: false }
+          - { label: "Heading Colored", name: "headingColored", widget: "string", required: false }
+          - { label: "Description", name: "description", widget: "text", required: false }
+          - { label: "Image", name: "image", widget: "image", required: false }
+          - { label: "Image Alt Text", name: "imageAlt", widget: "string", required: false }
+      - label: "Who Needs"
+        name: "whoNeeds"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Heading", name: "heading", widget: "string", required: false }
+          - { label: "Heading Colored", name: "headingColored", widget: "string", required: false }
+          - { label: "Heading End", name: "headingEnd", widget: "string", required: false }
+          - { label: "Description", name: "description", widget: "text", required: false }
+          - { label: "List Heading", name: "listHeading", widget: "string", required: false }
+          - { label: "List Items", name: "listItems", widget: "list", field: { widget: "string" , name: "item"}, required: false }
+          - { label: "List Description", name: "listDescription", widget: "text", required: false }
+          - { label: "Button Text", name: "buttonText", widget: "string", required: false }
+          - { label: "Button Link", name: "buttonLink", widget: "string", required: false }
+          - { label: "Button Two Part 1", name: "buttonTwo_Part_1", widget: "string", required: false }
+          - { label: "Button Two Part 2", name: "buttonTwo_Part_2", widget: "string", required: false }
+          - { label: "Button Two Number", name: "buttonTwo_Number", widget: "string", required: false }
+      - label: "Treatment Grid"
+        name: "treatmentGrid"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Heading", name: "heading", widget: "string", required: false }
+          - { label: "Subheading", name: "subheading", widget: "string", required: false }
+          - { label: "Description", name: "description", widget: "text", required: false }
+          - { label: "Featured Image", name: "featuredImage", widget: "image", required: false }
+          - label: "Treatments"
+            name: "treatments"
+            widget: "list"
+            required: false
+            fields:
+              - { label: "Icon", name: "icon", widget: "string", required: false }
+              - { label: "Title", name: "title", widget: "string", required: false }
+              - { label: "Description", name: "description", widget: "text", required: false }
+      - label: "Why Choose"
+        name: "whyChoose"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Title", name: "title", widget: "string", required: false }
+          - { label: "Title Two", name: "titleTwo", widget: "string", required: false }
+          - label: "Content"
+            name: "content"
+            widget: "object"
+            fields:
+              - { label: "Paragraph 1", name: "paragraph1", widget: "text", required: false }
+              - { label: "Paragraph 2", name: "paragraph2", widget: "text", required: false }
+          - { label: "Image URL", name: "imageUrl", widget: "image", required: false }
+          - { label: "Image Alt", name: "imageAlt", widget: "string", required: false }
+          - { label: "Button Text", name: "buttonText", widget: "string", required: false }
+          - { label: "Button Link", name: "buttonLink", widget: "string", required: false }
+          - { label: "Button Two Part 1", name: "buttonTwo_Part_1", widget: "string", required: false }
+          - { label: "Button Two Part 2", name: "buttonTwo_Part_2", widget: "string", required: false }
+          - { label: "Button Two Number", name: "buttonTwo_Number", widget: "string", required: false }
+      - label: "Second Why Choose"
+        name: "secondWhyChoose"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Title", name: "title", widget: "string", required: false }
+          - label: "Content"
+            name: "content"
+            widget: "object"
+            fields:
+              - { label: "Paragraph 1", name: "paragraph1", widget: "text", required: false }
+              - { label: "Paragraph 2", name: "paragraph2", widget: "text", required: false }
+          - { label: "Image URL", name: "imageUrl", widget: "image", required: false }
+          - { label: "Image Alt", name: "imageAlt", widget: "string", required: false }
+          - { label: "Button Text", name: "buttonText", widget: "string", required: false }
+          - { label: "Button Link", name: "buttonLink", widget: "string", required: false }
+          - { label: "Button Two Part 1", name: "buttonTwo_Part_1", widget: "string", required: false }
+          - { label: "Button Two Part 2", name: "buttonTwo_Part_2", widget: "string", required: false }
+          - { label: "Button Two Number", name: "buttonTwo_Number", widget: "string", required: false }
+      - label: "Program Steps"
+        name: "program12"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Badge Text", name: "badgeText", widget: "string", required: false }
+          - { label: "Heading", name: "heading", widget: "string", required: false }
+          - { label: "Description", name: "description", widget: "text", required: false }
+          - { label: "Main Image", name: "mainImage", widget: "image", required: false }
+          - { label: "Main Image Alt Text", name: "mainImageAlt", widget: "string", required: false }
+          - label: "Steps"
+            name: "steps"
+            widget: "list"
+            required: false
+            fields:
+              - { label: "Step Number", name: "stepNumber", widget: "string", required: false }
+              - { label: "Title", name: "title", widget: "string", required: false }
+              - { label: "Description", name: "description", widget: "text", required: false }
+      - label: "Program Section"
+        name: "programTMS"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Main Heading", name: "mainHeading", widget: "string", required: false }
+          - { label: "Colored Heading", name: "coloredHeading", widget: "string", required: false }
+          - { label: "Description", name: "description", widget: "text", required: false }
+          - { label: "Button Text", name: "buttonText", widget: "string", required: false }
+          - { label: "Button Link", name: "buttonLink", widget: "string", required: false }
+          - { label: "Button Two Part 1", name: "buttonTwo_Part_1", widget: "string", required: false }
+          - { label: "Button Two Part 2", name: "buttonTwo_Part_2", widget: "string", required: false }
+          - { label: "Button Two Number", name: "buttonTwo_Number", widget: "string", required: false }
+          - { label: "Image", name: "image", widget: "image", required: false }
+          - { label: "Image Alt", name: "imageAlt", widget: "string", required: false }
+          - label: "Conditions"
+            name: "conditions"
+            widget: "list"
+            required: false
+            fields:
+              - { label: "Title", name: "title", widget: "string", required: false }
+              - { label: "Icon", name: "icon", widget: "image", required: false }
+              - { label: "Description", name: "description", widget: "text", required: false }
+      # - label: "Testimonials"
+      #   name: "testimonials"
+      #   widget: "object"
+      #   collapsed: true
+      #   required: false
+      #   fields:
+      #     - label: "Testimonials List"
+      #       name: "list"
+      #       widget: "list"
+      #       fields:
+      #         - { label: "Name", name: "name", widget: "string", required: false }
+      #         - { label: "Position", name: "position", widget: "string", required: false }
+      #         - { label: "Text", name: "text", widget: "text", required: false }
+      #         - { label: "Image", name: "image", widget: "image", required: false }
+      - label: "FAQ"
+        name: "faq"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Heading", name: "heading", widget: "string", required: false }
+          - { label: "SubHeading", name: "subheading", widget: "string", required: false }
+          - label: "FAQ List"
+            name: "faq"
+            widget: "list"
+            fields:
+              - { label: "Title", name: "title", widget: "string", required: false }
+              - { label: "Details", name: "details", widget: "text", required: false }
+      - label: "Call to Action"
+        name: "cta"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+              - { label: "Heading", name: "heading", widget: "string", required: false }
+              - { label: "Text", name: "text", widget: "text", required: false }
+              - { label: "Button Text", name: "buttonText", widget: "string", required: false }
+              - { label: "Button Link", name: "buttonLink", widget: "string", required: false }
+              - { label: "Image", name: "image", widget: "image", required: false }
+              - { label: "Image Alt Text", name: "altText", widget: "string", required: false }
+              - { label: "Phone Question One Text", name: "phoneTextOne", widget: "string", required: false }
+              - { label: "Phone Question Two Text", name: "phoneTextTwo", widget: "string", required: false }
+              - { label: "Phone Number", name: "phoneNumber", widget: "string", required: false }
+
+
+
+  - label: "General Settings"
+    name: "general-settings"
+    files:
+      - label: "General Settings File"
+        name: "general"
+        file: "src/content/general/general.json"  # Path to your JSON file in the repository
+        fields:
+          - { label: "Company Name", name: "companyName", widget: "string", required: false }
+          - { label: "Logo", name: "logo", widget: "image", required: false }
+          - { label: "City", name: "city", widget: "string", required: false }
+          - { label: "State", name: "state", widget: "string", required: false }
+          - { label: "Address", name: "address", widget: "string", required: false }
+          - { label: "Phone Number", name: "phoneNumber", widget: "string", required: false }
+          - { label: "Second Phone Number", name: "phoneNumber2", widget: "string", required: false }
+          - { label: "Email", name: "email", widget: "string", required: false }
+          - label: "Analytics"
+            name: "analytics"
+            widget: "object"
+            fields:
+              - { label: "Google Tag Manager ID", name: "gtmId", widget: "string", required: false }
+          - label: "Footer"
+            name: "footer"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Description", name: "description", widget: "text", required: false }
+              - label: "Navigation Column 1"
+                name: "navColumn1"
+                widget: "object"
+                fields:
+                  - label: "Links"
+                    name: "links"
+                    widget: "list"
+                    fields:
+                      - { label: "Text", name: "text", widget: "string", required: false }
+                      - { label: "URL", name: "url", widget: "string", required: false }
+              - label: "Navigation Column 2"
+                name: "navColumn2"
+                widget: "object"
+                fields:
+                  - label: "Links"
+                    name: "links"
+                    widget: "list"
+                    fields:
+                      - { label: "Text", name: "text", widget: "string", required: false }
+                      - { label: "URL", name: "url", widget: "string", required: false }
+              - { label: "Email Placeholder", name: "emailPlaceholder", widget: "string", required: false }
+              - { label: "Sign Up Button Text", name: "signUpButtonText", widget: "string", required: false }
+              - { label: "Copyright Text", name: "copyrightText", widget: "string", required: false }
+              - { label: "Back to Top Text", name: "backToTopText", widget: "string", required: false }
+
+  - label: "Pages"
+    name: "pages"
+    files:
+      # About Page Configuration
+      # - label: "About Page"
+      #   name: "about"
+      #   file: "src/content/pages/about.json"
+      #   fields:
+      #     - label: "Hero"
+      #       name: "hero"
+      #       widget: "object"
+      #       collapsed: true
+      #       fields:
+      #         - { label: "Heading", name: "heading", widget: "string", required: false }
+      #         - { label: "Text", name: "text", widget: "string", required: false }
+
+      #     - label: "About"
+      #       name: "about"
+      #       widget: "object"
+      #       collapsed: true
+      #       fields:
+      #         - { label: "Heading One", name: "headingOne", widget: "string", required: false }
+      #         - { label: "Text One", name: "textOne", widget: "text", required: false }
+      #         - { label: "Heading Two", name: "headingTwo", widget: "string", required: false }
+      #         - { label: "Text Two", name: "textTwo", widget: "text", required: false }
+      #         - label: "Images"
+      #           name: "images"
+      #           widget: "object"
+      #           fields:
+      #             - { label: "Image One", name: "imageOne", widget: "image", required: false }
+      #             - { label: "Image Two", name: "imageTwo", widget: "image", required: false }
+
+      #     - label: "Core Values"
+      #       name: "coreValues"
+      #       widget: "object"
+      #       collapsed: true
+      #       fields:
+      #         - { label: "Heading", name: "heading", widget: "string", required: false }
+      #         - { label: "Text", name: "text", widget: "text", required: false }
+      #         - label: "Core Values List"
+      #           name: "list"
+      #           widget: "list"
+      #           fields:
+      #             - { label: "Title", name: "title", widget: "string", required: false }
+      #             - { label: "Description", name: "description", widget: "text", required: false }
+      #         - { label: "Button Text", name: "buttonText", widget: "string", required: false }
+
+      #     - label: "Facility"
+      #       name: "facility"
+      #       widget: "object"
+      #       collapsed: true
+      #       fields:
+      #         - { label: "Heading", name: "heading", widget: "string", required: false }
+      #         - { label: "Text", name: "text", widget: "text", required: false }
+      #         - { label: "Button Text", name: "buttonText", widget: "string", required: false }
+      #         - label: "Images"
+      #           name: "images"
+      #           widget: "object"
+      #           fields:
+      #             - { label: "Image One", name: "imageOne", widget: "image", required: false }
+      #             - { label: "Image Two", name: "imageTwo", widget: "image", required: false }
+
+      #     - label: "Approach"
+      #       name: "approach"
+      #       widget: "object"
+      #       collapsed: true
+      #       fields:
+      #         - { label: "Heading One", name: "headingOne", widget: "string", required: false }
+      #         - { label: "Text One", name: "textOne", widget: "text", required: false }
+      #         - { label: "Heading Two", name: "headingTwo", widget: "string", required: false }
+      #         - { label: "Text Two", name: "textTwo", widget: "text", required: false }
+      #         - label: "Images"
+      #           name: "images"
+      #           widget: "object"
+      #           fields:
+      #             - { label: "Image One", name: "imageOne", widget: "image", required: false }
+      #             - { label: "Image Two", name: "imageTwo", widget: "image", required: false }
+
+      #     - label: "Team"
+      #       name: "team"
+      #       widget: "object"
+      #       collapsed: true
+      #       fields:
+      #         - { label: "Heading", name: "heading", widget: "string", required: false }
+      #         - { label: "Button Text", name: "buttonText", widget: "string", required: false }
+      #         - { label: "Description", name: "description", widget: "text", required: false }
+      #         - label: "Team Members"
+      #           name: "team"
+      #           widget: "list"
+      #           fields:
+      #             - { label: "Name", name: "name", widget: "string", required: false }
+      #             - { label: "Designation", name: "designation", widget: "string", required: false }
+      #             - { label: "Image", name: "image", widget: "image", required: false }
+
+      #     - label: "FAQ"
+      #       name: "faq"
+      #       widget: "object"
+      #       collapsed: true
+      #       fields:
+      #         - { label: "Heading", name: "heading", widget: "string", required: false }
+      #         - { label: "SubHeading", name: "subheading", widget: "string", required: false }
+      #         - label: "FAQ List"
+      #           name: "faq"
+      #           widget: "list"
+      #           fields:
+      #             - { label: "Title", name: "title", widget: "string", required: false }
+      #             - { label: "Details", name: "details", widget: "text", required: false }
+      
+      # # Admissions Page Configuration
+      # - label: "Admissions Page"
+      #   name: "admissions"
+      #   file: "src/content/pages/admissions.json"
+      #   fields:
+      #     - label: "Hero"
+      #       name: "hero"
+      #       widget: "object"
+      #       collapsed: true
+      #       fields:
+      #         - { label: "Heading", name: "heading", widget: "string", required: false }
+      #         - { label: "Text", name: "text", widget: "string", required: false }
+      #         - label: "Video Link"
+      #           name: "videoLink"
+      #           widget: "file"
+      #           media_library:
+      #             config:
+      #               multiple: true
+      #         - label: "Video"
+      #           name: "video"
+      #           widget: "object"
+      #           collapsed: true
+      #           fields:
+      #             - { label: "Image", name: "img", widget: "image", required: false }
+      #             - label: "Video Source"
+      #               name: "videoSrc"
+      #               widget: "file"
+      #               media_library:
+      #                 config:
+      #                   multiple: true
+
+      #     - label: "Call-to-Action"
+      #       name: "cta"
+      #       widget: "object"
+      #       collapsed: true
+      #       fields:
+      #         - { label: "Heading", name: "heading", widget: "string", required: false }
+      #         - { label: "Text", name: "text", widget: "text", required: false }
+      #         - { label: "Button Text", name: "buttonText", widget: "string", required: false }
+
+      #     - label: "Steps"
+      #       name: "steps"
+      #       widget: "list"
+      #       fields:
+      #         - { label: "Step Name", name: "name", widget: "string", required: false }
+      #         - { label: "Step Title", name: "title", widget: "string", required: false }
+      #         - { label: "Step Text", name: "text", widget: "text", required: false }
+      #         - { label: "Step Icon", name: "icon", widget: "string", required: false }
+      #         - { label: "Step Modal Text", name: "modalText", widget: "text", required: false }
+
+      #     - label: "Next Steps"
+      #       name: "nextSteps"
+      #       widget: "object"
+      #       collapsed: true
+      #       fields:
+      #         - { label: "Heading", name: "heading", widget: "string", required: false }
+      #         - { label: "Description", name: "description", widget: "text", required: false }
+      #         - label: "Next Steps List"
+      #           name: "nextSteps"
+      #           widget: "list"
+      #           fields:
+      #             - { label: "Title", name: "title", widget: "string", required: false }
+      #             - { label: "Link One Title", name: "linkOne", widget: "string", required: false }
+      #             - { label: "Link One URL", name: "linkOneUrl", widget: "string", required: false }
+      #             - { label: "Link Two Title", name: "linkTwo", widget: "string", required: false }
+      #             - { label: "Link Two URL", name: "linkTwoUrl", widget: "string", required: false }
+
+      #     - label: "PDF"
+      #       name: "pdf"
+      #       widget: "object"
+      #       collapsed: true
+      #       fields:
+      #         - { label: "Heading", name: "heading", widget: "string", required: false }
+      #         - { label: "Description", name: "description", widget: "text", required: false }
+      #         - label: "PDF"
+      #           name: "pdf"
+      #           widget: "object"
+      #           collapsed: true
+      #           fields:
+      #             - { label: "PDF Link Text", name: "link", widget: "string", required: false }
+      #             - { label: "PDF Link URL", name: "linkUrl", widget: "string", required: false }
+
+      #     - label: "FAQ"
+      #       name: "faq"
+      #       widget: "object"
+      #       collapsed: true
+      #       fields:
+      #         - { label: "Heading", name: "heading", widget: "string", required: false }
+      #         - { label: "SubHeading", name: "subheading", widget: "string", required: false }
+      #         - label: "FAQ List"
+      #           name: "faq"
+      #           widget: "list"
+      #           fields:
+      #             - { label: "Title", name: "title", widget: "string", required: false }
+      #             - { label: "Details", name: "details", widget: "text", required: false }
+
+
+      # Contact Page Configuration
+      - label: "Contact Page"
+        name: "contact"
+        file: "src/content/pages/contact.json"
+        fields:
+          # Hero Section
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Heading", name: "heading", widget: "string", required: false }
+              - { label: "Text", name: "text", widget: "string", required: false }
+              - { label: "Button Text", name: "buttonText", widget: "string", required: false }
+              - { label: "Button Link", name: "buttonLink", widget: "string", required: false }
+              - { label: "Phone Question Text", name: "phoneQuestionText", widget: "string", required: false }
+              - { label: "Treatments Label", name: "treatmentsLabel", widget: "string", required: false }
+              - { label: "Call Button Text", name: "callButtonText", widget: "string", required: false }
+              - { label: "Call Button Link", name: "callButtonLink", widget: "string", required: false }
+             
+          # # Testimonials Section
+          # - label: "Testimonials"
+          #   name: "testimonials"
+          #   widget: "object"
+          #   collapsed: true
+          #   fields:
+          #     - label: "Testimonials List"
+          #       name: "list"
+          #       widget: "list"
+          #       fields:
+          #         - { label: "Name", name: "name", widget: "string", required: false }
+          #         - { label: "Position", name: "position", widget: "string", required: false }
+          #         - { label: "Testimonial Text", name: "text", widget: "text", required: false }
+          #         - { label: "Person Image", name: "image", widget: "image", required: false }
+                  
+          # Contact Hero Section
+          - label: "Contact Details"
+            name: "contactDetails"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Email Address", name: "email", widget: "string", required: false }
+              - { label: "Phone Number", name: "phone", widget: "string", required: false }
+              - { label: "Address", name: "address", widget: "string", required: false }
+              - { label: "Form Heading", name: "formHeading", widget: "string", required: false }
+              - { label: "Emergency Heading", name: "emergencyHeading", widget: "string", required: false }
+              - { label: "Emergency Text", name: "emergencyText", widget: "text", required: false }
+              - { label: "Support Heading", name: "supportHeading", widget: "string", required: false }
+              - label: "Business Hours"
+                name: "businessHours"
+                widget: "object"
+                fields:
+                  - { label: "Heading", name: "businessHoursHeading", widget: "string", required: false }
+                  - { label: "Hours (Weekdays)", name: "hours", widget: "string", required: false }
+                  - { label: "Hours (Weekend)", name: "weekend", widget: "string", required: false }
+          - label: "Call to Action"
+            name: "cta"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Heading", name: "heading", widget: "string", required: false }
+              - { label: "Text", name: "text", widget: "text", required: false }
+              - { label: "Button Text", name: "buttonText", widget: "string", required: false }
+              - { label: "Button Link", name: "buttonLink", widget: "string", required: false }
+              - { label: "Image", name: "image", widget: "image", required: false }
+              - { label: "Image Alt Text", name: "altText", widget: "string", required: false }
+              - { label: "Phone Question One Text", name: "phoneTextOne", widget: "string", required: false }
+              - { label: "Phone Question Two Text", name: "phoneTextTwo", widget: "string", required: false }
+              - { label: "Phone Number", name: "phoneNumber", widget: "string", required: false }  
+            
+            
+        
+
+      # Home Page Configuration
+      - label: "Home Page"
+        name: "home"
+        file: "src/content/pages/home.json"
+        fields:
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Background Image", name: "backgroundImage", widget: "image", required: false }
+              - { label: "Background Image Alt", name: "backgroundImageAlt", widget: "string", required: false }
+              - { label: "Logo", name: "logo", widget: "image", required: false }
+              - { label: "Button Text", name: "buttonText", widget: "string", required: false }
+              - { label: "Text Box 1", name: "textBox1", widget: "string", required: false }
+              - { label: "Text Box 2 Part 1", name: "textBox2_Part_1", widget: "string", required: false }
+              - { label: "Text Box 2 Part 2", name: "textBox2_Part_2", widget: "string", required: false }
+              - { label: "Text Box 2 Part 3", name: "textBox2_Part_3", widget: "string", required: false }
+              - { label: "Text Box 3", name: "textBox3", widget: "text", required: false }
+              - { label: "Button One", name: "buttonOne", widget: "string", required: false }
+              - { label: "Button One Link", name: "buttonOneLink", widget: "string", required: false }
+              - { label: "Button Two", name: "buttonTwo", widget: "string", required: false }
+              - { label: "Telephone Number", name: "telephoneNumber", widget: "string", required: false }
+              - label: "Hero Links"
+                name: "heroLinks"
+                widget: "list"
+                fields:
+                  - { label: "Text", name: "text", widget: "string", required: false }
+                  - { label: "Link", name: "link", widget: "string", required: false }
+                  - { label: "Sublinks", name: "sublinks", widget: "list", required: false, fields: [
+                    { label: "Text", name: "text", widget: "string", required: false },
+                    { label: "Link", name: "link", widget: "string", required: false }
+                  ]}
+                  - { label: "Sublinks 2", name: "sublinks2", widget: "list", required: false, fields: [
+                    { label: "Text", name: "text", widget: "string", required: false },
+                    { label: "Link", name: "link", widget: "string", required: false }
+                  ]}
+
+          - label: "Call to Action"
+            name: "cta"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Heading", name: "heading", widget: "string", required: false }
+              - { label: "Text", name: "text", widget: "text", required: false }
+              - { label: "Button Text", name: "buttonText", widget: "string", required: false }
+              - { label: "Button Link", name: "buttonLink", widget: "string", required: false }
+              - { label: "Image", name: "image", widget: "image", required: false }
+              - { label: "Image Alt Text", name: "altText", widget: "string", required: false }
+              - { label: "Phone Question One Text", name: "phoneTextOne", widget: "string", required: false }
+              - { label: "Phone Question Two Text", name: "phoneTextTwo", widget: "string", required: false }
+              - { label: "Phone Number", name: "phoneNumber", widget: "string", required: false }
+
+          - label: "About"
+            name: "about"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Heading One Part 1", name: "headingOne_Part_1", widget: "string", required: false }
+              - { label: "Heading One Part 2", name: "headingOne_Part_2", widget: "string", required: false }
+              - { label: "Heading Two", name: "headingTwo", widget: "string", required: false }
+              - { label: "Text One", name: "textOne", widget: "text", required: false }
+              - { label: "Button One Text", name: "buttonOne", widget: "string", required: false }
+              - { label: "Button One Link", name: "buttonOneLink", widget: "string", required: false }
+              - { label: "Button Two Part 1", name: "buttonTwo_Part_1", widget: "string", required: false }
+              - { label: "Button Two Part 2", name: "buttonTwo_Part_2", widget: "string", required: false }
+              - { label: "Button Two Number", name: "buttonTwo_Number", widget: "string", required: false }
+              - label: "Images"
+                name: "images"
+                widget: "object"
+                fields:
+                  - { label: "Image One", name: "imageOne", widget: "image", required: false }
+                  - { label: "Image Two", name: "imageTwo", widget: "image", required: false }
+
+          - label: "Testimonial"
+            name: "singleTestimonial"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Card Detail", name: "cardDetail", widget: "text", required: false }
+              - { label: "Card Title", name: "cardTitle", widget: "string", required: false }
+          
+          - label: "Therapies"
+            name: "therapies"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Heading", name: "heading", widget: "string", required: false }
+              - { label: "Heading Two Part_1", name: "headingTwo_Part_1", widget: "string", required: false }
+              - { label: "Heading Two Part_2", name: "headingTwo_Part_2", widget: "string", required: false }
+              - { label: "Heading Two Part_3", name: "headingTwo_Part_3", widget: "string", required: false }
+              - { label: "Button Text", name: "buttonText", widget: "string", required: false }
+              - { label: "Button Link", name: "buttonLink", widget: "string", required: false }
+              - { label: "Image", name: "image", widget: "image", required: false }
+              - { label: "Button Two Part 1", name: "buttonTwo_Part_1", widget: "string", required: false }
+              - { label: "Button Two Part 2", name: "buttonTwo_Part_2", widget: "string", required: false }
+              - { label: "Button Two Number", name: "buttonTwo_Number", widget: "string", required: false }
+              - label: "Therapies List"
+                name: "list"
+                widget: "list"
+                fields:
+                  - { label: "Title", name: "title", widget: "string", required: false }
+                  - { label: "Description", name: "description", widget: "text", required: false }
+                  - { label: "Image", name: "image", widget: "image", required: false }
+                  - { label: "Link", name: "link", widget: "string", required: false }
+
+          - label: "Testimonials"
+            name: "testimonials"
+            widget: "object"
+            collapsed: true
+            fields:
+              - label: "Testimonials List"
+                name: "list"
+                widget: "list"
+                fields:
+                  - { label: "Name", name: "name", widget: "string", required: false }
+                  - { label: "Position", name: "position", widget: "string", required: false }
+                  - { label: "Testimonial Text", name: "text", widget: "text", required: false }
+                  - { label: "Person Image", name: "image", widget: "image", required: false }
+          - label: "Programs"
+            name: "programs"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Heading", name: "heading", widget: "string", required: false }
+              - { label: "Text", name: "text", widget: "string", required: false }
+              - label: "Programs List"
+                name: "programs"
+                widget: "list"
+                fields:
+                  - { label: "Title", name: "title", widget: "string", required: false }
+                  - { label: "Image", name: "image", widget: "image", required: false }
+                  - { label: "Link", name: "link", widget: "string", required: false }
+
+
+          - label: "Services"
+            name: "services"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Heading", name: "heading", widget: "string", required: false }
+              - { label: "Description", name: "description", widget: "text", required: false }
+              - label: "Services List"
+                name: "services"
+                widget: "list"
+                fields:
+                  - { label: "Icon", name: "iconName", widget: "string", required: false }
+                  - { label: "Title", name: "title", widget: "string", required: false }
+                  - { label: "Description", name: "description", widget: "text", required: false }
+
+         
+
+          - label: "FAQ"
+            name: "faq"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Heading", name: "heading", widget: "string", required: false }
+              - { label: "SubHeading", name: "subheading", widget: "string", required: false }
+              - label: "FAQ List"
+                name: "faq"
+                widget: "list"
+                fields:
+                  - { label: "Title", name: "title", widget: "string", required: false }
+                  - { label: "Details", name: "details", widget: "text", required: false }
+
+          - label: "Insurance Options"
+            name: "insuranceOptions"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Heading", name: "heading", widget: "string", required: false }
+              - { label: "Description", name: "description", widget: "text", required: false }
+              - { label: "Button One Text", name: "buttonOneText", widget: "string", required: false }
+              - { label: "Button One Link", name: "buttonOneLink", widget: "string", required: false }
+              - { label: "Button Second Text One", name: "buttonTwoTextOne", widget: "string", required: false }
+              - { label: "Button Second Text Second", name: "buttonTwoTextTwo", widget: "string", required: false }
+              - { label: "Button Second Link", name: "buttonTwoLink", widget: "string", required: false }
+              - label: "Insurance Options List"
+                name: "insuranceOptions"
+                widget: "list"
+                fields:
+                  - { label: "Logo", name: "logo", widget: "image", required: false }
+
+
+ 
+      # Blog Page Configuration
+      - label: "Blog Page"
+        name: "blog"
+        file: "src/content/pages/blog.json"
+        fields:
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Heading", name: "heading", widget: "string", required: false }
+              - { label: "Text", name: "text", widget: "string", required: false }
+              - { label: "Button Text", name: "buttonText", widget: "string", required: false }
+              - { label: "Button Link", name: "buttonLink", widget: "string", required: false }
+              - { label: "Phone Question Text", name: "phoneQuestionText", widget: "string", required: false }
+              - { label: "Treatments Label", name: "treatmentsLabel", widget: "string", required: false }
+              - { label: "Call Button Text", name: "callButtonText", widget: "string", required: false }
+              - { label: "Call Button Link", name: "callButtonLink", widget: "string", required: false }
+              
+
+      
+          
+          - label: "Disorders"
+            name: "disorders"
+            widget: "object"
+            collapsed: true
+            required: false
+            fields:
+              - { label: "Heading", name: "heading", widget: "string", required: false }
+              - { label: "Heading Two Part 1", name: "headingTwo_Part_1", widget: "string", required: false }
+              - { label: "Heading Two Part 2", name: "headingTwo_Part_2", widget: "string", required: false }
+              - { label: "Heading Two Part 3", name: "headingTwo_Part_3", widget: "string", required: false }
+              - label: "Disorders List"
+                name: "disorders"
+                widget: "list"
+                required: false
+                fields:
+                  - { label: "Link", name: "link", widget: "string", required: false }
+                  - { label: "Title", name: "title", widget: "string", required: false }
+                  - { label: "Image", name: "image", widget: "image", required: false }
+
+          - label: "Call to Action"
+            name: "cta"
+            widget: "object"
+            collapsed: true
+            required: false
+            fields:
+              - { label: "Heading", name: "heading", widget: "string", required: false }
+              - { label: "Text", name: "text", widget: "text", required: false }
+              - { label: "Button Text", name: "buttonText", widget: "string", required: false }
+              - { label: "Button Link", name: "buttonLink", widget: "string", required: false }
+              - { label: "Image", name: "image", widget: "image", required: false }
+              - { label: "Image Alt Text", name: "altText", widget: "string", required: false }
+              - { label: "Phone Question One Text", name: "phoneTextOne", widget: "string", required: false }
+              - { label: "Phone Question Two Text", name: "phoneTextTwo", widget: "string", required: false }
+              - { label: "Phone Number", name: "phoneNumber", widget: "string", required: false }
+
+      # Insurance Page Configuration
+      - label: "Insurance Page"
+        name: "insurance"
+        file: "src/content/pages/insurance.json"
+        fields:
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Heading", name: "heading", widget: "string", required: false }
+              - { label: "Text", name: "text", widget: "string", required: false }
+              - { label: "Button Text", name: "buttonText", widget: "string", required: false }
+              - { label: "Button Link", name: "buttonLink", widget: "string", required: false }
+              - { label: "Phone Question Text", name: "phoneQuestionText", widget: "string", required: false }
+              - { label: "Treatments Label", name: "treatmentsLabel", widget: "string", required: false }
+              - { label: "Call Button Text", name: "callButtonText", widget: "string", required: false }
+              - { label: "Call Button Link", name: "callButtonLink", widget: "string", required: false }
+             
+          
+          - label: "Contact Hero"
+            name: "contactHero"
+            widget: "object"
+            collapsed: true
+            fields:
+              - label: "Title"
+                name: "title"
+                widget: "object"
+                fields:
+                  - { label: "Line 1", name: "line1", widget: "string", required: false }
+                  - { label: "Line 2", name: "line2", widget: "string", required: false }
+                  - { label: "Line 3", name: "line3", widget: "string", required: false }
+              - { label: "Description", name: "description", widget: "text", required: false }
+              - { label: "Bottom Description", name: "bottomDescription", widget: "text", required: false }
+              - { label: "Form Title", name: "formTitle", widget: "string", required: false }
+              - { label: "Form Subtitle", name: "formSubtitle", widget: "string", required: false }
+              - label: "Insurance Providers"
+                name: "insuranceProviders"
+                widget: "list"
+                fields:
+                  - { label: "Name", name: "name", widget: "string", required: false }
+              - { label: "Privacy Notice", name: "privacyNotice", widget: "text", required: false }
+          
+          - label: "Insurance Providers Section"
+            name: "insuranceProviders"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Heading", name: "heading", widget: "string", required: false }
+              - { label: "Subheading", name: "subheading", widget: "text" , required: false }
+              - { label: "Get Started Button Text", name: "buttonText", widget: "string", required: false }
+              - { label: "Get Started Button Link", name: "buttonLink", widget: "string", required: false }
+              - { label: "Call Question Text", name: "callText", widget: "string", required: false }
+              - { label: "Call Question Text Two", name: "callTextTwo", widget: "string", required: false }
+              - { label: "Phone Number", name: "phoneNumber", widget: "string", required: false }
+              - { label: "Footer Text", name: "footerText", widget: "text" , required: false }
+              - { label: "Verify Button Text", name: "verifyButtonText", widget: "string", required: false }
+              - { label: "Verify Button Link", name: "verifyButtonLink", widget: "string", required: false }
+              - label: "Insurance Providers"
+                name: "providers"
+                widget: "list"
+                fields:
+                  - { label: "Provider Name", name: "name", widget: "string", required: false }
+                  - { label: "Provider Description", name: "description", widget: "text", required: false }
+                  - { label: "Provider Logo", name: "logo", widget: "image", required: false }
+          
+          - label: "Treatment Grid"
+            name: "treatmentGrid"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Heading", name: "heading", widget: "string", required: false }
+              - { label: "Subheading", name: "subheading", widget: "string", required: false }
+              - { label: "Description", name: "description", widget: "text", required: false }
+              - { label: "Featured Image", name: "featuredImage", widget: "image", required: false }
+              - label: "Treatments"
+                name: "treatments"
+                widget: "list"
+                fields:
+                  - { label: "Icon", name: "icon", widget: "string", required: false }
+                  - { label: "Title", name: "title", widget: "string", required: false }
+                  - { label: "Description", name: "description", widget: "text", required: false }
+          
+          - label: "Call to Action"
+            name: "cta"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Heading", name: "heading", widget: "string", required: false }
+              - { label: "Text", name: "text", widget: "text", required: false }
+              - { label: "Button Text", name: "buttonText", widget: "string", required: false }
+              - { label: "Button Link", name: "buttonLink", widget: "string", required: false }
+              - { label: "Image", name: "image", widget: "image", required: false }
+              - { label: "Image Alt Text", name: "altText", widget: "string", required: false }
+              - { label: "Phone Question One Text", name: "phoneTextOne", widget: "string", required: false }
+              - { label: "Phone Question Two Text", name: "phoneTextTwo", widget: "string", required: false }
+              - { label: "Phone Number", name: "phoneNumber", widget: "string", required: false }
+
+          - label: "Insurance Verification Section"
+            name: "insuranceVerification"
+            widget: "object"
+            collapsed: true
+            fields:
+              - label: "Title"
+                name: "title"
+                widget: "object"
+                fields:
+                  - { label: "Line 1", name: "line1", widget: "string", required: false }
+                  - { label: "Line 2", name: "line2", widget: "string", required: false }
+              - { label: "Description", name: "description", widget: "text", required: false }
+              - label: "Features"
+                name: "features"
+                widget: "list"
+                fields:
+                  - { label: "Feature Text", name: "text", widget: "string", required: false }
+              - label: "Call to Action Section"
+                name: "cta"
+                widget: "object"
+                fields:
+                  - { label: "Heading", name: "heading", widget: "string", required: false }
+                  - { label: "Subheading", name: "subheading", widget: "text", required: false }
+                  - { label: "Button Text", name: "buttonText", widget: "string", required: false }
+                  - { label: "Button Link", name: "buttonLink", widget: "string", required: false }
+                  - { label: "Call Text", name: "callText", widget: "string", required: false }
+                  - { label: "Call Text Two", name: "callTextTwo", widget: "string", required: false }
+                  - { label: "Phone Number", name: "phoneNumber", widget: "string", required: false }
+
+      # Location Page Configuration
+      - label: "Location Page"
+        name: "location"
+        file: "src/content/pages/location.json"
+        fields:
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Heading", name: "heading", widget: "string", required: false }
+              - { label: "Text", name: "text", widget: "string", required: false }
+              - { label: "Button Text", name: "buttonText", widget: "string", required: false }
+              - { label: "Button Link", name: "buttonLink", widget: "string", required: false }
+              - { label: "Phone Question Text", name: "phoneQuestionText", widget: "string", required: false }
+              - { label: "Treatments Label", name: "treatmentsLabel", widget: "string", required: false }
+              - { label: "Call Button Text", name: "callButtonText", widget: "string", required: false }
+              - { label: "Call Button Link", name: "callButtonLink", widget: "string", required: false }
+              
+          
+          - label: "Location Hero"
+            name: "locationHero"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Header", name: "header", widget: "string", required: false }
+              - { label: "Subheader Highlight", name: "subheaderHighlight", widget: "string", required: false }
+              - { label: "Description", name: "description", widget: "text", required: false }
+              - label: "Location Information"
+                name: "locationInfo"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { label: "Title", name: "title", widget: "string", required: false }
+                  - { label: "Address Line 1", name: "addressLine1", widget: "string", required: false }
+                  - { label: "Address Line 2", name: "addressLine2", widget: "string", required: false }
+                  - { label: "Email", name: "email", widget: "string", required: false }
+                  - { label: "Phone", name: "phone", widget: "string", required: false }
+                  - { label: "Hours", name: "hours", widget: "string", required: false }
+                  - { label: "Button Text", name: "buttonText", widget: "string", required: false }
+                  - {label: "Button Link", name: "buttonLink", widget: "string", required: false }
+          
+    
+          - label: "Call to Action"
+            name: "cta"
+            widget: "object"
+            collapsed: true
+            required: false
+            fields:
+              - { label: "Heading", name: "heading", widget: "string", required: false }
+              - { label: "Text", name: "text", widget: "text", required: false }
+              - { label: "Button Text", name: "buttonText", widget: "string", required: false }
+              - { label: "Button Link", name: "buttonLink", widget: "string", required: false }
+              - { label: "Image", name: "image", widget: "image", required: false }
+              - { label: "Image Alt Text", name: "altText", widget: "string", required: false }
+              - { label: "Phone Question One Text", name: "phoneTextOne", widget: "string", required: false }
+              - { label: "Phone Question Two Text", name: "phoneTextTwo", widget: "string", required: false }
+              - { label: "Phone Number", name: "phoneNumber", widget: "string", required: false }
+
+      
+      # Pricing Page Configuration
+      - label: "Pricing Page"
+        name: "pricing"
+        file: "src/content/pages/pricing.json"
+        fields:
+          - label: "Hero"
+            name: "hero"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Heading", name: "heading", widget: "string", required: false }
+              - { label: "Text", name: "text", widget: "string", required: false }
+              - { label: "Button Text", name: "buttonText", widget: "string", required: false }
+              - { label: "Button Link", name: "buttonLink", widget: "string", required: false }
+              - { label: "Phone Question Text", name: "phoneQuestionText", widget: "string", required: false }
+              - { label: "Treatments Label", name: "treatmentsLabel", widget: "string", required: false }
+              - { label: "Call Button Text", name: "callButtonText", widget: "string", required: false }
+              - { label: "Call Button Link", name: "callButtonLink", widget: "string", required: false }
+              
+
+          - label: "Pricing Hero"
+            name: "pricingHero"
+            widget: "object"
+            collapsed: true
+            fields:
+              - { label: "Heading", name: "heading", widget: "string", required: false }
+              - { label: "Subheading", name: "subheading", widget: "text", required: false }
+              
+              - label: "Initial Consultation"
+                name: "initialConsultation"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { label: "Title", name: "title", widget: "string", required: false }
+                  - label: "Features"
+                    name: "features"
+                    widget: "list"
+                    field: { label: "Feature", name: "feature", widget: "string", required: false }
+              
+              - label: "Follow-up Visits"
+                name: "followUpVisits"
+                widget: "object"
+                collapsed: true
+                fields:
+                  - { label: "Title", name: "title", widget: "string", required: false }
+                  - label: "Features"
+                    name: "features"
+                    widget: "list"
+                    field: { label: "Feature", name: "feature", widget: "string", required: false }
+              
+              - { label: "Specialized Treatments Heading", name: "specializedTreatmentsHeading", widget: "string", required: false }
+
+
+          - label: "Call to Action"
+            name: "cta"
+            widget: "object"
+            collapsed: true
+            required: false
+            fields:
+              - { label: "Heading", name: "heading", widget: "string", required: false }
+              - { label: "Text", name: "text", widget: "text", required: false }
+              - { label: "Button Text", name: "buttonText", widget: "string", required: false }
+              - { label: "Button Link", name: "buttonLink", widget: "string", required: false }
+              - { label: "Image", name: "image", widget: "image", required: false }
+              - { label: "Image Alt Text", name: "altText", widget: "string", required: false }
+              - { label: "Phone Question One Text", name: "phoneTextOne", widget: "string", required: false }
+              - { label: "Phone Question Two Text", name: "phoneTextTwo", widget: "string", required: false }
+              - { label: "Phone Number", name: "phoneNumber", widget: "string", required: false }
+
+  # Location Pages
+  - name: "locations"
+    label: "Location Pages"
+    folder: "src/content/locations"
+    create: true
+    format: "json"
+    extension: "json"
+    slug: "{{slug}}"
+    fields:
+      - { label: "Slug", name: "slug", widget: "string"}
+      - { label: "Title", name: "title", widget: "string", required: false }
+      
+      - label: "Hero"
+        name: "hero"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Background Image", name: "backgroundImage", widget: "image", required: false }
+          - { label: "Background Image Alt", name: "backgroundImageAlt", widget: "string", required: false }
+          - { label: "Logo", name: "logo", widget: "image", required: false }
+          - { label: "Button Text", name: "buttonText", widget: "string", required: false }
+          - { label: "Text Box 1", name: "textBox1", widget: "string", required: false }
+          - { label: "Text Box 2 Part 1", name: "textBox2_Part_1", widget: "string", required: false }
+          - { label: "Text Box 2 Part 2", name: "textBox2_Part_2", widget: "string", required: false }
+          - { label: "Text Box 2 Part 3", name: "textBox2_Part_3", widget: "string", required: false }
+          - { label: "Text Box 3", name: "textBox3", widget: "string", required: false }
+          - { label: "Button One", name: "buttonOne", widget: "string", required: false }
+          - { label: "Button One Link", name: "buttonOneLink", widget: "string", required: false }
+          - { label: "Button Two", name: "buttonTwo", widget: "string", required: false }
+          - { label: "Telephone Number", name: "telephoneNumber", widget: "string", required: false }
+          - label: "Hero Links"
+            name: "heroLinks"
+            widget: "list"
+            required: false
+            fields:
+              - { label: "Text", name: "text", widget: "string", required: false }
+              - { label: "Link", name: "link", widget: "string", required: false }
+              - { label: "Heading", name: "heading", widget: "string", required: false }
+              - label: "Sublinks"
+                name: "sublinks"
+                widget: "list"
+                required: false
+                fields:
+                  - { label: "Text", name: "text", widget: "string", required: false }
+                  - { label: "Link", name: "link", widget: "string", required: false }
+
+      - label: "About"
+        name: "about"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Heading One Part 1", name: "headingOne_Part_1", widget: "string", required: false }
+          - { label: "Heading One Part 2", name: "headingOne_Part_2", widget: "string", required: false }
+          - { label: "Heading Two", name: "headingTwo", widget: "string", required: false }
+          - { label: "Text One", name: "textOne", widget: "text", required: false }
+          - { label: "Button One", name: "buttonOne", widget: "string", required: false }
+          - { label: "Button One Link", name: "buttonOneLink", widget: "string", required: false }
+          - { label: "Button Two Part 1", name: "buttonTwo_Part_1", widget: "string", required: false }
+          - { label: "Button Two Part 2", name: "buttonTwo_Part_2", widget: "string", required: false }
+          - { label: "Button Two Number", name: "buttonTwo_Number", widget: "string", required: false }
+
+      - label: "Programs"
+        name: "programs"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Heading", name: "heading", widget: "string", required: false }
+          - { label: "Text", name: "text", widget: "text", required: false }
+          - label: "Programs"
+            name: "programs"
+            widget: "list"
+            required: false
+            fields:
+              - { label: "Title", name: "title", widget: "string", required: false }
+              - { label: "Image", name: "image", widget: "image", required: false }
+              - { label: "Link", name: "link", widget: "string", required: false }
+
+      - label: "Insurance Options"
+        name: "insuranceOptions"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Button Second Link", name: "buttonSecondLink", widget: "string", required: false }
+          - { label: "Button One Text", name: "buttonOneText", widget: "string", required: false }
+          - { label: "Heading One", name: "headingOne", widget: "string", required: false }
+          - { label: "Heading Two", name: "headingTwo", widget: "string", required: false }
+          - { label: "Button One Link", name: "buttonOneLink", widget: "string", required: false }
+          - { label: "Button Second Text One", name: "buttonSecondTextOne", widget: "string", required: false }
+          - { label: "Button Second Text Two", name: "buttonSecondTextTwo", widget: "string", required: false }
+          - { label: "Description", name: "description", widget: "text", required: false }
+          - label: "Insurance Options"
+            name: "insuranceOptions"
+            widget: "list"
+            required: false
+            fields:
+              - { label: "Logo", name: "logo", widget: "image", required: false }
+              - { label: "Alt Text", name: "alt", widget: "string", required: false }
+
+      - label: "Testimonials"
+        name: "testimonials"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+          - label: "List"
+            name: "list"
+            widget: "list"
+            required: false
+            fields:
+              - { label: "Name", name: "name", widget: "string", required: false }
+              - { label: "Position", name: "position", widget: "string", required: false }
+              - { label: "Text", name: "text", widget: "text", required: false }
+              - { label: "Image", name: "image", widget: "image", required: false }
+
+      - label: "Therapies"
+        name: "therapies"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Heading", name: "heading", widget: "string", required: false }
+          - { label: "Button Two Part 1", name: "buttonTwo_Part_1", widget: "string", required: false }
+          - { label: "Button Two Part 2", name: "buttonTwo_Part_2", widget: "string", required: false }
+          - { label: "Button Link", name: "buttonLink", widget: "string", required: false }
+          - { label: "Button Two Number", name: "buttonTwo_Number", widget: "string", required: false }
+          - { label: "Heading Two Part 1", name: "headingTwo_Part_1", widget: "string", required: false }
+          - { label: "Image", name: "image", widget: "image", required: false }
+          - { label: "Heading Two Part 2", name: "headingTwo_Part_2", widget: "string", required: false }
+          - { label: "Heading Two Part 3", name: "headingTwo_Part_3", widget: "string", required: false }
+          - { label: "Button Text", name: "buttonText", widget: "string", required: false }
+          - label: "List"
+            name: "list"
+            widget: "list"
+            required: false
+            fields:
+              - { label: "Title", name: "title", widget: "string", required: false }
+              - { label: "Description", name: "description", widget: "text", required: false }
+              - { label: "Image", name: "image", widget: "image", required: false }
+              - { label: "Link", name: "link", widget: "string", required: false }
+
+      - label: "Patient Journey"
+        name: "patientJourney"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Heading", name: "heading", widget: "string", required: false }
+          - { label: "Description", name: "description", widget: "text", required: false }
+          - { label: "Image", name: "image", widget: "image", required: false }
+          - { label: "Image Alt", name: "imageAlt", widget: "string", required: false }
+          - label: "Steps"
+            name: "steps"
+            widget: "list"
+            required: false
+            fields:
+              - { label: "Step Number", name: "stepNumber", widget: "string", required: false }
+              - { label: "Title", name: "title", widget: "string", required: false }
+              - { label: "Description", name: "description", widget: "text", required: false }
+
+      - label: "Call to Action"
+        name: "cta"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Heading", name: "heading", widget: "string", required: false }
+          - { label: "Phone Text One", name: "phoneTextOne", widget: "string", required: false }
+          - { label: "Button Link", name: "buttonLink", widget: "string", required: false }
+          - { label: "Text", name: "text", widget: "text", required: false }
+          - { label: "Phone Text Two", name: "phoneTextTwo", widget: "string", required: false }
+          - { label: "Alt Text", name: "altText", widget: "string", required: false }
+          - { label: "Phone Number", name: "phoneNumber", widget: "string", required: false }
+          - { label: "Image", name: "image", widget: "image", required: false }
+          - { label: "Button Text", name: "buttonText", widget: "string", required: false }
+
+  # Location-Specific Treatments
+  - name: "location-treatments"
+    label: "Location-Specific Treatments"
+    folder: "src/content/location_treatment"
+    create: true
+    format: "json"
+    extension: "json"
+    slug: "{{location}}-{{treatment}}"
+    fields:
+      - { label: "Location", name: "location", widget: "string"}
+      - { label: "Treatment", name: "treatment", widget: "string"}
+      - { label: "Title", name: "title", widget: "string", required: false }
+      
+      - label: "Hero"
+        name: "hero"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Heading", name: "heading", widget: "string", required: false }
+          - { label: "Text", name: "text", widget: "string", required: false }
+          - { label: "Button Text", name: "buttonText", widget: "string", required: false }
+          - { label: "Button Link", name: "buttonLink", widget: "string", required: false }
+          - { label: "Phone Question Text", name: "phoneQuestionText", widget: "string", required: false }
+          - { label: "Treatments Label", name: "treatmentsLabel", widget: "string", required: false }
+          - { label: "Call Button Text", name: "callButtonText", widget: "string", required: false }
+          - { label: "Call Button Link", name: "callButtonLink", widget: "string", required: false }
+          
+      - label: "About"
+        name: "about"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Heading One", name: "headingOne", widget: "string", required: false }
+          - { label: "Heading Two", name: "headingTwo", widget: "string", required: false }
+          - { label: "Text One", name: "textOne", widget: "text", required: false }
+          - { label: "Text Two", name: "textTwo", widget: "text", required: false }
+          - { label: "Button Text", name: "buttonText", widget: "string", required: false }
+          - { label: "Button Link", name: "buttonLink", widget: "string", required: false }
+          - { label: "Button Two Part 1", name: "buttonTwo_Part_1", widget: "string", required: false }
+          - { label: "Button Two Part 2", name: "buttonTwo_Part_2", widget: "string", required: false }
+          - { label: "Button Two Number", name: "buttonTwo_Number", widget: "string", required: false }
+          - label: "Images"
+            name: "images"
+            widget: "object"
+            required: false
+            fields:
+              - { label: "Image One", name: "imageOne", widget: "image", required: false }
+              - { label: "Image Two", name: "imageTwo", widget: "image", required: false }
+
+      - label: "Video"
+        name: "video"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Heading", name: "heading", widget: "string", required: false }
+          - { label: "Heading Colored", name: "headingColored", widget: "string", required: false }
+          - { label: "Description", name: "description", widget: "text", required: false }
+          - { label: "Image", name: "image", widget: "image", required: false }
+          - { label: "Image Alt Text", name: "imageAlt", widget: "string", required: false }
+
+      - label: "Who Needs"
+        name: "whoNeeds"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Heading", name: "heading", widget: "string", required: false }
+          - { label: "Heading Colored", name: "headingColored", widget: "string", required: false }
+          - { label: "Heading End", name: "headingEnd", widget: "string", required: false }
+          - { label: "Description", name: "description", widget: "text", required: false }
+          - { label: "List Heading", name: "listHeading", widget: "string", required: false }
+          - { label: "List Items", name: "listItems", widget: "list", field: { widget: "string" , name: "item"}, required: false }
+          - { label: "List Description", name: "listDescription", widget: "text", required: false }
+          - { label: "Button Text", name: "buttonText", widget: "string", required: false }
+          - { label: "Button Link", name: "buttonLink", widget: "string", required: false }
+          - { label: "Button Two Part 1", name: "buttonTwo_Part_1", widget: "string", required: false }
+          - { label: "Button Two Part 2", name: "buttonTwo_Part_2", widget: "string", required: false }
+          - { label: "Button Two Number", name: "buttonTwo_Number", widget: "string", required: false }
+
+      - label: "Treatment Grid"
+        name: "treatmentGrid"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Heading", name: "heading", widget: "string", required: false }
+          - { label: "Subheading", name: "subheading", widget: "string", required: false }
+          - { label: "Description", name: "description", widget: "text", required: false }
+          - { label: "Featured Image", name: "featuredImage", widget: "image", required: false }
+          - label: "Treatments"
+            name: "treatments"
+            widget: "list"
+            required: false
+            fields:
+              - { label: "Icon", name: "icon", widget: "string", required: false }
+              - { label: "Title", name: "title", widget: "string", required: false }
+              - { label: "Description", name: "description", widget: "text", required: false }
+
+      - label: "Why Choose"
+        name: "whyChoose"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Title", name: "title", widget: "string", required: false }
+          - { label: "Title Two", name: "titleTwo", widget: "string", required: false }
+          - label: "Content"
+            name: "content"
+            widget: "object"
+            fields:
+              - { label: "Paragraph 1", name: "paragraph1", widget: "text", required: false }
+              - { label: "Paragraph 2", name: "paragraph2", widget: "text", required: false }
+          - { label: "Image URL", name: "imageUrl", widget: "image", required: false }
+          - { label: "Image Alt", name: "imageAlt", widget: "string", required: false }
+          - { label: "Button Text", name: "buttonText", widget: "string", required: false }
+          - { label: "Button Link", name: "buttonLink", widget: "string", required: false }
+          - { label: "Button Two Part 1", name: "buttonTwo_Part_1", widget: "string", required: false }
+          - { label: "Button Two Part 2", name: "buttonTwo_Part_2", widget: "string", required: false }
+          - { label: "Button Two Number", name: "buttonTwo_Number", widget: "string", required: false }
+
+      - label: "Second Why Choose"
+        name: "secondWhyChoose"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Title", name: "title", widget: "string", required: false }
+          - label: "Content"
+            name: "content"
+            widget: "object"
+            fields:
+              - { label: "Paragraph 1", name: "paragraph1", widget: "text", required: false }
+              - { label: "Paragraph 2", name: "paragraph2", widget: "text", required: false }
+          - { label: "Image URL", name: "imageUrl", widget: "image", required: false }
+          - { label: "Image Alt", name: "imageAlt", widget: "string", required: false }
+          - { label: "Button Text", name: "buttonText", widget: "string", required: false }
+          - { label: "Button Link", name: "buttonLink", widget: "string", required: false }
+          - { label: "Button Two Part 1", name: "buttonTwo_Part_1", widget: "string", required: false }
+          - { label: "Button Two Part 2", name: "buttonTwo_Part_2", widget: "string", required: false }
+          - { label: "Button Two Number", name: "buttonTwo_Number", widget: "string", required: false }
+
+      - label: "Program Steps"
+        name: "program12"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Badge Text", name: "badgeText", widget: "string", required: false }
+          - { label: "Heading", name: "heading", widget: "string", required: false }
+          - { label: "Description", name: "description", widget: "text", required: false }
+          - { label: "Main Image", name: "mainImage", widget: "image", required: false }
+          - { label: "Main Image Alt Text", name: "mainImageAlt", widget: "string", required: false }
+          - label: "Steps"
+            name: "steps"
+            widget: "list"
+            required: false
+            fields:
+              - { label: "Step Number", name: "stepNumber", widget: "string", required: false }
+              - { label: "Title", name: "title", widget: "string", required: false }
+              - { label: "Description", name: "description", widget: "text", required: false }
+
+      - label: "Program Section"
+        name: "programTMS"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Main Heading", name: "mainHeading", widget: "string", required: false }
+          - { label: "Colored Heading", name: "coloredHeading", widget: "string", required: false }
+          - { label: "Description", name: "description", widget: "text", required: false }
+          - { label: "Button Text", name: "buttonText", widget: "string", required: false }
+          - { label: "Button Link", name: "buttonLink", widget: "string", required: false }
+          - { label: "Button Two Part 1", name: "buttonTwo_Part_1", widget: "string", required: false }
+          - { label: "Button Two Part 2", name: "buttonTwo_Part_2", widget: "string", required: false }
+          - { label: "Button Two Number", name: "buttonTwo_Number", widget: "string", required: false }
+          - { label: "Image", name: "image", widget: "image", required: false }
+          - { label: "Image Alt", name: "imageAlt", widget: "string", required: false }
+          - label: "Conditions"
+            name: "conditions"
+            widget: "list"
+            required: false
+            fields:
+              - { label: "Title", name: "title", widget: "string", required: false }
+
+      - label: "FAQ"
+        name: "faq"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Heading", name: "heading", widget: "string", required: false }
+          - { label: "Subheading", name: "subheading", widget: "string", required: false }
+          - label: "FAQ Items"
+            name: "faq"
+            widget: "list"
+            required: false
+            fields:
+              - { label: "Question", name: "title", widget: "string", required: false }
+              - { label: "Answer", name: "details", widget: "text", required: false }
+
+      - label: "Call to Action"
+        name: "cta"
+        widget: "object"
+        collapsed: true
+        required: false
+        fields:
+          - { label: "Heading", name: "heading", widget: "string", required: false }
+          - { label: "Text", name: "text", widget: "text", required: false }
+          - { label: "Button Text", name: "buttonText", widget: "string", required: false }
+          - { label: "Button Link", name: "buttonLink", widget: "string", required: false }
+          - { label: "Image", name: "image", widget: "image", required: false }
+          - { label: "Image Alt Text", name: "altText", widget: "string", required: false }
+          - { label: "Phone Question One Text", name: "phoneTextOne", widget: "string", required: false }
+          - { label: "Phone Question Two Text", name: "phoneTextTwo", widget: "string", required: false }
+          - { label: "Phone Number", name: "phoneNumber", widget: "string", required: false }
+
+
+
+

@@ -1,0 +1,142 @@
+---
+import { Icon } from "astro-icon/components";
+const { name, title, text, icon, modalText } = Astro.props;
+---
+<div class="admission-step text-center">
+  <!-- Step Number (No Background) -->
+  <div class="step-number text-gray-700 text-xl  font-semibold ">
+    {name}
+  </div>
+
+  <!-- Title (No Background) -->
+  <h3 class="text-xl font-semibold mb-6 mt-6">{title}</h3>
+  
+  <!-- Icon (No Background) -->
+  {icon && (
+    <div class="icon-container mb-6  items-center justify-center ">
+      <Icon name={icon} class="w-12 h-12 text-gray-600" />
+    </div>
+  )}
+
+  
+
+  <!-- Box containing only the text and button -->
+  <div class="text-button-box border border-gray-300 items-center rounded-lg p-4">
+    <p class="text-gray-600 mb-4">{text}</p>
+    <button class="read-more-btn bg-gray-300 text-gray-800 py-2 px-4 rounded-full hover:bg-gray-400" data-modal={name}>Read more</button>
+  </div>
+
+  <!-- Hidden modal -->
+  <div id={name} class="modal hidden fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+    <div class="modal-content bg-white p-6 rounded-lg shadow-lg relative">
+      <button class="close-modal absolute top-2 right-2">X</button>
+      <h4 class="text-xl mb-4">{title}</h4>
+      <p>{modalText}</p>
+    </div>
+  </div>
+</div>
+
+<!-- Styles for the component -->
+<style>
+  /* Main Container Styling */
+  .admission-step {
+    padding: 1rem;
+    text-align: center;
+    display: flex;
+  flex-direction: column;
+  }
+
+  /* Step Number Styling (No Background) */
+  .step-number {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #4b5563;
+    background-color: #6b7280;
+    padding: 4px;
+    border-radius: 50%;
+    width: 38px;
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  }
+
+  /* Icon Styling */
+  .icon-container .w-12 {
+    
+    color: #6b7280;
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  }
+
+  /* Title Styling (No Background) */
+  h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #1f2937;
+  }
+
+  /* Box for Text and Button */
+  .text-button-box {
+    flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid #d1d5db; /* Gray border */
+  border-radius: 0.5rem;
+  padding: 1rem;
+  text-align: center;
+  }
+
+  /* Button Styling */
+  .read-more-btn {
+    background-color: #d1d5db;
+    color: #1f2937;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px; /* Fully rounded button */
+    transition: background-color 0.3s ease;
+  }
+
+  .read-more-btn:hover {
+    background-color: #9ca3af;
+  }
+
+  /* Modal Styles */
+  .modal.hidden {
+    display: none;
+  }
+
+  .modal {
+    display: flex;
+  }
+
+  .modal-content {
+    max-width: 500px;
+    width: 100%;
+  }
+</style>
+
+<!-- Client-side script to handle modal open/close -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const buttons = document.querySelectorAll('.read-more-btn');
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        const modalId = button.getAttribute('data-modal');
+        const modal = document.getElementById(modalId);
+        modal.classList.remove('hidden');
+      });
+    });
+
+    const closeButtons = document.querySelectorAll('.close-modal');
+    closeButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const modal = button.closest('.modal');
+        modal.classList.add('hidden');
+      });
+    });
+  });
+</script>

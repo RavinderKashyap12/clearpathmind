@@ -1,0 +1,13 @@
+# Netlify build & serverless function configuration for the Clear Path site.
+
+[build]
+  command = "npm run build"
+  publish = "dist"
+  functions = "netlify/functions"
+
+[functions]
+  # Bundle the TypeScript functions (and the shared _lib module) with esbuild.
+  node_bundler = "esbuild"
+
+# NOTE: the /api/* -> /.netlify/functions/:splat proxy lives in public/_redirects
+# so it is evaluated before the SPA-style /* 404 catch-all in that same file.

@@ -1,0 +1,161 @@
+---
+import { Image } from 'astro:assets';
+import Button from '../Button.astro';
+
+const {
+  backgroundImage,
+  backgroundImageAlt,
+  logo,
+  buttonText,
+  heroLinks,
+  textBox1,
+  textBox2_Part_1,
+  textBox2_Part_2,
+  textBox2_Part_3,
+  textBox3,
+  buttonOne,
+  buttonOneLink,
+  buttonTwo,
+  telephoneNumber
+} = Astro.props.Content;
+---
+
+<div class="max-[1000px]:hidden">
+  <section
+    class="rounded-none mx-auto mb-10 max-w-[1320px] relative"
+  >
+    <div
+      class="flex overflow-hidden relative flex-col w-full hero-home-main pt-10"
+      style="border-bottom-right-radius: 1.5rem;"
+    >
+       <img
+        src={backgroundImage}
+        alt={backgroundImageAlt}
+        class="object-cover absolute inset-0 size-full"
+      />
+
+      <div
+        class="flex relative flex-col pt-6 pr-20 w-full max-md:pr-5 max-md:max-w-full h-full max-[1200px]:pr-10 max-[1100px]:pr-6"
+      >
+        <div class="flex-1 flex items-end mt-52 max-md:mt-10 max-md:max-w-full">
+          <div class="flex gap-5 w-full max-md:flex-col">
+            <div class="w-[61%] max-md:ml-0 max-md:w-full flex flex-col justify-end">
+              <div
+                class="flex flex-col mt-20 w-full font-medium max-md:mt-10 max-md:max-w-full"
+              >
+                  <span
+                  class="gap-2.5 self-start font-normal px-6 py-4 ml-20 text-2xl text-white rounded-[20px] border border-[rgba(255,255,255,0.53)] bg-[linear-gradient(96deg,rgba(10,39,126,0.50)_0%,rgba(10,39,126,0.50)_100%)] max-md:px-5 max-md:ml-2.5">
+                  {textBox1}
+                  </span>
+
+                <h1
+                  class="overflow-hidden px-8 py-8 mt-8 mb-0 bg-white rounded-none rounded-tr-[24px] max-md:px-5 max-md:max-w-full"
+                >
+                 <span set:html= {textBox2_Part_1}></span>
+                  <span style="color: rgba(94, 129, 233, 1);" set:html= {textBox2_Part_2}>
+                   </span
+                  >
+                  <span set:html= {textBox2_Part_3}></span>
+                </h1>
+              </div>
+            </div>
+
+            <div class="ml-5 w-[39%] max-md:ml-0 max-md:w-full flex flex-col justify-end relative top-[-50px] max-md:top-0">
+              <div class="w-full max-md:mt-10 max-md:max-w-full">
+                  <p
+                  class="flex-1 shrink gap-2.5 self-stretch px-6 py-8 !text-2xl !font-regular text-white rounded-[20px] border border-solid basis-0  max-md:px-5 bg-[linear-gradient(96deg,rgba(10,39,126,0.50)_0%,rgba(10,39,126,0.50)_100%)] border-[rgba(255,255,255,0.53)]">
+                  {textBox3}
+                  </p>
+
+                <div class="flex gap-3 mt-6 max-md:max-w-full">
+                  <Button 
+                    buttonLink={buttonOneLink}
+                    buttonText={buttonOne}
+                    buttonType="primary"
+                    buttonClass="flex-1"
+                  />
+
+                  <Button
+                    buttonLink="/contact/"
+                    phoneTextOne="Have a question?"
+                    phoneTextTwo="Get in Touch"
+                    buttonType="phone"
+                    buttonClass="flex-1"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="min-[1001px]:hidden">
+  <section
+    class="relative flex flex-col justify-center items-center py-10 px-5 text-center text-white min-h-[400px] -mt-20 pt-48"
+    style={`background-image: url(${backgroundImage}); background-size: cover; background-position: center;`}
+  >
+    <h1
+      class="w-full max-w-md bg-white text-gray-900 rounded-[20px] px-4 py-4 mb-8 mx-auto text-lg leading-tight sm:text-xl"
+    >
+      <span set:html={textBox2_Part_1}></span>
+      <span style="color: rgba(94, 129, 233, 1);" set:html={textBox2_Part_2}></span>
+      <span set:html={textBox2_Part_3}></span>
+    </h1>
+    {textBox3 && (
+      <div class="bg-blue-900 bg-opacity-50 backdrop-blur-sm border border-white border-opacity-50 rounded-xl p-6 mb-8 max-w-md">
+        <p class="text-white">
+          {textBox3}
+        </p>
+      </div>
+    )}
+    <div class="w-full max-w-xs flex flex-col gap-4">
+      <Button 
+        buttonLink="/contact"
+        buttonText={buttonOne}
+        buttonType="primary"
+        buttonClass="w-full"
+      />
+      <Button
+        buttonLink="/contact/"
+        phoneTextOne="Have a question?"
+        phoneTextTwo="Get in Touch"
+        buttonType="phone"
+        buttonClass="w-full"
+      />
+    </div>
+  </section>
+</div>
+
+<style>
+/* ...existing code... */
+
+@media (min-width: 1050px) and (max-width: 1150px) {
+  .hero-home-main {
+    min-height: 750px;
+  }
+  .hero-home-main > div {
+    min-height: 750px;
+  }
+  .hero-home-main .flex-1.flex.items-end {
+    margin-top: 0 !important;
+    height: 100%;
+  }
+}
+
+/* Ensure the bottom boxes/buttons always align to the bottom */
+@media (min-width: 1050px) and (max-width: 1150px) {
+  .hero-home-main > div {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .hero-home-main .flex-1.flex.items-end {
+    flex: 1 1 0%;
+    align-items: flex-end;
+    display: flex;
+  }
+}
+</style>

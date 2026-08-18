@@ -1,0 +1,17 @@
+---
+import { fetchGeneralData ,fetchHomeData} from '../../utils/dataMapping.ts';
+import MainLayout from "../../layouts/MainLayout.astro"
+import BlogHero from '../../components/sections/BlogHero.astro';
+import HeroProgram from "../../components/sections/HeroProgram.astro";
+import {  fetchBlogPageData } from '../../utils/dataMapping.ts';
+
+const { data: BlogPageData } = await fetchBlogPageData();
+
+const GeneralData = await fetchGeneralData();
+const { data: HomeData } = await fetchHomeData();
+---
+
+<MainLayout title="Blog" description="Insights, news, and resources for mental health and recovery.">
+    <HeroProgram Content={BlogPageData.hero} GeneralData={GeneralData} />
+    <BlogHero />
+</MainLayout>

@@ -1,0 +1,54 @@
+---
+import MainLayout from "../../layouts/MainLayout.astro";
+import RelatedPosts from '../RelatedPosts.astro';
+
+import { formatDate } from "../../utils/dateUtils";
+
+const { title, description, date, author, readingTime } = Astro.props;
+---
+<MainLayout title={title} description={description}>
+    <section class="blog-post-layout py-16 bg-white">
+        <div class="container mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
+            
+            <!-- Left Column: Main Blog Content -->
+            <article class="lg:col-span-2 border-r border-gray-200 pr-10">
+            <header class="mb-8 border-b border-gray-200 pb-6">
+                <h1 class="">{title}</h1>
+                <p>Reading time: {readingTime}</p>
+                <small class="text-gray-500">
+                Published on {formatDate(date)} by {author}
+                </small>
+            </header>
+            
+            <!-- Blog Body -->
+            <section class="prose prose-lg">
+                <slot />
+            </section>
+            </article>
+        
+            <!-- Right Column: Sticky Related Posts -->
+            <aside class="sticky top-20 self-start">
+            <div class="p-6">
+                <p class="text-xl">You May Also Be Interested In</p>
+        
+                <!-- Call the RelatedPosts component -->
+                <RelatedPosts />
+        
+            </div>
+            </aside>
+        
+        </div>
+        </section>
+</MainLayout>
+
+<style>
+    .blog-post-layout .sticky {
+      position: sticky;
+      top: 20px;
+    }
+    .blog-post-layout .prose {
+      max-width: 100%;
+      margin-bottom: 2rem;
+    }
+
+  </style>

@@ -1,0 +1,312 @@
+---
+// Accept the blog post as a prop
+import { Image } from 'astro:assets';
+const { post } = Astro.props;
+---
+
+<article class="flex overflow-hidden flex-col items-start px-20 pb-10 bg-white max-md:px-5">
+  <main class="z-10 pl-7 text-neutral-800 max-md:pl-5 max-md:max-w-full md:pl-0 md:mx-auto md:max-w-[1105px] md:text-center">
+    <!-- Blog metadata -->
+    <div class="flex flex-row gap-4 items-center mt-2 text-md text-gray-600 md:justify-center max-md:flex-col">
+      {post.date && <span class="mr-4 font-medium">Last Updated: {new Date(post.date).toLocaleDateString()}</span>}
+      {post.readingTime && <span class="mr-4 font-medium">Reading Time: {post.readingTime}</span>}
+      {post.author && <span class="font-medium">Author: {post.author}</span>}
+    </div>
+
+    <!-- Blog description/excerpt -->
+    <p class="my-4 text-lg max-md:max-w-full md:text-center md:max-w-[800px] md:mx-auto">
+      {post.description}
+    </p>
+    <!-- Display the featured image from the blog post -->
+    {post.featuredImg && (
+      <Image
+        src={post.featuredImg}
+        alt={post.title}
+        class="object-contain mx-auto mb-10 w-full rounded-3xl aspect-[1.82] max-w-[1105px] max-md:max-w-full"
+        width={1105}
+        height={607}
+        format="webp"
+        loading="eager"
+      />
+    )}
+
+    <!-- Blog content using slot -->
+    <div class="blog-content md:max-w-[1132.616px] md:mx-auto md:text-left">
+      <slot />
+    </div>
+
+    
+    <!-- Tags -->
+    {post.tags && post.tags.length > 0 && (
+      <div class="mt-10 md:max-w-[800px] md:mx-auto md:text-center">
+        <h3 class="text-lg font-bold">Tags:</h3>
+        <div class="flex flex-wrap gap-2 mt-2 md:justify-center">
+          {post.tags.map((tag) => (
+            <span class="px-3 py-1 text-sm bg-gray-100 rounded-full">{tag}</span>
+          ))}
+        </div>
+      </div>
+    )}
+  </main>
+</article>
+
+
+<style>
+  .font-onest {
+  }
+
+  
+  .blog-content {
+    background: transparent;
+    line-height: 1.7;
+    font-size: 1.25rem; /* 20px */
+    margin: 0 auto;
+    color: #000000;
+    font-family: Inter, sans-serif;
+  }
+
+  /* Use :global() to make these styles apply to slotted content */
+  .blog-content :global(h1),
+  .blog-content :global(h2),
+  .blog-content :global(h3),
+  .blog-content :global(h4) {
+    color: #000000;
+    font-family: Inter, sans-serif;
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.5px;
+  }
+
+  /* Distinct styling for anchor text in blog posts */
+  .blog-content :global(a) {
+    color: #2563eb; /* Blue color for links */
+    text-decoration: underline;
+    text-decoration-color: #2563eb;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+    transition: all 0.2s ease-in-out;
+    font-weight: 500;
+  }
+
+  .blog-content :global(a:hover) {
+    color: #1d4ed8; /* Darker blue on hover */
+    text-decoration-color: #1d4ed8;
+    background-color: #f0f9ff; /* Light blue background on hover */
+    padding: 2px 4px;
+    border-radius: 4px;
+  }
+
+  .blog-content :global(a:focus) {
+    outline: 2px solid #2563eb;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  .blog-content :global(a:visited) {
+    color: #7c3aed; /* Purple for visited links */
+    text-decoration-color: #7c3aed;
+  }
+
+  /* Additional link styling for better accessibility */
+  .blog-content :global(a[target="_blank"]) {
+    position: relative;
+  }
+
+  .blog-content :global(a[target="_blank"]::after) {
+    content: " ↗";
+    font-size: 0.8em;
+    color: #6b7280;
+    margin-left: 2px;
+  }
+
+  /* Style for links within paragraphs to ensure they stand out */
+  .blog-content :global(p a) {
+    border-bottom: 1px solid #dbeafe;
+    padding-bottom: 1px;
+  }
+
+  /* Style for links within list items */
+  .blog-content :global(li a) {
+    border-bottom: 1px solid #dbeafe;
+    padding-bottom: 1px;
+  }
+
+  .blog-content :global(h1) {
+    font-size: 2.5rem;
+    margin-bottom: 2.5rem;
+    letter-spacing: -1px;
+  }
+
+  .blog-content :global(h2) {
+    font-size: 32px;
+    margin-top: 3.5rem;
+    letter-spacing: -1.28px;
+    margin-bottom: 1rem;
+  }
+
+  .blog-content :global(h3) {
+    font-size: 1.25rem;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .blog-content :global(h4) {
+    font-size: 24px;
+    line-height: 33.6px;
+    letter-spacing: -0.96px;
+    margin-bottom: 2.5rem;
+  }
+
+  .blog-content :global(p) {
+    color: #333333; /* Light black (dark gray) for paragraphs */
+    font-size: 1.25rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+    margin-top: 0;
+    font-weight: 400;
+    font-family: Inter, sans-serif;
+  }
+  
+  .blog-content :global(li) {
+    color: #333333; /* Light black (dark gray) for list items */
+    font-size: 1.25rem;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+    margin-top: 0;
+    font-weight: 400;
+    position: relative;
+    padding-left: 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    font-family: Inter, sans-serif;
+  }
+
+  .blog-content :global(ul li) {
+    color: #333333;
+    font-size: 1.25rem;
+    line-height: 1.7;
+    margin-bottom: 2rem; /* Increased spacing between list items */
+    font-weight: 400;
+    display: flex;
+    flex-direction: column; /* Stack bullet heading and description */
+    font-family: Inter, sans-serif;
+    padding-left: 2rem; /* Space for bullet */
+    position: relative;
+  }
+
+  .blog-content :global(ul li::before) {
+    content: "•";
+    color: #688dfc; /* Lime green bullet color */
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+    width: 1.5rem;
+    text-align: center;
+    font-size: 1.5rem; /* Larger bullet */
+  }
+
+  .blog-content :global(ul li strong),
+  .blog-content :global(ul li b) {
+    display: block; /* Put heading on its own line */
+    margin-bottom: 0.75rem; /* Space between heading and description */
+    font-size: 1.3rem; 
+    color: #000000;
+    white-space: nowrap; /* Keep on single line on desktop */
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Allow headings to wrap on mobile devices */
+  @media (max-width: 768px) {
+    .blog-content :global(ul li strong),
+    .blog-content :global(ul li b) {
+      white-space: normal; /* Allow text to wrap */
+      max-width: 100%; /* Use full width available */
+    }
+  }
+
+  /* Specific layout for definition-style lists */
+  .blog-content :global(ul.definition-list li) {
+    display: grid;
+    grid-template-columns: auto 1fr; /* Auto width for term based on content */
+    gap: 2rem; /* Space between term and definition */
+    padding-left: 2rem;
+    align-items: flex-start;
+  }
+
+  .blog-content :global(ul.definition-list li strong),
+  .blog-content :global(ul.definition-list li b) {
+    margin-bottom: 0; /* Remove margin as we're using grid gap */
+    max-width: none; /* Remove max-width constraint for definition lists */
+  }
+
+  /* Additional responsive adjustment for definition lists */
+  @media (max-width: 768px) {
+    .blog-content :global(ul.definition-list li) {
+      grid-template-columns: 1fr; /* Stack vertically on mobile */
+    }
+  }
+
+  /* Responsive link styling adjustments */
+  @media (max-width: 768px) {
+    .blog-content :global(a) {
+      text-decoration-thickness: 1px; /* Thinner underline on mobile */
+      text-underline-offset: 2px; /* Closer underline on mobile */
+    }
+    
+    .blog-content :global(a:hover) {
+      padding: 1px 2px; /* Smaller padding on mobile */
+    }
+    
+    .blog-content :global(a[target="_blank"]::after) {
+      font-size: 0.7em; /* Smaller external link indicator on mobile */
+    }
+  }
+
+  div {
+    background-color: rgb(255, 255, 255);
+  }
+
+  /* Rest of the styles remain unchanged */
+
+  /* Reduce margin-top for screens below 800px */
+  @media (max-width: 800px) {
+    main {
+      margin-top: 0rem !important; /* Reduced from mt-20 (5rem) to 2rem */
+      padding-left: 0 !important; /* Remove left padding */
+      padding-right: 0 !important; /* Remove right padding */
+    }
+    
+    /* Center the image horizontally with equal margins */
+    main img {
+      margin-left: auto !important;
+      margin-right: auto !important;
+      display: block !important;
+      width: calc(100% - 2rem) !important; /* Account for container padding */
+      max-width: calc(100% - 2rem) !important;
+    }
+    
+    /* Ensure article container has equal padding */
+    article {
+      padding-left: 1rem !important;
+      padding-right: 1rem !important;
+    }
+    
+    /* Align blog content with image width */
+    .blog-content {
+      width: calc(100% - 2rem) !important; /* Match image width */
+      margin-left: auto !important;
+      margin-right: auto !important;
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+    
+    /* Ensure all content elements align with image */
+    main > * {
+      width: calc(100% - 2rem) !important;
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+  }
+
+</style>

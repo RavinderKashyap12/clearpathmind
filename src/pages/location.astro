@@ -1,0 +1,20 @@
+---
+import { fetchGeneralData, fetchHomeData, fetchLocationData , fetchBlogPageData } from '../utils/dataMapping.ts';
+import MainLayout from "../layouts/MainLayout.astro"
+import DisorderGrid from "../components/sections/DisorderGrid.astro";
+import CTA from "../components/CTA.astro";
+import HeroProgram from "../components/sections/HeroProgram.astro";
+import LocationHero from '../components/sections/LocationHero.astro';
+
+const GeneralData = await fetchGeneralData();
+const { data: LocationData } = await fetchLocationData();
+const {data:HomeData} = await fetchHomeData();
+const { data: BlogPageData } = await fetchBlogPageData(); // Assuming BlogPageData is also needed for disorders
+---
+
+<MainLayout title="Locations" description="Find a Clear Path facility near you for expert mental health treatment">
+    <HeroProgram Content={LocationData.hero} GeneralData={GeneralData} />
+    <LocationHero Content={LocationData.locationHero} />
+    <DisorderGrid Content={BlogPageData.disorders} />
+	<CTA Content={LocationData.cta} />
+</MainLayout>

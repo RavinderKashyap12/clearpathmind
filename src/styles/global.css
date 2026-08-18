@@ -1,0 +1,231 @@
+@import "/src/styles/fonts.css";
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+:root {
+  --h1: clamp(24px, calc(2rem + ((1vw - 3.2px) * 2.5)), 46px);
+  --h2: clamp(20px, calc(1.6rem + ((1vw - 3.2px) * 1.8)), 40px);
+  --h3: clamp(18px, calc(1.25rem + ((1vw - 3.2px) * 1.4)), 28px);
+  --h4: clamp(16px, calc(1rem + ((1vw - 3.2px) * 1)), 24px);
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  font-display: swap;
+  overflow-x: hidden;
+  background-color: rgb(255, 255, 255);
+}
+
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* Global Typography Styles */
+h1 {
+  font-family: "Poppins", sans-serif !important;
+  font-size: var(--h1) !important;
+  font-weight: 600;
+  line-height: 1.2 !important;
+  margin-bottom: 1rem;
+  color: #1f2937; /* gray-800 */
+}
+
+h2 {
+  font-family: "Poppins", sans-serif !important;
+  font-size: var(--h2) !important;
+  font-weight: 600;
+  line-height: 1.25 !important;
+  margin-bottom: 0.875rem;
+  color: #1f2937; /* gray-800 */
+}
+
+h3 {
+  font-family: "Poppins", sans-serif !important;
+  font-size: var(--h3) !important;
+  font-weight: 500;
+  line-height: 1.2 !important;
+  margin-bottom: 0.75rem;
+  color: #374151; /* gray-700 */
+}
+
+h4 {
+  font-family: "Poppins", sans-serif !important;
+  font-size: var(--h4) !important;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: 0.625rem;
+  color: #374151; /* gray-700 */
+}
+
+p {
+  font-family: "Inter", sans-serif;
+  max-width: 70ch;
+  font-size: 17px !important;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #4b5563; /* gray-600 */
+}
+
+/* Responsive typography adjustments */
+@media (max-width: 768px) {
+  h1 {
+    font-size: clamp(
+      23.1px,
+      calc(1.8375rem + ((1vw - 3.2px) * 1.89)),
+      39.9px
+    ) !important;
+  }
+
+  h2 {
+    font-size: clamp(
+      21px,
+      calc(1.6275rem + ((1vw - 3.2px) * 1.575)),
+      33.6px
+    ) !important;
+  }
+
+  h3 {
+    font-size: clamp(18px, calc(1.3rem + ((1vw - 3.2px) * 1)), 26px) !important;
+  }
+
+  h4 {
+    font-size: clamp(16px, calc(1rem + ((1vw - 3.2px) * 0.6)), 22px) !important;
+  }
+
+  p {
+    font-size: 16px !important;
+  }
+}
+
+/* Common Global Classes */
+
+.section {
+  padding-block: clamp(48px, calc(3rem + ((1vw - 3.2px) * 4.375)), 90px);
+}
+
+.container {
+  width: 100%;
+  max-width: 1280px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 0 auto;
+}
+
+/* Buttons Style */
+
+/* Primary button */
+.primary-button {
+  @apply bg-primary-500 text-white border border-primary-500;
+}
+.primary-button:hover {
+  background-color: rgb(0 0 0 / 71%);
+}
+
+/* Secondary Button */
+
+.secondary-button {
+  @apply bg-accent-500 text-black border border-accent-500;
+}
+.secondary-button:hover {
+  background-color: rgb(0 0 0 / 71%);
+  border-color: rgb(0 0 0 / 71%);
+  @apply text-white;
+}
+
+/* Outline Button */
+.outline-button {
+  @apply bg-white text-black border border-black;
+}
+.outline-button:hover {
+  background-color: rgb(0 0 0 / 71%);
+}
+
+/* White button */
+.white-button {
+  @apply text-black bg-white;
+}
+.white-button:hover {
+  background-color: #ffffffbd;
+}
+
+/* Transparent button */
+.transparent-button {
+  border: 1px solid white;
+  @apply rounded-lg text-white;
+}
+
+.primary-button,
+.white-button,
+.transparent-button,
+.outline-button,
+.secondary-button {
+  @apply py-4 px-8 transition-all duration-300 leading-none  text-center rounded-md;
+}
+
+/* Program page  */
+.program-hero__heading {
+  @apply text-4xl text-gray-800  md:text-5xl leading-relaxed;
+}
+
+.program-hero__heading,
+.program-hero__logo-wrapper {
+  margin-bottom: 40px !important;
+}
+
+.program-hero__container {
+  @apply grid mx-auto md:grid-cols-1 xl:grid-cols-2 gap-10 px-5;
+}
+.program-hero__container,
+.program-container {
+  max-width: 1300px;
+}
+
+.program-content-width {
+  width: 100%;
+  max-width: 900px;
+}
+ul.content-ul {
+  list-style: none;
+  padding-inline-start: 0;
+  margin: 0;
+}
+ul.content-ul li {
+  @apply text-xl mb-5 leading-relaxed;
+}
+ul.content-ul li:before {
+  content: "\2713"; /* Checkmark icon */
+  @apply w-4 m-0 inline-block font-bold;
+}
+
+.review-card-shadow {
+  box-shadow:
+    0 0 0 2px #eae7ea,
+    -8px 8px 0 0 #eae7ea;
+}
+
+.clickable-parent::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  display: flex;
+  z-index: 1;
+  cursor: pointer;
+}
+
+/* Hero Section */
+.hero-section {
+  padding-top: clamp(110px, calc(6.875rem + ((1vw - 3.2px) * 7.9167)), 186px);
+  padding-bottom: clamp(48px, calc(3rem + ((1vw - 3.2px) * 4.375)), 90px);
+}
+
+.hero:before {
+  background-image: linear-gradient(90deg, #283854, rgba(0, 73, 92, 0.17));
+  position: absolute;
+  content: "";
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+}

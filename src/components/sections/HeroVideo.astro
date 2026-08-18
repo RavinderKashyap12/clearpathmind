@@ -1,0 +1,55 @@
+---
+import VideoModal from "../VideoModal.astro";
+
+// Define props for the component, such as video link, heading, description, and button text
+const { heading, text, video} = Astro.props.Content;
+---
+
+<section class="hero-video bg-gray-300 mt-24 py-16 px-8">
+  
+  <div class="container mx-auto grid grid-cols-1 md:grid-cols-2 items-center gap-8">
+    <!-- Left Column: Text and Buttons -->
+    <div class="hero-video__content">
+      <h1 class="">{heading}</h1>
+      <p class="">
+        {text}
+      </p>
+
+      <div class="flex space-x-4">
+        <!-- Button 1 -->
+        <a href="#" class="bg-gray-500 text-white py-3 px-6 rounded-md shadow hover:bg-gray-600">
+          Get Started
+        </a>
+
+        <!-- Button 2 -->
+        <a href="/contact/" class="border border-gray-500 text-gray-700 py-3 px-6 rounded-md shadow hover:bg-gray-200">
+          Contact Us
+        </a>
+      </div>
+    </div>
+
+    <!-- Right Column: Video Placeholder or Video Embed -->
+    <div class=" w-full aspect-video rounded-lg flex items-center justify-center">
+      <!-- Video Link or Play Button -->
+      <VideoModal  image={video.img} videoSrc={video.videoSrc} />
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-video {
+    background-color: #d1d5db; /* Tailwind gray-300 */
+  }
+
+  .hero-video__media {
+    background-color: #f3f4f6; /* Tailwind gray-100 */
+  }
+
+  .hero-video__content h1 {
+    color: #000000; /* Black for heading */
+  }
+
+  .hero-video__content p {
+    color: #4b5563; /* Tailwind gray-700 */
+  }
+</style>

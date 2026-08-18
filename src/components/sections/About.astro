@@ -1,0 +1,51 @@
+---
+import { Image } from 'astro:assets';
+import Button from '../Button.astro';
+
+const { headingOne_Part_1, headingOne_Part_2, headingTwo, textOne, buttonOne, buttonOneLink, buttonTwo_Part_1, buttonTwo_Part_2, buttonTwo_Number  } = Astro.props.Content;
+---
+
+<section id="about" class="about-us-section my-20 max-[1320px]:my-16 max-[1100px]:my-12">
+    <div class="flex gap-16 py-0 mx-auto my-0 max-w-[1320px] max-[1320px]:gap-12 max-[1100px]:gap-10 max-[1000px]:gap-8 max-[900px]:flex-col max-[900px]:gap-8 max-[900px]:px-6 
+            max-md:gap-6 max-md:px-5 max-sm:gap-4 max-sm:px-4 max-[480px]:gap-3 max-[480px]:px-3 max-[400px]:px-2
+            sm:py-4 md:py-0 max-[900px]:items-center max-[1320px]:px-6 items-stretch">
+      <div class="rounded-3xl w-[706px] max-[1320px]:w-[600px] max-[1100px]:w-[550px] max-[1000px]:w-[500px] max-[900px]:w-full max-[900px]:rounded-2xl
+                  max-[830px]:w-full max-[830px]:mx-0 max-[630px]:mx-auto max-[630px]:max-w-[600px]
+                  overflow-hidden flex-1 h-auto max-[900px]:h-[300px] max-md:h-[280px] max-sm:h-[240px] max-[600px]:h-[220px] max-[480px]:h-[200px] max-[400px]:h-[180px] max-[400px]:rounded-xl">
+        <img 
+          src="/imgs/about_us.png" 
+          alt="About us" 
+          class="w-full h-full object-cover object-center"
+        />
+      </div>
+      <article class="flex flex-col gap-8 pt-0.5 max-w-[552px] max-[1320px]:max-w-[500px] max-[1100px]:max-w-[450px] max-[1000px]:max-w-[400px] max-[900px]:max-w-full max-[900px]:gap-6
+                     max-md:gap-5 max-sm:gap-4 max-[600px]:gap-3 max-[480px]:gap-2 flex-1 h-auto">
+        <header class="flex flex-col gap-6 max-[1320px]:gap-5 max-[1100px]:gap-4 max-[900px]:gap-4 max-[600px]:gap-3 max-[480px]:gap-2">
+          <p style="color: #222; font-family: 'DM Sans'; font-size: 17px; font-style: normal; font-weight: 500; line-height: normal;">
+            ABOUT US
+          </p>
+          <h2>
+            <span>{headingOne_Part_1}</span>
+            <span style="color: rgba(94, 129, 233, 1);">{headingOne_Part_2}</span>
+            <span>{headingTwo}</span>
+          </h2>
+        </header>
+        <p>
+          {textOne}
+        </p>
+        <div class="flex gap-3 justify-center max-md:flex-col max-md:w-full max-md:mx-auto max-md:mt-4 max-md:max-w-[400px] max-sm:gap-2.5">
+          <Button 
+            buttonLink={buttonOneLink}
+            buttonText={buttonOne}
+            buttonType="primary"
+          />
+          <Button
+            buttonLink="/contact/"
+            phoneTextOne="Have a question?"
+            phoneTextTwo="Get in Touch"
+            buttonType="phone"
+          />
+        </div>
+      </article>
+    </div>
+</section>

@@ -1,0 +1,137 @@
+---
+import { Icon } from "astro-icon/components";
+import { fetchGeneralData } from '../utils/dataMapping.ts';
+import VideoModal from "../components/VideoModal.astro";
+import HeadTag from "../layouts/HeadTag.astro";
+
+const Data = await fetchGeneralData();
+---
+
+<HeadTag title="Thank You!">
+<section class="section relative thank-you isolate " >
+    <!-- Background Video -->
+     <div class="vimeo-container">
+        <div class="vimeo-background">
+          <svg class="vimeo-sizer" width="640" height="360"></svg>
+          <iframe
+            class="vimeo-video"
+            src="https://player.vimeo.com/video/970441013?autoplay=1&controls=0&loop=1&background=1&app_id=122963"
+            width="640"
+            height="360"
+            frameborder="0"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+
+    <div class="container !mb-10  z-10">
+       <a href="/" class="text-2xl text-white">◄ Back to Homepage</a>
+    </div>
+    <div class="container mx-auto !mb-20 relative z-10">
+        <div class="md:p-16 p-8 bg-[#00000080] max-w-[800px] w-full flex flex-col gap-8 items-start rounded-xl">
+            <h1 class="text-white">Thank You!</h1>
+            <p class="!text-3xl text-white font-medium">
+                Your message is on its' way to us
+            </p>
+            <div class="flex gap-3 items-center">
+                <Icon name="icon-checkbox" class="text-white md:text-5xl text-3xl" />
+                <span class="text-xl text-white font-medium"
+                    >You can expect someone from our admissions team to be in
+                    touch within the next working day.
+                </span>
+            </div>
+            <span class="text-xl text-white font-medium"
+            >Need to reach us sooner? Send us a message and we'll get right back to you.
+        </span>
+        <a class="text-black text-center font-medium secondary-button" href="/contact/">Contact us</a>
+        </div>
+
+    </div>
+    
+    <div class="container relatvie z-10">
+           
+        <div
+            class="flex md:flex-row flex-col program-container gap-8"
+        >
+            <div class="flex flex-col justify-center md:w-[40%] w-full text-white ">
+                <h2 class="mb-5 font-medium">Watch our video about</h2>
+                <p>
+                    Aliqua id fugiat nostrud irure ex duis ea quis id quis ad
+                    et. Sunt qui esse pariatur duis deserunt mollit dolore
+                    cillum minim tempor enim. Elit aute irure tempor cupidatat
+                    incididunt sint deserunt ut.
+                </p>
+            </div>
+
+            <VideoModal image="/imgs/video-thumbnail.jpeg" videoSrc="/video/placeholder-video.mp4" />
+
+            
+        </div>
+   
+</div>
+</section>
+</HeadTag>
+
+
+<style>
+
+
+ 
+.thank-you::after{
+    background-image: linear-gradient(rgb(0 0 0 / 40%), rgb(0 0 0 / 40%));
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: -1;
+} 
+
+
+.vimeo-container {
+  position: absolute;  /* Postion relative to section */
+  /* Make it full size ↓ */
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  overflow: hidden;  /* Prevent video overflow */
+  pointer-events: none;  /* Prevent user interaction */
+  z-index: -2;  /* Make Vimeo container underneath section content */
+}
+
+.vimeo-background {
+  position: absolute; /* Postion relative to .vimeo-container */
+  /* center it ↓ */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* make it full height ↓ */
+  height: 100%;
+}
+
+/* Make a hidden sizer SVG to take up full size of the .vimeo-background */
+.vimeo-sizer {
+  border: none;
+  max-width: none;
+  height: 100%;
+  width: auto;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.vimeo-video {
+  position: absolute; /* Postion relative to .vimeo-background */
+  /* Postion at the top and make it full size ↓ */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* cover image, if video is failed to load */
+  background: url('/imgs/video-thumbnail.jpeg') no-repeat center; 
+  background-size: cover;
+}
+    </style>

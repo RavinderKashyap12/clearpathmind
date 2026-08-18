@@ -1,0 +1,49 @@
+---
+import Button from "../Button.astro"
+
+const {img, heading, description,process , cardTitle} = Astro.props.Content;
+const { phoneNumber , Email} = Astro.props.GeneralData;
+
+---
+
+<section class="section bg-base-50">
+    <div class="container program-content-width">
+        <img
+            src={img}
+            alt=""
+            class="rounded-xl mb-8"
+        />
+        <h2 class="mb-6 font-medium">
+           {heading}
+        </h2>
+        <p class="mb-6 tex-xl leading-relaxed">
+            {description}
+        </p>
+
+        {process.map((process) => (
+            <p class="mb-4 leading-relaxed">
+            <strong>{process.title}</strong>{process.details}
+        </p>
+          ))}
+
+        <div
+            class="program-cta py-8 flex flex-col gap-5 justify-center items-center border-dashed border-2 border-black rounded-2xl"
+        >
+            <h3 class="text-center">
+                {cardTitle}
+            </h3>
+            <div class="flex gap-5">
+                <Button
+                    buttonText=`Call us ${phoneNumber}`
+                    buttonLink="#"
+                    buttonClass="white-button"
+                />
+                <Button
+                    buttonText=`Email us ${Email}`
+                    buttonLink="#"
+                    buttonClass="primary-button"
+                />
+            </div>
+        </div>
+    </div>
+</section>

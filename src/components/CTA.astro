@@ -1,0 +1,240 @@
+---
+import Button from "./Button.astro";
+import { Image } from "astro:assets";
+
+const { heading, text, buttonText, image, altText, phoneTextOne, phoneTextTwo, phoneNumber, buttonLink } = Astro.props.Content;
+---
+
+<section
+  class="mx-auto my-[80px] max-w-[1320px] relative responsive-margin"
+>
+  <div class="flex flex-wrap gap-10 text-base">
+    <div class="grow shrink-0 basis-0 w-fit max-md:max-w-full">
+      <div
+        class="flex relative justify-between py-8 w-full bg-indigo-500 rounded-3xl max-w-[1320px] responsive-container px-16"
+      >
+        <div class="flex flex-col gap-10 responsive-content mr-0 md:mr-8 lg:mr-12">
+          <div class="flex flex-col gap-4">
+            <h2
+              class="responsive-heading mt-4 text-white !text-5xl max-md:!text-3xl !leading-[56px]"
+            >
+              {heading}
+            </h2>
+            <p
+              class="responsive-text text-white/75"
+            >
+              {text}
+            </p>
+          </div>
+          <div class="flex gap-3 justify-center max-md:flex-col max-md:w-full max-md:mx-auto max-md:mt-4 max-md:max-w-[400px] max-sm:gap-2.5">
+            <Button 
+              buttonLink={buttonLink}
+              buttonText={buttonText}
+              buttonType="primary"
+            />
+            <Button
+              buttonLink="/contact/"
+              phoneTextOne="Have a question?"
+              phoneTextTwo="Get in Touch"
+              buttonType="phone"
+            />
+          </div>
+        </div>
+        <img
+          src={image}
+          class="rounded-3xl h-auto md:h-[350px] lg:h-[420px] opacity-[0.9942] w-full lg:w-[550px] responsive-image object-cover ml-0"
+          alt={altText}
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Add margin for all screens below 1320px */
+  @media (max-width: 1319px) {
+    .responsive-margin {
+      margin-left: 1.25rem;
+      margin-right: 1.25rem;
+      margin-top: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+  }
+
+  /* Large tablets and medium screens: 1024px to 1319px */
+  @media (min-width: 1024px) and (max-width: 1319px) {
+    .responsive-container {
+      padding: 40px 60px;
+      gap: 2rem;
+    }
+    .responsive-content {
+      max-width: 55%;
+      margin-right: 2rem;
+      gap: 2rem;
+    }
+    .responsive-heading {
+      font-size: 2.75rem !important;
+      line-height: 3.75rem !important;
+    }
+    .responsive-text {
+      font-size: 1.125rem !important;
+      line-height: 1.75rem !important;
+    }
+    .responsive-buttons {
+      gap: 1rem;
+    }
+    .responsive-primary-button {
+      font-size: 1rem !important;
+      padding: 18px 16px !important;
+    }
+    .responsive-image {
+      height: 380px;
+      width: 40%;
+      max-width: 500px;
+    }
+  }
+
+  /* Small tablets and large mobile: 769px to 1023px */
+  @media (min-width: 769px) and (max-width: 1023px) {
+    .responsive-container {
+      padding: 35px 40px;
+      gap: 1.5rem;
+    }
+    .responsive-content {
+      max-width: 50%;
+      margin-right: 1.5rem;
+      gap: 1.5rem;
+    }
+    .responsive-heading {
+      font-size: 2.25rem !important;
+      line-height: 3rem !important;
+    }
+    .responsive-text {
+      font-size: 1rem !important;
+      line-height: 1.5rem !important;
+    }
+    .responsive-buttons {
+      gap: 0.75rem;
+    }
+    .responsive-primary-button {
+      font-size: 0.875rem !important;
+      padding: 16px 14px !important;
+    }
+    .responsive-phone-button {
+      min-width: 150px !important;
+      padding: 14px 16px !important;
+    }
+    .responsive-phone-text-small {
+      font-size: 9px !important;
+    }
+    .responsive-phone-text-large {
+      font-size: 11px !important;
+    }
+    .responsive-image {
+      height: 320px;
+      width: 45%;
+      max-width: 400px;
+    }
+  }
+
+  /* Mobile landscape and small tablets: 481px to 768px */
+  @media (min-width: 481px) and (max-width: 768px) {
+    .responsive-margin {
+      margin-top: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .responsive-container {
+      flex-direction: column;
+      padding: 30px 25px;
+      gap: 1.5rem;
+    }
+    .responsive-content {
+      max-width: 100%;
+      margin-right: 0;
+      gap: 1.25rem;
+    }
+    .responsive-heading {
+      font-size: 2rem !important;
+      line-height: 2.5rem !important;
+    }
+    .responsive-text {
+      font-size: 0.875rem !important;
+      line-height: 1.375rem !important;
+    }
+    .responsive-buttons {
+      gap: 0.5rem;
+    }
+    .responsive-primary-button {
+      font-size: 0.875rem !important;
+      padding: 14px 12px !important;
+    }
+    .responsive-phone-button {
+      min-width: 140px !important;
+      padding: 12px 14px !important;
+    }
+    .responsive-phone-text-small {
+      font-size: 8px !important;
+    }
+    .responsive-phone-text-large {
+      font-size: 10px !important;
+    }
+    .responsive-image {
+      height: 280px;
+      width: 100%;
+      max-width: none;
+      margin-top: 1rem;
+    }
+  }
+
+  /* Mobile portrait: up to 480px */
+  @media (max-width: 480px) {
+    .responsive-margin {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+    .responsive-container {
+      flex-direction: column;
+      padding: 20px 15px;
+      gap: 1rem;
+    }
+    .responsive-content {
+      max-width: 100%;
+      margin-right: 0;
+      gap: 1rem;
+    }
+    .responsive-heading {
+      font-size: 1.5rem !important;
+      line-height: 2rem !important;
+    }
+    .responsive-text {
+      font-size: 0.75rem !important;
+      line-height: 1.25rem !important;
+    }
+    .responsive-buttons {
+      flex-direction: column;
+      gap: 0.5rem;
+      width: 100%;
+    }
+    .responsive-primary-button {
+      font-size: 0.75rem !important;
+      padding: 12px 10px !important;
+      width: 100%;
+    }
+    .responsive-phone-button {
+      min-width: 100% !important;
+      padding: 10px 12px !important;
+    }
+    .responsive-phone-text-small {
+      font-size: 7px !important;
+    }
+    .responsive-phone-text-large {
+      font-size: 9px !important;
+    }
+    .responsive-image {
+      height: 220px;
+      width: 100%;
+      max-width: none;
+      margin-top: 1rem;
+    }
+  }
+</style>

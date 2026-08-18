@@ -1,0 +1,38 @@
+{
+  "seo": {
+    "metaTitle": "Contact Us | Clear Path",
+    "metaDescription": "Contact ClearPath Wellness for personalized mental health support. Email us, call, or send a message during our business hours. ",
+    "keywords": [
+      "contact Clear Path",
+      "mental health contact",
+      "Orange County mental health",
+      "Clear Path contact",
+      "behavioral health contact",
+      "psychiatry consultation"
+    ]
+  },
+  "hero": {
+    "heading": "Contact Us",
+    "text": "Have questions? We're here to help. Reach out to our team for support.",
+    "buttonText": "Get Started",
+    "phoneQuestionText": "Have a question?",
+    "treatmentsLabel": "",
+    "buttonLink": "/insurance/",
+    "callButtonText": "Get in Touch",
+    "callButtonLink": "/contact/"
+  },
+  "contactDetails": {
+    "address": "Clear Path Behavioral Health, 925 North La Brea Avenue, Suite 570, Los Angeles, CA 90038",
+    "email": "info@clearpathmind.com",
+    "phone": "",
+    "formHeading": "Send Us a Message",
+    "emergencyHeading": "Emergency Contact",
+    "emergencyText": "For mental health emergencies, please call 911 or visit your nearest emergency room.",
+    "supportHeading": "General Support",
+    "businessHours": {
+      "heading": "Business Hours",
+      "hours": "Monday - Friday: 9:00 AM - 5:00 PM",
+      "weekend": "Saturday - Sunday: Closed"
+    }
+  }
+}

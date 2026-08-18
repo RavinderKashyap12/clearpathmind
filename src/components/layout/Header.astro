@@ -1,0 +1,503 @@
+---
+// Accessing the props from the parent component
+const {
+  logo,
+  buttonText
+} = Astro.props;
+
+// Define navigation links directly in the component
+const heroLinks = [
+  {
+    text: "About Us",
+    link: "/about/",
+    heading: "",
+    sublinks: [],
+    sublinks2: []
+  },
+  {
+    text: "Treatments",
+    link: "#",
+    heading: "By Treatment Offering",
+    sublinks: [
+      {
+        text: "Medication Management",
+        link: "/program/medication-management/"
+      },
+      {
+        text: "Telehealth",
+        link: "/program/telehealth/"
+      }
+    ],
+    sublinks2: [
+      {
+        text: "Depression",
+        link: "/treatment/depression/"
+      },
+      {
+        text: "Anxiety",
+        link: "/treatment/anxiety/"
+      },
+      {
+        text: "PTSD",
+        link: "/treatment/ptsd/"
+      },
+      {
+        text: "BiPolar",
+        link: "/treatment/bipolar/"
+      },
+      {
+        text: "Stress",
+        link: "/treatment/stress/"
+      }
+    ]
+  },
+  {
+    text: "Locations",
+    link: "/location/",
+    heading: "",
+    sublinks: [
+      {
+        text: "Orange County, California",
+        link: "/location/orange-county/"
+      }
+    ],
+    sublinks2: []
+  },
+  {
+    text: "Resources",
+    link: "/blog/",
+    sublinks: [],
+    sublinks2: []
+  },
+  {
+    text: "Contact Us",
+    link: "/contact/",
+    sublinks: [],
+    sublinks2: []
+  },
+];
+---
+
+<header class="header-main fixed lg:top-5 md:top-3 left-0 right-0 z-50 transition-all duration-300" id="main-header" data-init="false" role="banner">
+  <!-- Desktop Header -->
+  <div class="max-[1000px]:hidden">
+    <nav class="mx-auto flex flex-wrap gap-10 justify-between items-center self-end w-full text-base max-w-[1160px] max-md:max-w-full max-[1200px]:gap-6 max-[1100px]:gap-4 max-[1090px]:text-sm bg-transparent rounded-full px-6 py-3 transition-all duration-300" id="desktop-nav" role="navigation" aria-label="Main navigation">
+      <a href="/" aria-label="Home" class="relative block">
+        <img
+          src={logo}
+          alt="Clear Path logo"
+          class="object-contain shrink-0 self-stretch my-auto aspect-[4.67] w-[159px] max-[1100px]:w-[130px] max-[1000px]:w-[120px] transition-opacity duration-300"
+          id="logo-white"
+          loading="eager"
+          decoding="async"
+        />
+        <img
+          src="/branding/Clear path blue logo.png"
+          alt="Clear Path logo"
+          class="object-contain shrink-0 self-stretch my-auto aspect-[4.67] w-[159px] max-[1100px]:w-[150px] max-[1000px]:w-[140px] transition-all duration-300 absolute top-0 left-0 opacity-0"
+          id="logo-blue"
+          loading="eager"
+          decoding="async"
+        />
+      </a>
+      
+      <ul class="flex flex-wrap gap-10 items-center self-stretch my-auto text-white min-w-60 max-md:max-w-full max-[1200px]:gap-6 max-[1100px]:gap-4 max-[1050px]:gap-3" id="nav-links" role="menubar">
+        {heroLinks.map((link) => (
+          <li class="group relative self-stretch my-auto whitespace-nowrap" role="none">
+            <a href={link.link} class="nav-link text-white self-stretch my-auto flex items-center hover:text-amber-300 transition-colors duration-200" role="menuitem" aria-haspopup={link.sublinks && link.sublinks.length > 0 ? "true" : "false"}>
+              {link.text}
+              {link.sublinks && link.sublinks.length > 0 && (
+                <svg class="dropdown-arrow object-contain shrink-0 self-stretch my-auto w-4 aspect-square ml-1 max-[1100px]:w-3 transition-all duration-300" width="16" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                  <path d="M1.4749 5.34999L2.65823 4.16666L8.14156 9.64999L13.6249 4.16666L14.8082 5.34999L8.14156 12.0167L1.4749 5.34999Z" fill="white"/>
+                </svg>
+              )}
+            </a>
+            {link.sublinks && link.sublinks.length > 0 && (
+              <div class="absolute left-0 top-full hidden group-hover:block z-10 pt-2" role="menu" aria-label={`${link.text} submenu`}>
+                <section class="flex gap-2.5 p-6 mx-auto my-0 bg-white rounded-xl shadow-2xl max-w-[686px] max-md:p-5 max-sm:flex-col max-sm:p-4 max-[1100px]:max-w-[500px] max-[1100px]:p-4">
+                  <article class="flex flex-col flex-1 gap-5">
+                    {link.heading && (
+                      <p class="text-lg font-medium text-neutral-800 max-[1100px]:text-base">
+                        {link.heading}
+                      </p>
+                    )}
+                    
+                    <ul class="flex flex-col gap-3" role="menu">
+                      {link.sublinks.map((sublink) => (
+                        <li class="text-sm text-blue-900 max-[1100px]:text-xs" role="none">
+                          <a href={sublink.link} class="hover:text-blue-700 transition-colors duration-200" role="menuitem">{sublink.text}</a>
+                        </li>
+                      ))}
+                    </ul>
+                  </article>
+
+                  {link.sublinks2 && link.sublinks2.length > 0 && (
+                    <>
+                      <div class="mx-5 my-0 w-px bg-neutral-800 bg-opacity-10 max-sm:mx-0 max-sm:my-5 max-sm:w-full max-sm:h-px" role="separator" aria-hidden="true"></div>
+                      <article class="flex flex-col flex-1 gap-5">
+                        <p class="text-lg font-medium text-neutral-800 max-[1100px]:text-base">
+                          By what your experiencing
+                        </p>
+                        <ul class="flex flex-col gap-3" role="menu">
+                          {link.sublinks2.map((sublink) => (
+                            <li class="text-sm text-blue-900 max-[1100px]:text-xs" role="none">
+                              <a href={sublink.link} class="hover:text-blue-700 transition-colors duration-200" role="menuitem">{sublink.text}</a>
+                            </li>
+                          ))}
+                        </ul>
+                      </article>
+                    </>
+                  )}
+                </section>
+              </div>
+            )}
+          </li>
+        ))}
+      </ul>
+
+      <a
+        href={`/insurance/`}
+        class="nav-button flex flex-col justify-center self-stretch px-5 py-2 my-auto min-h-10 rounded-[50px] max-[1200px]:px-4 max-[1200px]:text-sm max-[1100px]:px-3 max-[1050px]:min-h-8 max-[1050px]:text-xs whitespace-nowrap transition-colors duration-300 bg-white text-[#0A277E]"
+        style="color: #0A277E; font-family: Poppins; font-size: 16px; font-style: normal; font-weight: 500; line-height: 24px;"
+        id="nav-button"
+        role="button"
+      >
+        <span class="gap-1 self-stretch">Verify Insurance</span>
+      </a>
+    </nav>
+  </div>
+
+  <!-- Mobile Header -->
+  <div class="min-[1001px]:hidden">
+    <header class="relative flex items-center justify-between px-8 py-4 bg-transparent z-20 transition-all duration-300" id="mobile-header">
+      <img
+        src={logo}
+        alt="Clear Path logo"
+        class="object-contain w-28"
+      />
+      <button id="hamburger-menu-button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-nav-overlay" class="text-white focus:outline-none">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </header>
+
+    <nav
+      id="mobile-nav-overlay"
+      class="fixed inset-0 z-50 bg-white text-purple-900 p-6 hidden flex-col"
+      role="navigation"
+      aria-label="Mobile navigation"
+      aria-hidden="true"
+    >
+      <div class="flex justify-between items-center mb-8">
+        <!-- Using plain <img> because /branding/* is in /public -->
+        <img src="/branding/Clear path blue logo.png" alt="Company Logo Mobile" class="object-contain shrink-0 h-10" width="112" height="40" />
+        <button id="close-menu-button" aria-label="Close menu" class="focus:outline-none">
+          <svg class="w-8 h-8 text-purple-900" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+
+      <ul class="flex flex-col items-start gap-4 text-xl overflow-y-auto flex-grow" role="menu">
+        {heroLinks.map((link) => (
+          <li class="w-full" role="none">
+            <a href={link.link} class="hover:text-amber-500 py-2 block font-medium" role="menuitem">{link.text}</a>
+            {( (link.sublinks && link.sublinks.length > 0) || (link.sublinks2 && link.sublinks2.length > 0) ) && (
+              <div class="pl-4 mt-1 space-y-1 text-lg">
+                {link.sublinks && link.sublinks.length > 0 && (
+                  <>
+                    <p class="text-md font-semibold text-neutral-700 mb-2">By Treatment Offering</p>
+                    <ul class="flex flex-col gap-2" role="menu">
+                      {link.sublinks.map((sublink) => (
+                        <li role="none">
+                          <a href={sublink.link} class="text-sm text-blue-700 hover:underline block py-1" role="menuitem">
+                            {sublink.text}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                )}
+                {link.sublinks2 && link.sublinks2.length > 0 && (
+                  <>
+                    <div class="my-3 h-px bg-gray-200" role="separator" aria-hidden="true"></div>
+                    <p class="text-md font-semibold text-neutral-700 mb-2">By what you're experiencing</p>
+                    <ul class="flex flex-col gap-2" role="menu">
+                      {link.sublinks2.map((sublink) => (
+                        <li role="none">
+                          <a href={sublink.link} class="text-sm text-blue-700 hover:underline block py-1" role="menuitem">
+                            {sublink.text}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                  </>
+                )}
+              </div>
+            )}
+          </li>
+        ))}
+        <li class="mt-auto pt-6 w-full" role="none">
+          <a
+            href="/insurance/"
+            class="block w-full text-center px-5 py-3 text-lg font-semibold bg-purple-900 text-white rounded-full hover:bg-purple-800 transition-colors shadow-md"
+            style="color: white !important;"
+            role="menuitem"
+          >
+            Verify Insurance
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- Single, guarded script. TypeScript-safe element types. -->
+<script type="module">
+  (() => {
+    const header = document.getElementById('main-header');
+    if (!header) return;
+
+    // prevent double init across SSR hydration / load events
+    if (header.getAttribute('data-init') === 'true') return;
+    header.setAttribute('data-init', 'true');
+
+    const nav = document.getElementById('desktop-nav');
+    const mobileHeader = document.getElementById('mobile-header');
+    const logoWhite = document.getElementById('logo-white');
+    const logoBlue = document.getElementById('logo-blue');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const navButton = document.getElementById('nav-button');
+    const dropdownArrows = document.querySelectorAll('.dropdown-arrow');
+
+    const hamburgerButton = document.getElementById('hamburger-menu-button');
+    const closeButton = document.getElementById('close-menu-button');
+    const mobileNavOverlay = document.getElementById('mobile-nav-overlay');
+
+    function toggleMobileNav(show) {
+      if (!mobileNavOverlay || !hamburgerButton) return;
+      if (show) {
+        mobileNavOverlay.classList.remove('hidden');
+        mobileNavOverlay.classList.add('flex');
+        document.body.style.overflow = 'hidden';
+        hamburgerButton.setAttribute('aria-expanded', 'true');
+      } else {
+        mobileNavOverlay.classList.add('hidden');
+        mobileNavOverlay.classList.remove('flex');
+        document.body.style.overflow = '';
+        hamburgerButton.setAttribute('aria-expanded', 'false');
+      }
+    }
+
+    // Mobile menu
+    if (hamburgerButton) {
+      hamburgerButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        const isExpanded = hamburgerButton.getAttribute('aria-expanded') === 'true';
+        toggleMobileNav(!isExpanded);
+      }, { once: false });
+    }
+    if (closeButton) {
+      closeButton.addEventListener('click', (e) => {
+        e.preventDefault();
+        toggleMobileNav(false);
+      }, { once: false });
+    }
+    if (mobileNavOverlay) {
+      mobileNavOverlay.addEventListener('click', (e) => {
+        // close on overlay background click
+        if (e.target === mobileNavOverlay) toggleMobileNav(false);
+      });
+      // close when any link inside overlay is clicked
+      mobileNavOverlay.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => toggleMobileNav(false));
+      });
+    }
+
+    // Scroll handling – class driven, no inline style edits
+    let ticking = false;
+    function onScroll() {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        const scrolled = window.scrollY > 50;
+
+        if (scrolled) {
+          header.classList.add('scrolled');
+          nav?.classList.remove('bg-transparent');
+          nav?.classList.add('bg-white', 'shadow-lg');
+
+          mobileHeader?.classList.remove('bg-transparent');
+          mobileHeader?.classList.add('bg-purple-900');
+
+          // logo swap via opacity classes
+          if (logoWhite) logoWhite.style.opacity = '0';
+          if (logoBlue)  logoBlue.style.opacity  = '1';
+
+          // link colors via classes only
+          navLinks.forEach(link => {
+            link.classList.remove('text-white', 'hover:text-amber-300');
+            link.classList.add('text-blue-900', 'hover:text-blue-700');
+          });
+
+          // arrows -> blue
+          dropdownArrows.forEach(arrow => {
+            const path = arrow.querySelector('path');
+            if (path) path.setAttribute('fill', '#0A277E');
+          });
+
+          // button classes (avoid .style)
+          if (navButton) {
+            navButton.classList.remove('bg-white', 'text-[#0A277E]');
+            navButton.classList.add('bg-purple-900', 'text-white');
+          }
+        } else {
+          header.classList.remove('scrolled');
+          nav?.classList.add('bg-transparent');
+          nav?.classList.remove('bg-white', 'shadow-lg');
+
+          mobileHeader?.classList.add('bg-transparent');
+          mobileHeader?.classList.remove('bg-purple-900');
+
+          if (logoWhite) logoWhite.style.opacity = '1';
+          if (logoBlue)  logoBlue.style.opacity  = '0';
+
+          navLinks.forEach(link => {
+            link.classList.add('text-white', 'hover:text-amber-300');
+            link.classList.remove('text-blue-900', 'hover:text-blue-700');
+          });
+
+          dropdownArrows.forEach(arrow => {
+            const path = arrow.querySelector('path');
+            if (path) path.setAttribute('fill', 'white');
+          });
+
+          if (navButton) {
+            navButton.classList.add('bg-white', 'text-[#0A277E]');
+            navButton.classList.remove('bg-purple-900', 'text-white');
+          }
+        }
+
+        // position tweak for desktop/mobile
+        if (window.innerWidth <= 1000) {
+          header.style.top = '0px';
+        } else {
+          header.style.top = scrolled ? '10px' : '20px';
+        }
+
+        ticking = false;
+      });
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll(); // set initial state
+  })();
+</script>
+
+<style>
+/* Sticky header styles */
+.header-main.scrolled {
+  top: 10px !important;
+}
+
+.header-main.scrolled .nav-link {
+  color: #0A277E !important;
+}
+
+.header-main:not(.scrolled) .nav-link {
+  color: white !important;
+}
+
+.header-main.scrolled #logo-white {
+  opacity: 0 !important;
+}
+
+.header-main.scrolled #logo-blue {
+  opacity: 1 !important;
+}
+
+.header-main.scrolled #nav-button {
+  color: white !important;
+}
+
+.header-main:not(.scrolled) #logo-white {
+  opacity: 1 !important;
+}
+
+.header-main:not(.scrolled) #logo-blue {
+  opacity: 0 !important;
+}
+
+/* Mobile header should stick to top without space */
+@media (max-width: 1000px) {
+  .header-main.scrolled {
+    top: 0 !important;
+  }
+}
+
+.header-main a {
+  position: relative;
+}
+
+#logo-blue {
+  position: absolute;
+  top: -2px;
+  left: -10px;
+}
+
+.header-main.scrolled #logo-blue {
+  transform: scale(1.1);
+}
+
+/* Font styling for links and sublinks on larger screens */
+nav ul li a {
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+}
+
+nav ul li div section article ul li a {
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
+}
+
+/* Fine-tuned responsive styles for 990px-1090px range */
+@media (max-width: 1090px) and (min-width: 990px) {
+  nav { gap: 0.75rem !important; }
+  nav ul {
+    gap: 0.75rem !important;
+    min-width: auto !important;
+  }
+  nav ul li a {
+    font-size: 0.875rem !important;
+    padding: 0.25rem 0.5rem;
+  }
+  nav img { width: 120px !important; }
+}
+
+/* Additional responsive adjustments for tight screens */
+@media (max-width: 1050px) and (min-width: 1001px) {
+  nav { gap: 0.5rem !important; }
+  nav ul { gap: 0.5rem !important; }
+  nav ul li { position: relative; }
+  /* Ensure dropdown menus don't get cut off */
+  nav ul li div[class*="absolute"] {
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+  }
+}
+
+/* Prevent text overflow and ensure proper alignment */
+@media (max-width: 1200px) and (min-width: 1001px) {
+  nav { flex-wrap: nowrap !important; }
+  nav ul { flex-wrap: nowrap !important; overflow: visible; }
+  nav ul li a { white-space: nowrap; }
+}
+</style>

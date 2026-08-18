@@ -1,0 +1,60 @@
+---
+import { fetchGeneralData, fetchHomeData, fetchBlogPageData } from '../utils/dataMapping.ts';
+
+import MainLayout from "../layouts/MainLayout.astro"
+
+import Hero from '../components/sections/HeroHome.astro';
+import About from "../components/sections/About.astro";
+import ProgramCards from "../components/sections/ProgramCards.astro";
+import Testimonials from "../components/sections/Testimonials.astro";
+import TestimonialsOffered from "../components/sections/TestimonialsOffered.astro";
+import DisorderGrid from "../components/sections/DisorderGrid.astro";
+import InsuranceOptions from "../components/sections/InsuranceOptions.astro";
+import CTA from "../components/CTA.astro";
+import PatientJourney from '../components/sections/PatientJourney.astro';
+import FAQ from "../components/sections/FAQ.astro";
+import TreatmentGrid from "../components/sections/TreatmentGrid.astro";
+
+const GeneralData = await fetchGeneralData();
+const { data: HomeData } = await fetchHomeData();
+const { data: BlogPageData } = await fetchBlogPageData(); // Assuming BlogPageData is also needed for disorders
+
+// Generate dynamic SEO data for home page
+const generatePageTitle = (data) => {
+  return data.seo?.metaTitle || "Mental Health Treatment Center in California | Medication Management & Psychotherapy | Clear Path";
+};
+
+const generatePageDescription = (data) => {
+  return data.seo?.metaDescription || "Clear Path provides evidence-based mental health treatments including medication management and psychotherapy for depression, anxiety, PTSD, and bipolar disorder. Located in Orange County, CA.";
+};
+
+const pageTitle = generatePageTitle(HomeData);
+const pageDescription = generatePageDescription(HomeData);
+---
+
+<MainLayout title={pageTitle} description={pageDescription}>
+	<main>
+		<Hero Content={HomeData.hero} GeneralData={GeneralData}/>
+		<About Content={HomeData.about}/>
+		<TreatmentGrid Content={HomeData.treatmentGrid} />
+		<ProgramCards Content={HomeData.programs}/>
+		<InsuranceOptions Content={HomeData.insuranceOptions} />
+		<Testimonials Content={HomeData.testimonials} />
+		<TestimonialsOffered Content={HomeData.therapies}/>
+		<PatientJourney Content={HomeData.patientJourney}/>
+		<DisorderGrid  Content={BlogPageData.disorders} />
+		<FAQ Content={HomeData.faq} />
+		<CTA Content={HomeData.cta}/>
+	</main>
+</MainLayout>
+
+<style is:global>
+  /* Override the background color globally */
+  body {
+    background-color: #ffffff !important;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+</style>

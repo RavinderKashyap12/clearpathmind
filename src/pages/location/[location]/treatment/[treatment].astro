@@ -1,0 +1,103 @@
+---
+import MainLayout from "../../../../layouts/MainLayout.astro";
+import { fetchGeneralData, fetchLocationTreatmentData, fetchLocationHomeData, fetchBlogPageData } from '../../../../utils/dataMapping';
+
+import FAQ from "../../../../components/sections/FAQ.astro";
+import HeroProgram from "../../../../components/sections/HeroProgram.astro";
+import ProgramAbout from "../../../../components/sections/ProgramAbout.astro";
+import Video from "../../../../components/sections/Video.astro";
+import TreatmentGrid from "../../../../components/sections/TreatmentGrid.astro";
+import WhoNeeds from "../../../../components/sections/WhoNeeds.astro";
+import Testimonials from "../../../../components/sections/Testimonials.astro";
+import DisorderGrid from "../../../../components/sections/DisorderGrid.astro";
+import CTA from "../../../../components/CTA.astro";
+import ProgramTMS from "../../../../components/sections/programTMS.astro";
+import Program12 from "../../../../components/sections/Program12.astro";
+
+export async function getStaticPaths() {
+    const locations = import.meta.glob('../../../../content/locations/*.json', { eager: true });
+    const treatments = import.meta.glob('../../../../content/treatments/*.json', { eager: true });
+    
+    const paths = [];
+    
+    // Get all location slugs (home pages only)
+    const locationSlugs = Object.keys(locations)
+        .filter(file => !file.includes('config.yml') && file.endsWith('.json'))
+        .map(file => file.split('/').pop().replace('.json', ''));
+    
+    // Get all treatment slugs
+    const treatmentSlugs = Object.keys(treatments)
+        .filter(file => !file.includes('config.yml') && file.endsWith('.json'))
+        .map(file => file.split('/').pop().replace('.json', ''));
+    
+    // Create all possible combinations
+    for (const locationSlug of locationSlugs) {
+        for (const treatmentSlug of treatmentSlugs) {
+            paths.push({
+                params: {
+                    location: locationSlug,
+                    treatment: treatmentSlug
+                }
+            });
+        }
+    }
+    
+    return paths;
+}
+
+const { location, treatment } = Astro.params;
+const GeneralData = await fetchGeneralData();
+const { data: ProgramData } = await fetchLocationTreatmentData(location, treatment);
+const { data: HomeData } = await fetchLocationHomeData(location);
+const { data: BlogPageData } = await fetchBlogPageData();
+
+// Generate dynamic SEO data for location-based treatments
+const generateLocationTitle = (data, location, treatment) => {
+  if (data.seo?.metaTitle) return data.seo.metaTitle;
+  const locationName = location.charAt(0).toUpperCase() + location.slice(1);
+  const treatmentName = treatment.charAt(0).toUpperCase() + treatment.slice(1).replace(/-/g, ' ');
+  return `${treatmentName} Treatment in ${locationName} | Clear Path Behavioral Health`;
+};
+
+const generateLocationDescription = (data, location, treatment) => {
+  if (data.seo?.metaDescription) return data.seo.metaDescription;
+  const locationName = location.charAt(0).toUpperCase() + location.slice(1);
+  const treatmentName = treatment.charAt(0).toUpperCase() + treatment.slice(1).replace(/-/g, ' ');
+  if (data.hero?.text) return `${treatmentName} treatment in ${locationName}. ${data.hero.text.substring(0, 120)}...`;
+  return `Clear Path provides ${treatmentName.toLowerCase()} treatment in ${locationName} with personalized care and innovative therapies.`;
+};
+
+const pageTitle = generateLocationTitle(ProgramData, location, treatment);
+const pageDescription = generateLocationDescription(ProgramData, location, treatment);
+---
+
+<MainLayout title={pageTitle} description={pageDescription}>
+    <div class="px-1 md:px-1 lg:px-0">
+        <!-- Hero Section -->
+        <HeroProgram Content={ProgramData.hero} GeneralData={GeneralData} />
+
+        <!-- About Section -->
+        <ProgramAbout Content={ProgramData.about} />
+
+        <!-- Video Section -->
+        <Video Content={ProgramData.video} />
+
+        <!-- Treatment Grid - Now passing Content prop -->
+        <TreatmentGrid Content={ProgramData.treatmentGrid} />
+
+        <!-- First ProgramAbout with content from CMS -->
+        <ProgramAbout Content={ProgramData.whyChoose} />
+        
+        <ProgramTMS Content={ProgramData.programTMS} />
+        <Testimonials Content={HomeData.testimonials} />
+        <Program12 Content={ProgramData.program12} />
+        
+        <!-- Second ProgramAbout with custom content from CMS -->
+        <ProgramAbout Content={ProgramData.benefits} />
+        
+        <WhoNeeds Content={ProgramData.whoNeeds} />
+        <FAQ Content={ProgramData.faq} />
+        <DisorderGrid Content={BlogPageData.disorders} />
+        <CTA Content={ProgramData.cta}/>
+    </div>
+</MainLayout> 

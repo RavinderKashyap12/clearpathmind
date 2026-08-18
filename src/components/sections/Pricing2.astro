@@ -1,0 +1,82 @@
+<!--
+import { Image } from 'astro:assets';
+
+interface Props {
+  Content: {
+    heading: string;
+    options: string[];
+    contactText: string;
+    image: string;
+    imageAlt: string;
+  };
+}
+
+const { Content } = Astro.props;
+---
+
+<div
+  class="mx-auto my-12 max-w-[1320px] px-6 w-full"
+>
+  <div class="relative w-full">
+    <section
+      class="flex relative gap-10 justify-between items-center p-8 bg-indigo-500 rounded-3xl w-full max-[1320px]:gap-8 max-[1320px]:p-6 max-[900px]:flex-col max-[900px]:gap-6 max-[900px]:p-8 max-sm:p-6"
+    >
+      <div
+        class="flex flex-col shrink-0 gap-6 items-start max-w-md max-[1320px]:max-w-sm max-[900px]:items-center max-[900px]:w-full max-[900px]:text-center max-[900px]:max-w-full"
+      >
+        <h2 class="text-white"
+        >
+          {Content.heading}
+        </h2>
+        <ul class="flex flex-col gap-4 items-start w-full max-[900px]:justify-center">
+          {Content.options.map((option) => (
+            <li class="flex gap-2 items-center max-[900px]:justify-center">
+              <div class="flex-shrink-0">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M7.06536 9.4678L5.63203 8.03447C5.50981 7.91225 5.35425 7.85113 5.16536 7.85113C4.97648 7.85113 4.82092 7.91225 4.6987 8.03447C4.57648 8.15669 4.51536 8.31225 4.51536 8.50113C4.51536 8.69002 4.57648 8.84558 4.6987 8.9678L6.5987 10.8678C6.73203 11.0011 6.88759 11.0678 7.06536 11.0678C7.24314 11.0678 7.3987 11.0011 7.53203 10.8678L11.2987 7.10113C11.4209 6.97891 11.482 6.82336 11.482 6.63447C11.482 6.44558 11.4209 6.29002 11.2987 6.1678C11.1765 6.04558 11.0209 5.98447 10.832 5.98447C10.6431 5.98447 10.4876 6.04558 10.3654 6.1678L7.06536 9.4678ZM7.9987 14.9345C7.07648 14.9345 6.20981 14.7595 5.3987 14.4095C4.58759 14.0595 3.88203 13.5845 3.28203 12.9845C2.68203 12.3845 2.20703 11.6789 1.85703 10.8678C1.50703 10.0567 1.33203 9.19002 1.33203 8.2678C1.33203 7.34558 1.50703 6.47891 1.85703 5.6678C2.20703 4.85669 2.68203 4.15114 3.28203 3.55114C3.88203 2.95114 4.58759 2.47614 5.3987 2.12614C6.20981 1.77614 7.07648 1.60114 7.9987 1.60114C8.92092 1.60114 9.78759 1.77614 10.5987 2.12614C11.4098 2.47614 12.1154 2.95114 12.7154 3.55114C13.3154 4.15114 13.7904 4.85669 14.1404 5.6678C14.4904 6.47891 14.6654 7.34558 14.6654 8.2678C14.6654 9.19002 14.4904 10.0567 14.1404 10.8678C13.7904 11.6789 13.3154 12.3845 12.7154 12.9845C12.1154 13.5845 11.4098 14.0595 10.5987 14.4095C9.78759 14.7595 8.92092 14.9345 7.9987 14.9345Z"
+                    fill="white"></path>
+                </svg>
+              </div>
+              <span
+                class="text-white">
+                {option}
+              </span>
+            </li>
+          ))}
+        </ul>
+        <a
+          href="/contact/" class="cursor-pointer text-white/70 text-lg underline  max-sm:text-base"
+        >
+          <span>
+            {Content.contactText.split(' ').slice(0,2).join(' ')}
+          </span>
+          {' ' + Content.contactText.split(' ').slice(2).join(' ')}
+        </a>
+      </div>
+
+      <div
+        class="relative flex-shrink-0 h-[397px] w-[485px] max-[1320px]:w-[400px] max-[1320px]:h-[320px] max-[1100px]:w-[350px] max-[1100px]:h-[280px] max-[900px]:w-full max-[900px]:h-[300px] max-[900px]:max-w-[400px] max-[768px]:h-[280px] max-[768px]:max-w-[350px] max-sm:h-[250px] max-sm:max-w-[280px]"
+      >
+        <div
+          class="flex relative justify-center items-center p-4 bg-white rounded-3xl shadow-2xl w-full h-full max-[1320px]:p-3 max-[768px]:p-2"
+        >
+          <Image
+            src={Content.image}
+            class="object-cover rounded-2xl w-full h-full max-[768px]:rounded-xl"
+            alt={Content.imageAlt}
+            
+            width={453}
+            height={361}
+          />
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

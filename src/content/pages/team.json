@@ -1,0 +1,52 @@
+{
+  "hero": {
+    "heading": "Our Team",
+    "text": "Get help for yourself or a loved one today!"
+  },
+  "cta": {
+    "heading": "Start Your Journey To Recovery Today",
+    "text": "Are you or a loved one struggling with addiction? Clear Path is here to help you take the first step towards a healthier, happier life. Our compassionate team is ready to support you through every stage of your care journey. Contact us today to learn more about our programs, schedule a visit, or start the admissions process. Your path to care begins here.",
+    "buttonText": "Call Us Now!"
+  },
+
+  "team": {
+     "heading": "Our Team",
+     "buttonText": "View Profile",
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown.",
+    "team": [
+      {
+        "name": "Team Member",
+        "designation": "Staff",
+        "image": "/imgs/placeholder-avatar.png"
+      },
+      {
+        "name": "Team Member",
+        "designation": "Staff",
+        "image": "/imgs/placeholder-avatar.png"
+      },
+      {
+        "name": "Team Member",
+        "designation": "Staff",
+        "image": "/imgs/placeholder-avatar.png"
+      }
+    ]
+  },
+  "faq": {
+    "heading": "Frequently Asked Questions",
+    "subheading": "Find answers to common questions about our services and support",
+    "faq": [
+      {
+        "title": "What is Medication-Assisted Treatment?",
+        "details": "Medication-Assisted Treatment (MAT) involves using medication, along with counseling and behavioral therapies, to treat substance use disorders."
+      },
+      {
+        "title": "How does Sober Living Placement work?",
+        "details": "Sober Living Placement helps individuals find safe and supportive housing environments where they can continue their recovery journey."
+      },
+      {
+        "title": "What services are included in Case Management?",
+        "details": "Case Management includes resume building, job search assistance, accessing community resources, and more."
+      }
+    ]
+  }
+}

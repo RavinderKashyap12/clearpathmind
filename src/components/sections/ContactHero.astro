@@ -1,0 +1,288 @@
+---
+import { getGlobalData } from '../../utils/globalData.ts';
+import ContactForm from '../forms/ContactForm.tsx';
+import VerifyInsuranceForm from '../forms/VerifyInsuranceForm.tsx';
+
+const { isInsurancePage = false, insuranceData, contactData } = Astro.props;
+const globalData = await getGlobalData();
+---
+
+{isInsurancePage ? (
+  <main class="contact-hero-responsive flex justify-center items-center px-0 py-10 bg-white w-full max-w-[1320px] mx-auto my-0 max-xl:px-8 max-xl:py-8 max-lg:px-6 max-lg:py-6 max-[900px]:px-10 max-[900px]:py-16 max-[900px]:w-full max-[900px]:h-auto max-md:px-8 max-md:py-12 max-sm:px-5 max-sm:py-10">
+    <div class="flex justify-between w-full max-[1320px]:flex-col max-[1320px]:gap-10 max-xl:gap-8 max-lg:gap-6 max-[900px]:gap-10 max-[900px]:w-full max-[900px]:h-auto max-md:gap-8 max-sm:gap-8">
+      <!-- Left Section -->
+      <section class="flex flex-col gap-8 items-start w-[48%] max-[1320px]:w-full max-xl:gap-6 max-lg:gap-5 max-[900px]:w-full max-md:gap-6 max-sm:gap-5">
+        <!-- Header -->
+        <header class="flex flex-col gap-4 items-start self-stretch min-w-[586px] max-xl:min-w-[500px] max-lg:min-w-[400px] max-md:min-w-0 max-sm:min-w-0">
+            <h1
+            >
+            <span>{insuranceData?.title.line1}  <span class="text-indigo-500">{insuranceData?.title.line2}</span></span>
+           
+            <span>{insuranceData?.title.line3}</span>
+            </h1  >
+        </header>
+
+        <!-- Main Description -->
+        <p
+          class="self-stretch text-lg leading-9 opacity-75 text-neutral-800 max-xl:text-[17px] max-xl:leading-8 max-lg:text-base max-lg:leading-7 max-md:text-[15px] max-md:leading-6 max-sm:text-base max-sm:leading-7"
+          style="color: #222; font-family: Inter; font-size: 18px; font-style: normal; font-weight: 400; line-height: 34px;"
+        set:html= {insuranceData?.description}>
+         
+        </p>
+
+        <!-- Insurance Providers Card -->
+        <article class="flex gap-2.5 items-start self-stretch p-6 bg-white rounded-3xl shadow-2xl max-xl:p-5 max-lg:p-4 max-md:p-5 max-sm:p-5">
+          <div class="flex flex-col gap-4 items-start flex-1 max-xl:gap-3 max-lg:gap-3">
+            <h3
+              class="gap-4 self-stretch text-base font-bold leading-6 text-neutral-800 max-xl:text-[15px] max-lg:text-[14px]"
+              style="color: #222; font-family: Inter; font-size: 16px; font-style: normal; font-weight: 700; line-height: 24px;"
+            >
+              We Accept Many Major Insurance Plans Including:
+            </h3>
+
+            <div class="flex flex-wrap gap-4 items-start self-stretch max-xl:gap-3 max-lg:gap-3 max-md:gap-3 max-sm:flex-col max-sm:gap-3">
+              {insuranceData?.insuranceProviders.map((provider, index) => (
+                <div class="flex gap-2 items-center flex-1 min-w-[45%] max-xl:min-w-[40%] max-lg:min-w-[35%] max-sm:flex-none max-sm:w-full">
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="check-icon max-xl:w-[14px] max-xl:h-[14px] max-lg:w-[12px] max-lg:h-[12px]" aria-hidden="true">
+                    <path d="M7.06732 9.19967L5.63398 7.76634C5.51176 7.64412 5.35621 7.58301 5.16732 7.58301C4.97843 7.58301 4.82287 7.64412 4.70065 7.76634C4.57843 7.88856 4.51732 8.04412 4.51732 8.23301C4.51732 8.4219 4.57843 8.57745 4.70065 8.69967L6.60065 10.5997C6.73398 10.733 6.88954 10.7997 7.06732 10.7997C7.2451 10.7997 7.40065 10.733 7.53398 10.5997L11.3007 6.83301C11.4229 6.71079 11.484 6.55523 11.484 6.36634C11.484 6.17745 11.4229 6.0219 11.3007 5.89967C11.1784 5.77745 11.0229 5.71634 10.834 5.71634C10.6451 5.71634 10.4895 5.77745 10.3673 5.89967L7.06732 9.19967ZM8.00065 14.6663C7.07843 14.6663 6.21176 14.4913 5.40065 14.1413C4.58954 13.7913 3.88398 13.3163 3.28398 12.7163C2.68398 12.1163 2.20898 11.4108 1.85898 10.5997C1.50898 9.78856 1.33398 8.9219 1.33398 7.99967C1.33398 7.07745 1.50898 6.21079 1.85898 5.39967C2.20898 4.58856 2.68398 3.88301 3.28398 3.28301C3.88398 2.68301 4.58954 2.20801 5.40065 1.85801C6.21176 1.50801 7.07843 1.33301 8.00065 1.33301C8.92287 1.33301 9.78954 1.50801 10.6007 1.85801C11.4118 2.20801 12.1173 2.68301 13.2173 3.28301C13.8173 3.88301 14.2923 4.58856 14.6423 5.39967C14.9923 6.21079 15.1673 7.07745 15.1673 7.99967C15.1673 8.9219 14.9923 9.78856 14.6423 10.5997C14.2923 11.4108 13.8173 12.1163 13.2173 12.7163C12.6173 13.3163 11.9118 13.7913 11.1007 14.1413C10.2895 14.4913 9.42287 14.6663 8.50065 14.6663Z" fill="#543783"/>
+                  </svg>
+                  <span
+                    class="text-base leading-6 text-neutral-800 max-xl:text-[15px] max-xl:leading-5 max-lg:text-[14px] max-lg:leading-5 max-md:text-[13px] max-md:leading-5"
+                    style="color: #222; font-family: Inter; font-size: 16px; font-style: normal; font-weight: 400; line-height: 24px;"
+                  >
+                    {provider.name}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </article>
+
+        <!-- Bottom Description -->
+        <p
+          class="self-stretch text-lg leading-9 opacity-75 text-neutral-800 max-xl:text-[17px] max-xl:leading-8 max-lg:text-base max-lg:leading-7 max-md:text-[15px] max-md:leading-6 max-sm:text-base max-sm:leading-7"
+          style="color: #222; font-family: Inter; font-size: 18px; font-style: normal; font-weight: 400; line-height: 34px;"
+        >
+          {insuranceData?.bottomDescription}
+        </p>
+      </section>
+
+      <!-- Right Section - Form -->
+      <section id="insurance-form" class="w-[48%] max-[1320px]:w-full max-[900px]:w-full" >
+        <div class="relative rounded-3xl w-full max-xl:rounded-2xl max-lg:rounded-xl"  style="
+          background-image: url('/imgs/contactbg.png'), linear-gradient(to right, #F3EFEC, #F6F2EE);
+          background-repeat: no-repeat;
+          background-position: top right;
+        ">
+          <!-- Form Container -->
+          <div class="flex flex-col gap-8 items-start w-full p-6 rounded-3xl shadow-lg max-xl:p-5 max-xl:gap-6 max-xl:rounded-2xl max-lg:p-4 max-lg:gap-5 max-lg:rounded-xl max-[900px]:pb-10 max-md:p-5 max-md:gap-6 max-sm:gap-6">
+            <!-- Form Header -->
+            <header class="flex flex-col gap-6 items-start w-full max-xl:gap-5 max-lg:gap-4 max-md:gap-5">
+              <div class="px-10 py-1.5 text-base leading-6 text-white bg-purple-900 rounded-[50px] max-xl:px-8 max-xl:py-1 max-xl:text-[15px] max-lg:px-6 max-lg:text-[14px] max-md:px-8 max-md:text-base">
+                {insuranceData?.formTitle}
+              </div>
+                <p
+                class="self-stretch text-lg leading-7 opacity-75 text-neutral-800 max-xl:text-[17px] max-xl:leading-6 max-lg:text-base max-lg:leading-6 max-md:text-[15px] max-md:leading-6 max-sm:text-base max-sm:leading-6"
+                style="color: #222; font-family: Inter; font-size: 18px; font-style: normal; font-weight: 400; line-height: 34px;"
+                >
+                {insuranceData?.formSubtitle}
+                </p>
+            </header>
+
+            <!-- Verify Insurance Form -->
+            <VerifyInsuranceForm client:load />
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+) : (
+  <main class="contact-hero-responsive flex gap-[10rem] justify-center items-start px-5 py-14 mx-auto my-0 bg-white w-full max-w-[1320px] max-xl:gap-[8rem] max-xl:px-4 max-xl:py-12 max-lg:gap-[6rem] max-lg:px-3 max-lg:py-10 max-[900px]:flex-col max-[900px]:gap-10 max-[900px]:px-8 max-[900px]:py-10 max-[900px]:w-full max-[900px]:max-w-[1320px] max-md:gap-8 max-md:px-6 max-md:py-8 max-sm:gap-8 max-sm:px-5 max-sm:py-6">
+    <section class="flex flex-col gap-8 items-start w-[45%] max-xl:gap-6 max-lg:gap-5 max-[900px]:w-full max-md:gap-6 max-sm:gap-5">
+      <header class="flex flex-col gap-4 items-start self-stretch max-xl:gap-3 max-lg:gap-3">
+        <h2>
+          {contactData?.emergencyHeading}
+        </h2>
+        <p class="self-stretch text-lg opacity-75 text-[#222] font-[Inter] text-[18px] font-normal leading-[34px] max-xl:text-[17px] max-xl:leading-8 max-lg:text-base max-lg:leading-7 max-md:text-[15px] max-md:leading-6 max-sm:text-base max-sm:leading-7">
+          {contactData?.emergencyText}
+        </p>
+      </header>
+
+      <article class="flex gap-2.5 items-start self-stretch p-6 bg-white rounded-xl shadow-lg max-xl:p-5 max-lg:p-4 max-md:p-5 max-sm:p-5">
+        <div class="flex flex-col gap-4 items-start flex-[1_0_0] max-xl:gap-3 max-lg:gap-3">
+            <h2 class="!text-3xl">  
+            {contactData?.supportHeading}
+            </h2>
+          <div class="flex flex-col gap-3 items-start self-stretch max-xl:gap-2.5 max-lg:gap-2">
+            <div class="flex gap-2 items-center self-stretch max-xl:gap-1.5">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="max-xl:w-[20px] max-xl:h-[20px] max-lg:w-[18px] max-lg:h-[18px]">
+                <path d="M4 20C3.45 20 2.97917 19.8042 2.5875 19.4125C2.19583 19.0208 2 18.55 2 18V6C2 5.45 2.19583 4.97917 2.5875 4.5875C2.97917 4.19583 3.45 4 4 4H20C20.55 4 21.0208 4.19583 21.4125 4.5875C21.8042 4.97917 22 5.45 22 6V18C22 18.55 21.8042 19.0208 21.4125 19.4125C21.0208 19.8042 20.55 20 20 20H4ZM12 12.825C12.0833 12.825 12.1708 12.8125 12.2625 12.7875C12.3542 12.7625 12.4417 12.725 12.525 12.675L19.6 8.25C19.7333 8.16667 19.8333 8.0625 19.9 7.9375C19.9667 7.8125 20 7.675 20 7.525C20 7.19167 19.8583 6.94167 19.575 6.775C19.2917 6.60833 19 6.61667 18.7 6.8L12 11L5.3 6.8C5 6.61667 4.70833 6.6125 4.425 6.7875C4.14167 6.9625 4 7.20833 4 7.525C4 7.69167 4.03333 7.8375 4.1 7.9625C4.16667 8.0875 4.26667 8.18333 4.4 8.25L11.475 12.675C11.5583 12.725 11.6458 12.7625 11.7375 12.7875C11.8292 12.8125 11.9167 12.825 12 12.825Z" fill="#543783"/>
+              </svg>
+                <p class="text-base leading-6 text-neutral-800 max-xl:text-[15px] max-xl:leading-5 max-lg:text-[14px] max-lg:leading-5 max-md:text-[13px] max-md:leading-5 max-sm:text-sm max-sm:leading-5"
+                 style="color: #222; font-family: Inter; font-size: 16px; font-style: normal; font-weight: 400; line-height: 24px;">
+                Email: {contactData?.email}
+                </p>
+            </div>
+            {globalData.address && (
+            <div class="flex gap-2 items-center self-stretch max-xl:gap-1.5">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="max-xl:w-[20px] max-xl:h-[20px] max-lg:w-[18px] max-lg:h-[18px]">
+                <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#543783"/>
+              </svg>
+                <p class="text-base leading-6 text-neutral-800 max-xl:text-[15px] max-xl:leading-5 max-lg:text-[14px] max-lg:leading-5 max-md:text-[13px] max-md:leading-5 max-sm:text-sm max-sm:leading-5"
+                 style="color: #222; font-family: Inter; font-size: 16px; font-style: normal; font-weight: 400; line-height: 24px;">
+                Address: {globalData.address}{globalData.city ? `, ${globalData.city}` : ''}{globalData.state ? `, ${globalData.state}` : ''}
+                </p>
+            </div>
+            )}
+          </div>
+        </div>
+      </article>
+
+      <article class="flex flex-col gap-3 items-start self-stretch max-xl:gap-2.5 max-lg:gap-2">
+        <h2 class="!text-3xl"
+        >
+          {contactData?.businessHours.heading}
+        </h2>
+        <div class="flex flex-col gap-3 items-start self-stretch max-xl:gap-2.5 max-lg:gap-2">
+          <p
+            class="text-base leading-6 text-neutral-800 max-xl:text-[15px] max-xl:leading-5 max-lg:text-[14px] max-lg:leading-5 max-md:text-[13px] max-md:leading-5 max-sm:text-sm max-sm:leading-5"
+            style="color: #222; font-family: Inter; font-size: 16px; font-style: normal; font-weight: 400; line-height: 24px;"
+          >
+            {contactData?.businessHours.hours}
+          </p>
+          <p
+            class="text-base leading-6 text-neutral-800 max-xl:text-[15px] max-xl:leading-5 max-lg:text-[14px] max-lg:leading-5 max-md:text-[13px] max-md:leading-5 max-sm:text-sm max-sm:leading-5"
+            style="color: #222; font-family: Inter; font-size: 16px; font-style: normal; font-weight: 400; line-height: 24px;"
+          >
+            {contactData?.businessHours.weekend}
+          </p>
+        </div>
+      </article>
+    </section>
+
+    <section class="flex shrink-0 w-[45%] max-[900px]:w-full">
+      <div
+        class="relative shrink-0 rounded-xl bg-gradient-to-r from-[#F3EFEC] to-[#F6F2EE] p-6 w-full shadow-lg max-xl:p-5 max-xl:rounded-lg max-lg:p-4 max-lg:rounded-lg max-md:p-5"
+        style="
+          background-image: url('/imgs/contactbg.png'), linear-gradient(to right, #F3EFEC, #F6F2EE);
+          background-repeat: no-repeat;
+          background-position: top right;
+        "
+      >
+        <ContactForm client:load heading={contactData?.formHeading} />
+      </div>
+    </section>
+  </main>
+)}
+
+<style>
+/* Responsive margins to match HeroProgram.astro for all devices */
+@media (min-width: 1320px) {
+  .contact-hero-responsive {
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}
+
+@media (min-width: 901px) and (max-width: 1319px) {
+  .contact-hero-responsive {
+    margin-left: 1.25rem !important;
+    margin-right: 1.25rem !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: calc(100% - 2.5rem) !important;
+  }
+}
+
+@media (max-width: 900px) {
+  .contact-hero-responsive {
+    margin-left: 1.5rem !important;
+    margin-right: 1.5rem !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: calc(100% - 3rem) !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .contact-hero-responsive {
+    margin-left: 1.25rem !important;
+    margin-right: 1.25rem !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: calc(100% - 2.5rem) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-hero-responsive {
+    margin-left: 1rem !important;
+    margin-right: 1rem !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: calc(100% - 2rem) !important;
+  }
+}
+
+@media (max-width: 400px) {
+  .contact-hero-responsive {
+    margin-left: 0.5rem !important;
+    margin-right: 0.5rem !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    width: calc(100% - 1rem) !important;
+  }
+}
+
+/* Contact form placeholder styles */
+input::placeholder,
+textarea::placeholder,
+select::placeholder {
+  color: rgba(0, 0, 0, 0.30);
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+/* Contact form input height */
+input,
+select {
+  height: 52px !important;
+}
+textarea {
+  min-height: 52px;
+}
+
+/* Insurance form placeholder styles (same as contact form) */
+input::placeholder,
+textarea::placeholder,
+select::placeholder {
+  color: rgba(0, 0, 0, 0.30);
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+/* Insurance form input height */
+input,
+select {
+  height: 52px !important;
+}
+textarea {
+  min-height: 52px;
+}
+
+/* Remove default select arrow for custom SVG */
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: transparent;
+}
+</style>

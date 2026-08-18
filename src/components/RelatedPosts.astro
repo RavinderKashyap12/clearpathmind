@@ -1,0 +1,32 @@
+---
+import { fetchBlogData } from '../utils/dataMapping.ts';
+
+// Get the current post slug from the props passed to the component
+const { currentSlug } = Astro.props;
+
+// Fetch all blog posts
+const posts = await fetchBlogData();
+
+// Filter out the current post and limit to 4 related posts
+const relatedPosts = posts.filter(post => post.slug !== currentSlug).slice(0, 4);
+---
+
+<ul class="related-posts space-y-4">
+  {relatedPosts.map(post => (
+    <li>
+      <a href={post.slug} class="hover:underline">
+        {post.data.title}
+      </a>
+    </li>
+  ))}
+</ul>
+
+<style>
+.related-posts a {
+  color: inherit;
+  text-decoration: none;
+}
+.related-posts a:hover {
+  text-decoration: underline;
+}
+</style>

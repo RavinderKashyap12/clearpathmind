@@ -1,0 +1,315 @@
+{
+  "seo": {
+    "metaTitle": "Mental Health Care in Orange County, California",
+    "metaDescription": "Get compassionate, evidence-based mental health care in Orange County now-outpatient, virtual, holistic care customized to you. Reach out today.",
+    "keywords": [
+      "mental health Orange County",
+      "psychiatric care Orange County",
+      "depression treatment Orange County",
+      "anxiety treatment Orange County",
+      "Clear Path Orange County",
+      "Orange County mental health",
+      "Orange County psychiatric care"
+    ]
+  },
+  "insuranceOptions": {
+    "buttonSecondLink": "/contact/",
+    "buttonOneText": "Check Your Insurance",
+    "headingOne": "Insurance",
+    "insuranceOptions": [
+      {
+        "logo": "/imgs/bluecross.png",
+        "alt": "Blue Cross Blue Shield"
+      },
+      {
+        "logo": "/imgs/aetna.png",
+        "alt": "Aetna"
+      },
+      {
+        "logo": "/imgs/anthem.png",
+        "alt": "Anthem"
+      },
+      {
+        "logo": "/imgs/tufts.png",
+        "alt": "Tufts Health Plan"
+      },
+      {
+        "logo": "/imgs/cigna1.png",
+        "alt": "Cigna"
+      }
+    ],
+    "headingTwo": "Partners",
+    "buttonOneLink": "/insurance/",
+    "buttonSecondTextOne": "Have a question?",
+    "buttonSecondTextTwo": "Get in Touch",
+    "description": "We work with multiple insurance providers and healthcare networks to ensure accessible mental health care for our patients in Orange County, California."
+  },
+  "therapies": {
+    "mainHeading": "Mental Health Treatments in",
+    "coloredHeading": "Orange County, CA",
+    "buttonTwo_Part_1": "Have a question?",
+    "buttonTwo_Part_2": "Get in Touch",
+    "buttonLink": "/insurance/",
+    "buttonTwo_Number": "",
+    "description": "At Clear Path Behavioral Health in Orange County, we provide comprehensive mental health care tailored to the unique needs of our Orange County community. Our evidence-based treatments combine cutting-edge psychiatric interventions with personalized care plans, ensuring each patient receives the most effective treatment for their specific mental health challenges.",
+    "image": "/imgs/treatmenthero.png",
+    "list": [
+      {
+        "title": "Medication Management",
+        "description": "Expert psychiatric medication evaluation and ongoing management for mental health conditions, available at our Orange County location.",
+        "image": "/imgs/medication_management.svg",
+        "link": "/location/orange-county/program/medication-management/"
+      }
+    ],
+    "buttonText": "Get Started"
+  },
+  "slug": "orange-county",
+  "about": {
+    "headingOne_Part_1": "Clear Path",
+    "headingOne_Part_2": "Behavioral Health",
+    "headingTwo": "Orange County, California",
+    "buttonTwo_Part_1": "Have a question?",
+    "buttonTwo_Part_2": "Get in Touch",
+    "buttonTwo_Number": "",
+    "buttonOneLink": "/insurance/",
+    "buttonOne": "Get Started",
+    "textOne": "Clear Path Behavioral Health in Orange County specializes in comprehensive mental health care and psychiatric services for Orange County. Our Orange County location offers in-person care from experienced psychiatrists and psychiatric physician assistants, providing direct, face-to-face treatment that sets us apart from telehealth-only providers."
+  },
+  "programs": {
+    "heading": "Mental Health Conditions We Treat in Orange County",
+    "text": "At our Orange County location in the heart of Orange County, Clear Path focuses on addressing a comprehensive range of mental health conditions through evidence-based psychiatric care and medication management. Our experienced team treats:",
+    "programs": [
+      {
+        "title": "Depression",
+        "image": "/imgs/depression_icon.svg",
+        "link": "/location/orange-county/treatment/depression/"
+      },
+      {
+        "title": "Anxiety",
+        "image": "/imgs/anxiety_icon.svg",
+        "link": "/location/orange-county/treatment/anxiety/"
+      },
+      {
+        "title": "Stress and Insomnia",
+        "image": "/imgs/adhd_icon.svg",
+        "link": "/location/orange-county/treatment/stress/"
+      },
+      {
+        "title": "PTSD",
+        "image": "/imgs/ptsd_icon.svg",
+        "link": "/location/orange-county/treatment/ptsd/"
+      },
+      {
+        "title": "Bipolar Disorder",
+        "image": "/imgs/bipolar_icon.svg",
+        "link": "/location/orange-county/treatment/bipolar/"
+      }
+    ]
+  },
+  "cta": {
+    "heading": "Ready to Start Your Mental Health Journey in Orange County?",
+    "phoneTextOne": "Have a question?",
+    "buttonLink": "/insurance/",
+    "text": "Take the first step towards healing at Clear Path Behavioral Health in Orange County. Our experienced team is here to support you with personalized, evidence-based treatment plans tailored to your needs.",
+    "phoneTextTwo": "Get in Touch",
+    "altText": "Mental health support in Orange County, CA",
+    "phoneNumber": "",
+    "image": "/imgs/hand.png",
+    "buttonText": "Get Started"
+  },
+  "disorders": {
+    "heading": "MENTAL HEALTH INSIGHTS",
+    "headingTwo_Part_1": "Expert guidance for your ",
+    "headingTwo_Part_2": "mental health ",
+    "headingTwo_Part_3": "journey in Orange County",
+    "disorders": [
+      {
+        "link": "/blog/managing-depression/",
+        "title": "Effective Strategies for Managing Depression",
+        "image": "/imgs/Depression_Article.png"
+      },
+      {
+        "link": "/blog/managing-anxiety/",
+        "title": "Effective Strategies for Managing Anxiety",
+        "image": "/imgs/Anxiety_Article.png"
+      },
+      {
+        "link": "/blog/managing-adhd/",
+        "title": "Effective Strategies for Managing ADHD",
+        "image": "/imgs/ADHD_Article.png"
+      },
+      {
+        "link": "/blog/managing-ptsd/",
+        "title": "Effective Strategies for Coping with and Managing PTSD",
+        "image": "/imgs/PTSD_Article.png"
+      }
+    ]
+  },
+  "testimonials": {
+    "list": [
+      {
+        "name": "Veronica L.",
+        "position": "Client from Orange County, CA",
+        "text": "Clear Path in Orange County gave me the strength to overcome my anxiety. The compassionate therapists provided unwavering support, and I've found a renewed sense of purpose and tranquility in my life.",
+        "image": "/imgs/testimonial_1.png"
+      },
+      {
+        "name": "Michael S.",
+        "position": "Client from Orange County",
+        "text": "Clear Path helped me regain control of my life. The personalized treatment plan and the caring staff at their Orange County location made all the difference. I am now on a path to recovery and happiness.",
+        "image": "/imgs/testimonial_1.png"
+      }
+    ]
+  },
+  "faq": {
+    "heading": "Frequently Asked Questions",
+    "subheading": "Find answers to common questions about our mental health services in Orange County",
+    "faq": [
+      {
+        "title": "What mental health services are available at your Orange County location?",
+        "details": "Our Orange County location offers comprehensive mental health care including medication management, psychotherapy, and psychiatric evaluations for various mental health conditions."
+      },
+      {
+        "title": "Do you accept insurance at your Orange County office?",
+        "details": "Yes, we work with multiple insurance providers including Blue Cross Blue Shield, Aetna, Anthem, Tufts Health Plan, and Cigna to ensure accessible care for our Orange County patients."
+      },
+      {
+        "title": "How do I schedule an appointment at your Orange County location?",
+        "details": "You can schedule appointments through our website or call us directly. We offer both initial assessments and ongoing follow-up care at our Orange County facility."
+      }
+    ]
+  },
+  "title": "Orange County",
+  "hero": {
+    "logo": "/imgs/hero_logo.png",
+    "telephoneNumber": "",
+    "backgroundImage": "/imgs/hero_home_bg.webp",
+    "buttonOneLink": "/insurance/",
+    "textBox2_Part_1": "Mental Health Care",
+    "textBox2_Part_2": "in Orange County, ",
+    "textBox2_Part_3": "California",
+    "textBox1": "Clear Path Behavioral Health",
+    "buttonOne": "Get Started",
+    "textBox3": "Professional mental health treatment for anxiety, depression, stress, and PTSD at our Orange County location.",
+    "buttonTwo": "Have a question?",
+    "backgroundImageAlt": "Mental health treatment facility in Orange County, California",
+    "buttonText": "Get in Touch",
+    "heroLinks": [
+      {
+        "text": "Treatments",
+        "link": "",
+        "heading": "Mental Health Treatments in Orange County",
+        "sublinks": [
+          {
+            "text": "Medication Management",
+            "link": "/location/orange-county/program/medication-management/"
+          }
+        ],
+        "sublinks2": [
+          {
+            "text": "Depression Treatment",
+            "link": "/location/orange-county/treatment/depression/"
+          },
+          {
+            "text": "Anxiety Treatment",
+            "link": "/location/orange-county/treatment/anxiety/"
+          },
+          {
+            "text": "PTSD Treatment",
+            "link": "/location/orange-county/treatment/ptsd/"
+          },
+          {
+            "text": "Bipolar Disorder Treatment",
+            "link": "/location/orange-county/treatment/bipolar/"
+          },
+          {
+            "text": "Stress Management",
+            "link": "/location/orange-county/treatment/stress/"
+          }
+        ]
+      },
+      {
+        "text": "Locations",
+        "link": "/location/",
+        "heading": "",
+        "sublinks": [
+          {
+            "text": "Orange County, California",
+            "link": "/location/orange-county"
+          }
+        ],
+        "sublinks2": []
+      },
+      {
+        "text": "Pricing",
+        "link": "/pricing/",
+        "sublinks": [],
+        "sublinks2": []
+      },
+      {
+        "text": "Resources",
+        "link": "/blog/",
+        "sublinks": [],
+        "sublinks2": []
+      },
+      {
+        "text": "Get Started",
+        "link": "/contact/",
+        "sublinks": [],
+        "sublinks2": []
+      }
+    ]
+  },
+  "patientJourney": {
+    "heading": "Your Mental Health Journey in Orange County",
+    "headingTwo_Part_1": "Patient Journey",
+    "headingTwo_Part_2": "at Clear Path Orange County",
+    "image": "/imgs/patient_journey.png",
+    "imageAlt": "Patient receiving mental health care at Clear Path Orange County",
+    "steps": [
+      {
+        "title": "Initial Assessment in Orange County",
+        "description": "Begin your mental health journey with a comprehensive initial assessment at our Orange County location. Our experienced team will evaluate your needs and create a personalized treatment plan."
+      },
+      {
+        "title": "Personalized Treatment Plan",
+        "description": "Following your assessment, you'll receive a customized treatment plan that may include medication management or psychotherapy, all available at our Orange County facility."
+      },
+      {
+        "title": "Ongoing Care and Support",
+        "description": "Continue your mental health journey with regular follow-up appointments at our Orange County location, ensuring consistent progress and treatment adjustments as needed."
+      }
+    ]
+  },
+  "services": {
+    "heading": "Mental Health Services in Orange County",
+    "description": "Clear Path Behavioral Health in Orange County offers comprehensive mental health services to support your recovery journey:",
+    "services": [
+      {
+        "iconName": "features/icon-medication-treatment",
+        "title": "Psychiatric Medication Management",
+        "description": "Expert psychiatric care and medication management for mental health conditions, available at our Orange County location with experienced psychiatrists and PAs."
+      },
+      {
+        "iconName": "programs/icon-sober-homes",
+        "title": "Mental Health Treatment Programs",
+        "description": "Comprehensive treatment programs including medication management and psychotherapy for depression and other mental health conditions."
+      },
+      {
+        "iconName": "features/icon-transport",
+        "title": "Convenient Orange County Location",
+        "description": "Easy access to mental health care in the heart of Orange County, serving the surrounding community with convenient appointment scheduling."
+      },
+      {
+        "iconName": "features/icon-dining",
+        "title": "Personalized Care Plans",
+        "description": "Individualized treatment plans tailored to your specific mental health needs, ensuring the most effective path to recovery and wellness."
+      },
+      {
+        "iconName": "features/icon-evidence-2",
+        "title": "Evidence-Based Treatments",
+        "description": "Scientifically proven treatments and therapies for mental health conditions, delivered by experienced mental health professionals in Orange County."
+      }
+    ]
+  }
+}
