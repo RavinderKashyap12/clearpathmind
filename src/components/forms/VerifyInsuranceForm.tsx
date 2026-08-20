@@ -1,12 +1,28 @@
-import React, { useState } from "react";
+import { useState, type FormEvent } from "react";
+import { FormConsent } from "./FormConsent";
+
+const CONTACT_EMAIL = "info@clearpathmind.com";
+
+const inputCls =
+  "w-full rounded-lg border border-[#ADAAA7] bg-white px-4 py-3 text-[15px] text-neutral-800 outline-none transition focus:border-purple-700 focus:ring-1 focus:ring-purple-700";
+const labelCls = "mb-1.5 block text-sm font-medium text-neutral-800";
+
+const MONTHS = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December",
+];
+const DAYS = Array.from({ length: 31 }, (_, i) => i + 1);
+const CURRENT_YEAR = new Date().getFullYear();
+const YEARS = Array.from({ length: 80 }, (_, i) => CURRENT_YEAR - i);
 
 export default function VerifyInsuranceForm() {
-  const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setIsLoading(true);
+    setStatus("loading");
+    setErrorMsg("");
 
     const form = e.currentTarget;
     const formData = new FormData(form);
@@ -17,130 +33,119 @@ export default function VerifyInsuranceForm() {
         headers: { "Content-Type": "application/x-www-form-urlencoded" },
         body: new URLSearchParams(formData as any).toString(),
       });
-      setIsSubmitted(true);
+      setStatus("success");
       form.reset();
-    } catch (error) {
-      alert("Submission failed. Please try again.");
-    } finally {
-      setIsLoading(false);
+    } catch {
+      setErrorMsg(`Network error. Please try again or email us at ${CONTACT_EMAIL}.`);
+      setStatus("error");
     }
-  };
+  }
+
+  if (status === "success") {
+    return (
+      <div className="rounded-xl border border-green-200 bg-green-50 p-8 text-center">
+        <p className="mb-3 text-3xl">✓</p>
+        <p className="text-xl font-bold text-green-800">Request Received</p>
+        <p className="mt-2 text-[15px] leading-relaxed text-green-700">
+          Our team will contact you shortly to verify your insurance benefits.
+        </p>
+      </div>
+    );
+  }
 
   return (
-    <div className="w-full">
-      {isSubmitted ? (
-        <div className="p-6 bg-green-50 border border-green-200 text-green-800 rounded-xl text-center">
-          <h4 className="text-xl font-semibold mb-2">Verification Request Received!</h4>
-          <p>Our admissions team will verify your insurance benefits and reach out shortly.</p>
+    <form
+      name="verify-insurance"
+      method="POST"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+      className="space-y-4"
+      onSubmit={handleSubmit}
+      noValidate
+    >
+      {/* Netlify Form Name Identifier */}
+      <input type="hidden" name="form-name" value="verify-insurance" />
+
+      {/* Honeypot for Netlify Bot Protection */}
+      <p className="hidden">
+        <label>Don’t fill this out: <input name="bot-field" /></label>
+      </p>
+
+      <div className="grid grid-cols-2 gap-3">
+        <div>
+          <label htmlFor="vip_first" className={labelCls}>First Name *</label>
+          <input id="vip_first" name="first_name" type="text" required placeholder="First name" className={inputCls} disabled={status === "loading"} />
         </div>
-      ) : (
-        <form
-          name="verify-insurance"
-          method="POST"
-          data-netlify="true"
-          data-netlify-honeypot="bot-field"
-          onSubmit={handleSubmit}
-          className="flex flex-col gap-4"
-        >
-          {/* Netlify Hidden Fields */}
-          <input type="hidden" name="form-name" value="verify-insurance" />
-          <p className="hidden">
-            <label>Don’t fill this out: <input name="bot-field" /></label>
-          </p>
+        <div>
+          <label htmlFor="vip_last" className={labelCls}>Last Name *</label>
+          <input id="vip_last" name="last_name" type="text" required placeholder="Last name" className={inputCls} disabled={status === "loading"} />
+        </div>
+      </div>
 
-          {/* First & Last Name */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-xs font-semibold text-gray-700 mb-1">First Name *</label>
-              <input
-                type="text"
-                name="firstName"
-                required
-                placeholder="First name"
-                className="w-full px-3.5 py-2.5 rounded-lg border border-gray-300 bg-white text-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-purple-600"
-              />
-            </div>
-            <div>
-              <label className="block text-xs font-semibold text-gray-700 mb-1">Last Name *</label>
-              <input
-                type="text"
-                name="lastName"
-                required
-                placeholder="Last name"
-                className="w-full px-3.5 py-2.5 rounded-lg border border-gray-300 bg-white text-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-purple-600"
-              />
-            </div>
-          </div>
+      <div>
+        <label className={labelCls}>Date of Birth *</label>
+        <div className="grid grid-cols-3 gap-2">
+          <select name="dob_month" required defaultValue="" className={inputCls} disabled={status === "loading"}>
+            <option value="" disabled>Month</option>
+            {MONTHS.map((m, i) => (
+              <option key={m} value={String(i + 1).padStart(2, "0")}>{m}</option>
+            ))}
+          </select>
+          <select name="dob_day" required defaultValue="" className={inputCls} disabled={status === "loading"}>
+            <option value="" disabled>Day</option>
+            {DAYS.map((d) => (
+              <option key={d} value={String(d).padStart(2, "0")}>{d}</option>
+            ))}
+          </select>
+          <select name="dob_year" required defaultValue="" className={inputCls} disabled={status === "loading"}>
+            <option value="" disabled>Year</option>
+            {YEARS.map((y) => (
+              <option key={y} value={String(y)}>{y}</option>
+            ))}
+          </select>
+        </div>
+      </div>
 
-          {/* Phone & Email */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-xs font-semibold text-gray-700 mb-1">Phone Number *</label>
-              <input
-                type="tel"
-                name="phone"
-                required
-                placeholder="(000) 000-0000"
-                className="w-full px-3.5 py-2.5 rounded-lg border border-gray-300 bg-white text-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-purple-600"
-              />
-            </div>
-            <div>
-              <label className="block text-xs font-semibold text-gray-700 mb-1">Email Address *</label>
-              <input
-                type="email"
-                name="email"
-                required
-                placeholder="email@example.com"
-                className="w-full px-3.5 py-2.5 rounded-lg border border-gray-300 bg-white text-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-purple-600"
-              />
-            </div>
-          </div>
+      <div>
+        <label htmlFor="vip_phone" className={labelCls}>Phone *</label>
+        <input id="vip_phone" name="phone" type="tel" required placeholder="(000) 000-0000" className={inputCls} disabled={status === "loading"} />
+      </div>
 
-          {/* Insurance Provider & Member ID */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div>
-              <label className="block text-xs font-semibold text-gray-700 mb-1">Insurance Provider *</label>
-              <input
-                type="text"
-                name="insuranceProvider"
-                required
-                placeholder="e.g. Aetna, Anthem, Cigna"
-                className="w-full px-3.5 py-2.5 rounded-lg border border-gray-300 bg-white text-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-purple-600"
-              />
-            </div>
-            <div>
-              <label className="block text-xs font-semibold text-gray-700 mb-1">Member / Policy ID *</label>
-              <input
-                type="text"
-                name="memberId"
-                required
-                placeholder="Policy or Member ID"
-                className="w-full px-3.5 py-2.5 rounded-lg border border-gray-300 bg-white text-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-purple-600"
-              />
-            </div>
-          </div>
+      <div>
+        <label htmlFor="vip_email" className={labelCls}>
+          Email Address <span className="font-normal text-neutral-400">(Optional)</span>
+        </label>
+        <input id="vip_email" name="email" type="email" placeholder="email@example.com" className={inputCls} disabled={status === "loading"} />
+      </div>
 
-          {/* Additional Notes */}
-          <div>
-            <label className="block text-xs font-semibold text-gray-700 mb-1">Additional Information (Optional)</label>
-            <textarea
-              name="notes"
-              rows={3}
-              placeholder="Any details about the subscriber or specific benefits you want checked..."
-              className="w-full px-3.5 py-2.5 rounded-lg border border-gray-300 bg-white text-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-purple-600"
-            ></textarea>
-          </div>
+      <div>
+        <label htmlFor="vip_insurance" className={labelCls}>Insurance Provider *</label>
+        <input id="vip_insurance" name="insurance" type="text" required placeholder="e.g. Aetna, Cigna, Blue Shield…" className={inputCls} disabled={status === "loading"} />
+      </div>
 
-          {/* Submit Button */}
-          <button
-            type="submit"
-            disabled={isLoading}
-            className="w-full bg-[#543783] hover:bg-purple-900 text-white font-semibold py-3 px-6 rounded-xl shadow-md transition-all duration-200 mt-2 disabled:opacity-50"
-          >
-            {isLoading ? "Verifying..." : "Verify Benefits"}
-          </button>
-        </form>
+      <div>
+        <label htmlFor="vip_policy" className={labelCls}>Policy / Member ID *</label>
+        <input id="vip_policy" name="policy_number" type="text" required placeholder="Policy or Member ID" className={inputCls} disabled={status === "loading"} />
+      </div>
+
+      <FormConsent idPrefix="vip" disabled={status === "loading"} />
+
+      {status === "error" && (
+        <p className="rounded-lg border border-red-200 bg-red-50 px-4 py-3 text-[13px] text-red-700" role="alert">
+          {errorMsg}
+        </p>
       )}
-    </div>
+
+      <button
+        type="submit"
+        disabled={status === "loading"}
+        className="w-full rounded-full bg-blue-600 py-4 text-[16px] font-semibold text-white transition-all hover:bg-blue-700 hover:shadow-md disabled:cursor-not-allowed disabled:opacity-60"
+      >
+        {status === "loading" ? "Submitting…" : "Verify Insurance & Get Started"}
+      </button>
+      <p className="text-center text-[11px] text-neutral-400">
+        Confidential · No obligation · Your information is protected
+      </p>
+    </form>
   );
 }

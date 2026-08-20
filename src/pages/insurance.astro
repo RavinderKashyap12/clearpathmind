@@ -36,19 +36,23 @@ const pageDescription = generatePageDescription(InsuranceData);
     <TreatmentGrid Content={InsuranceData?.treatmentGrid}  />
     <Insurancehero Content={InsuranceData?.insuranceVerification} />
 
-   <form 
+ <form 
   name="verify-insurance" 
   data-netlify="true" 
   data-netlify-honeypot="bot-field" 
   hidden
 >
-  <input type="text" name="firstName" />
-  <input type="text" name="lastName" />
+  <input type="text" name="first_name" />
+  <input type="text" name="last_name" />
+  <input type="text" name="dob_month" />
+  <input type="text" name="dob_day" />
+  <input type="text" name="dob_year" />
   <input type="tel" name="phone" />
   <input type="email" name="email" />
-  <input type="text" name="insuranceProvider" />
-  <input type="text" name="memberId" />
-  <textarea name="notes"></textarea>
+  <input type="text" name="insurance" />
+  <input type="text" name="policy_number" />
+  <input type="checkbox" name="sms_consent" />
+  <input type="checkbox" name="marketing_sms_consent" />
 </form>
     
 </MainLayout>
