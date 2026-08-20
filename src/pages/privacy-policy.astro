@@ -1,0 +1,65 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+
+const pageTitle = "Privacy Policy | Clear Path Behavioral Health";
+const pageDescription = "Learn about our privacy practices, how we handle your health information, and your rights under California law.";
+---
+
+<MainLayout title={pageTitle} description={pageDescription}>
+  <main class="w-full max-w-[1100px] mx-auto px-6 py-16 text-neutral-800">
+    <header class="mb-10 pb-6 border-b border-gray-200">
+      <h1 class="text-3xl md:text-4xl font-bold text-neutral-900 mb-3">Privacy Policy</h1>
+      <p class="text-sm text-neutral-500">Last Updated: August 2026</p>
+    </header>
+
+    <div class="space-y-8 text-[15px] leading-relaxed text-neutral-700">
+      <section class="space-y-3">
+        <h2 class="text-xl font-bold text-neutral-900">1. Introduction & Scope</h2>
+        <p>
+          Clear Path Behavioral Health ("we," "our," or "us") provides behavioral health and telehealth services exclusively to residents physically located in California. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website or submit inquiries through our forms.
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-xl font-bold text-neutral-900">2. Information We Collect</h2>
+        <ul class="list-disc pl-5 space-y-1">
+          <li><strong>Contact Information:</strong> First name, last name, phone number, and email address.</li>
+          <li><strong>Health & Insurance Information:</strong> Date of birth, insurance carrier, and member/policy ID submitted for verification.</li>
+          <li><strong>Communications & SMS Consent:</strong> Preferences and consent records for service-related and promotional SMS messages.</li>
+        </ul>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-xl font-bold text-neutral-900">3. How We Use Your Information</h2>
+        <p>We use collected data solely for:</p>
+        <ul class="list-disc pl-5 space-y-1">
+          <li>Verifying insurance coverage and eligibility.</li>
+          <li>Scheduling clinical appointments and coordinating care.</li>
+          <li>Responding to your inquiries and admissions questions.</li>
+          <li>Sending service-related notifications and SMS (subject to your consent).</li>
+        </ul>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-xl font-bold text-neutral-900">4. SMS Communications & TCPA Compliance</h2>
+        <p>
+          If you opt in to receive SMS messages, message frequency varies. Message and data rates may apply. You can reply <strong>STOP</strong> at any time to opt out or <strong>HELP</strong> for assistance. We do not sell or share mobile numbers with third parties for their marketing purposes.
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-xl font-bold text-neutral-900">5. California Privacy Rights</h2>
+        <p>
+          As an organization operating exclusively in California, we comply with relevant California consumer privacy and health confidentiality regulations (including CMIA where applicable).
+        </p>
+      </section>
+
+      <section class="space-y-3">
+        <h2 class="text-xl font-bold text-neutral-900">6. Contact Us</h2>
+        <p>
+          If you have questions regarding this Privacy Policy, please reach out through our contact page or email us at <a href="mailto:info@clearpathmind.com" class="text-blue-600 underline">info@clearpathmind.com</a>.
+        </p>
+      </section>
+    </div>
+  </main>
+</MainLayout>

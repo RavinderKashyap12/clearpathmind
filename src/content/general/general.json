@@ -31,6 +31,10 @@
         {
           "text": "Contact Us",
           "url": "/contact/"
+        },
+        {
+          "text": "Privacy Policy",
+          "url": "/privacy-policy/"
         }
       ]
     },
