@@ -36,7 +36,11 @@ const pageDescription = generatePageDescription(ContactData);
 
 	<Testimonials Content={HomeData.testimonials} />
   <!-- Netlify Form Discovery for Static Build -->
-    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+    <form 
+    name="contact" 
+   data-netlify="true" 
+   data-netlify-honeypot="bot-field" 
+   hidden>
       <input type="text" name="firstName" />
       <input type="text" name="lastName" />
       <input type="tel" name="phone" />
