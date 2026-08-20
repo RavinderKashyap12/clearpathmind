@@ -35,5 +35,16 @@ const pageDescription = generatePageDescription(ContactData);
     <!-- Contact Box  -->
 
 	<Testimonials Content={HomeData.testimonials} />
+  <!-- Netlify Form Discovery for Static Build -->
+    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="firstName" />
+      <input type="text" name="lastName" />
+      <input type="tel" name="phone" />
+      <input type="email" name="email" />
+      <input type="text" name="insuranceProvider" />
+      <textarea name="message"></textarea>
+      <input type="checkbox" name="consentServiceSms" />
+      <input type="checkbox" name="consentMarketingSms" />
+    </form>
 
 </MainLayout>
