@@ -35,5 +35,20 @@ const pageDescription = generatePageDescription(InsuranceData);
     <Testimonials Content={HomeData?.testimonials} />
     <TreatmentGrid Content={InsuranceData?.treatmentGrid}  />
     <Insurancehero Content={InsuranceData?.insuranceVerification} />
+
+   <form 
+  name="verify-insurance" 
+  data-netlify="true" 
+  data-netlify-honeypot="bot-field" 
+  hidden
+>
+  <input type="text" name="firstName" />
+  <input type="text" name="lastName" />
+  <input type="tel" name="phone" />
+  <input type="email" name="email" />
+  <input type="text" name="insuranceProvider" />
+  <input type="text" name="memberId" />
+  <textarea name="notes"></textarea>
+</form>
     
 </MainLayout>
